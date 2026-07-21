@@ -1,0 +1,5770 @@
+{
+  "versie": "v5",
+  "bandbreedte": 70,
+  "geexporteerd": "2026-07-20T20:13:32.036Z",
+  "entities": [
+    {
+      "id": 1,
+      "name": "E1",
+      "color": "#4fc3f7",
+      "memory": [
+        {
+          "val": -0.202,
+          "aro": 0.2,
+          "route": "A",
+          "run": 1,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0
+        },
+        {
+          "val": -0.942,
+          "aro": 0.26,
+          "route": "C",
+          "run": 2,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.203
+        },
+        {
+          "val": -0.662,
+          "aro": 0.519,
+          "route": "B",
+          "run": 3,
+          "entityId": 1,
+          "iters": 4,
+          "Tw": 0.304
+        },
+        {
+          "val": -0.925,
+          "aro": 0.233,
+          "route": "C",
+          "run": 4,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.015
+        },
+        {
+          "val": -0.968,
+          "aro": -0.203,
+          "route": "B",
+          "run": 5,
+          "entityId": 1,
+          "iters": 453,
+          "Tw": 0.416
+        },
+        {
+          "val": -0.93,
+          "aro": -0.125,
+          "route": "B",
+          "run": 6,
+          "entityId": 1,
+          "iters": 389,
+          "Tw": 0.318
+        },
+        {
+          "val": -0.943,
+          "aro": -0.123,
+          "route": "C",
+          "run": 7,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.073
+        },
+        {
+          "val": -0.938,
+          "aro": -0.101,
+          "route": "C",
+          "run": 8,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.121
+        },
+        {
+          "val": -0.943,
+          "aro": -0.171,
+          "route": "C",
+          "run": 9,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.085
+        },
+        {
+          "val": -0.945,
+          "aro": 0.29,
+          "route": "C",
+          "run": 10,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.078
+        },
+        {
+          "val": -0.987,
+          "aro": 0.06,
+          "route": "C",
+          "run": 11,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.03
+        },
+        {
+          "val": -0.843,
+          "aro": 0.364,
+          "route": "B",
+          "run": 12,
+          "entityId": 1,
+          "iters": 1374,
+          "Tw": 0.313
+        },
+        {
+          "val": -0.987,
+          "aro": 0.11,
+          "route": "C",
+          "run": 13,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.052
+        },
+        {
+          "val": -0.981,
+          "aro": 0.151,
+          "route": "C",
+          "run": 14,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.03
+        },
+        {
+          "val": -0.977,
+          "aro": -0.129,
+          "route": "B",
+          "run": 15,
+          "entityId": 1,
+          "iters": 1918,
+          "Tw": 0.192
+        },
+        {
+          "val": -0.96,
+          "aro": 0.216,
+          "route": "B",
+          "run": 16,
+          "entityId": 1,
+          "iters": 7213,
+          "Tw": 0.107
+        },
+        {
+          "val": -0.864,
+          "aro": 0.372,
+          "route": "B",
+          "run": 17,
+          "entityId": 1,
+          "iters": 1309,
+          "Tw": 0.292
+        },
+        {
+          "val": -0.989,
+          "aro": 0.129,
+          "route": "B",
+          "run": 18,
+          "entityId": 1,
+          "iters": 1346,
+          "Tw": 0.035
+        },
+        {
+          "val": -0.879,
+          "aro": 0.416,
+          "route": "B",
+          "run": 19,
+          "entityId": 1,
+          "iters": 449,
+          "Tw": 0.216
+        },
+        {
+          "val": -0.979,
+          "aro": 0.143,
+          "route": "C",
+          "run": 20,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.021
+        },
+        {
+          "val": -0.832,
+          "aro": 0.365,
+          "route": "B",
+          "run": 21,
+          "entityId": 1,
+          "iters": 71,
+          "Tw": 0.317
+        },
+        {
+          "val": -0.957,
+          "aro": -0.186,
+          "route": "B",
+          "run": 22,
+          "entityId": 1,
+          "iters": 1801,
+          "Tw": 0.237
+        },
+        {
+          "val": -0.929,
+          "aro": 0.273,
+          "route": "B",
+          "run": 23,
+          "entityId": 1,
+          "iters": 1161,
+          "Tw": 0.162
+        },
+        {
+          "val": -0.989,
+          "aro": 0.001,
+          "route": "B",
+          "run": 24,
+          "entityId": 1,
+          "iters": 1914,
+          "Tw": 0.123
+        },
+        {
+          "val": -0.988,
+          "aro": 0.052,
+          "route": "C",
+          "run": 25,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.06
+        },
+        {
+          "val": -0.979,
+          "aro": 0.078,
+          "route": "B",
+          "run": 26,
+          "entityId": 1,
+          "iters": 5673,
+          "Tw": 0.157
+        },
+        {
+          "val": -0.956,
+          "aro": -0.126,
+          "route": "B",
+          "run": 27,
+          "entityId": 1,
+          "iters": 3014,
+          "Tw": 0.201
+        },
+        {
+          "val": -0.974,
+          "aro": 0.057,
+          "route": "B",
+          "run": 28,
+          "entityId": 1,
+          "iters": 6262,
+          "Tw": 0.048
+        },
+        {
+          "val": -0.93,
+          "aro": 0.191,
+          "route": "B",
+          "run": 29,
+          "entityId": 1,
+          "iters": 5226,
+          "Tw": 0.272
+        },
+        {
+          "val": -0.98,
+          "aro": -0.093,
+          "route": "B",
+          "run": 30,
+          "entityId": 1,
+          "iters": 9877,
+          "Tw": 0.222
+        },
+        {
+          "val": -0.98,
+          "aro": -0.108,
+          "route": "C",
+          "run": 31,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.034
+        },
+        {
+          "val": -0.978,
+          "aro": -0.157,
+          "route": "B",
+          "run": 32,
+          "entityId": 1,
+          "iters": 96,
+          "Tw": 0.162
+        },
+        {
+          "val": -0.987,
+          "aro": 0.036,
+          "route": "B",
+          "run": 33,
+          "entityId": 1,
+          "iters": 871,
+          "Tw": 0.077
+        },
+        {
+          "val": -0.984,
+          "aro": -0.136,
+          "route": "B",
+          "run": 34,
+          "entityId": 1,
+          "iters": 537,
+          "Tw": 0.19
+        },
+        {
+          "val": -0.982,
+          "aro": -0.133,
+          "route": "B",
+          "run": 35,
+          "entityId": 1,
+          "iters": 5505,
+          "Tw": 0.3
+        },
+        {
+          "val": -0.966,
+          "aro": -0.202,
+          "route": "B",
+          "run": 36,
+          "entityId": 1,
+          "iters": 780,
+          "Tw": 0.237
+        },
+        {
+          "val": -0.956,
+          "aro": -0.219,
+          "route": "B",
+          "run": 37,
+          "entityId": 1,
+          "iters": 3022,
+          "Tw": 0.239
+        },
+        {
+          "val": -0.975,
+          "aro": 0.032,
+          "route": "C",
+          "run": 38,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.087
+        },
+        {
+          "val": -0.975,
+          "aro": -0.098,
+          "route": "B",
+          "run": 39,
+          "entityId": 1,
+          "iters": 367,
+          "Tw": 0.138
+        },
+        {
+          "val": -0.982,
+          "aro": -0.038,
+          "route": "C",
+          "run": 40,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.015
+        },
+        {
+          "val": -0.963,
+          "aro": 0.108,
+          "route": "B",
+          "run": 41,
+          "entityId": 1,
+          "iters": 468,
+          "Tw": 0.167
+        },
+        {
+          "val": -0.941,
+          "aro": 0.188,
+          "route": "B",
+          "run": 42,
+          "entityId": 1,
+          "iters": 236,
+          "Tw": 0.194
+        },
+        {
+          "val": -0.971,
+          "aro": 0.041,
+          "route": "B",
+          "run": 43,
+          "entityId": 1,
+          "iters": 3048,
+          "Tw": 0.201
+        },
+        {
+          "val": -0.954,
+          "aro": 0.129,
+          "route": "B",
+          "run": 44,
+          "entityId": 1,
+          "iters": 500,
+          "Tw": 0.162
+        },
+        {
+          "val": -0.979,
+          "aro": 0.118,
+          "route": "C",
+          "run": 45,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.023
+        },
+        {
+          "val": -0.969,
+          "aro": 0.076,
+          "route": "B",
+          "run": 46,
+          "entityId": 1,
+          "iters": 3515,
+          "Tw": 0.186
+        },
+        {
+          "val": -0.973,
+          "aro": -0.189,
+          "route": "B",
+          "run": 47,
+          "entityId": 1,
+          "iters": 2340,
+          "Tw": 0.255
+        },
+        {
+          "val": -0.99,
+          "aro": -0.126,
+          "route": "B",
+          "run": 48,
+          "entityId": 1,
+          "iters": 3364,
+          "Tw": 0.065
+        },
+        {
+          "val": -0.99,
+          "aro": -0.013,
+          "route": "C",
+          "run": 49,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.039
+        },
+        {
+          "val": -0.965,
+          "aro": -0.239,
+          "route": "B",
+          "run": 50,
+          "entityId": 1,
+          "iters": 54,
+          "Tw": 0.198
+        },
+        {
+          "val": -0.954,
+          "aro": 0.143,
+          "route": "B",
+          "run": 51,
+          "entityId": 1,
+          "iters": 108,
+          "Tw": 0.166
+        },
+        {
+          "val": -0.962,
+          "aro": 0.118,
+          "route": "B",
+          "run": 52,
+          "entityId": 1,
+          "iters": 1504,
+          "Tw": 0.135
+        },
+        {
+          "val": -0.968,
+          "aro": -0.126,
+          "route": "B",
+          "run": 53,
+          "entityId": 1,
+          "iters": 899,
+          "Tw": 0.089
+        },
+        {
+          "val": -0.945,
+          "aro": 0.67,
+          "route": "A",
+          "run": 54,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.271
+        },
+        {
+          "val": -0.952,
+          "aro": -0.134,
+          "route": "B",
+          "run": 55,
+          "entityId": 1,
+          "iters": 416,
+          "Tw": 0.266
+        },
+        {
+          "val": -0.558,
+          "aro": 0.489,
+          "route": "A",
+          "run": 56,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.316
+        },
+        {
+          "val": -0.94,
+          "aro": -0.247,
+          "route": "B",
+          "run": 57,
+          "entityId": 1,
+          "iters": 1294,
+          "Tw": 0.227
+        },
+        {
+          "val": -0.988,
+          "aro": -0.123,
+          "route": "B",
+          "run": 58,
+          "entityId": 1,
+          "iters": 23,
+          "Tw": 0.03
+        },
+        {
+          "val": -0.982,
+          "aro": -0.13,
+          "route": "B",
+          "run": 59,
+          "entityId": 1,
+          "iters": 3075,
+          "Tw": 0.068
+        },
+        {
+          "val": -0.97,
+          "aro": 0.089,
+          "route": "B",
+          "run": 60,
+          "entityId": 1,
+          "iters": 1020,
+          "Tw": 0.082
+        },
+        {
+          "val": -0.968,
+          "aro": 0.033,
+          "route": "B",
+          "run": 61,
+          "entityId": 1,
+          "iters": 6362,
+          "Tw": 0.202
+        },
+        {
+          "val": -0.98,
+          "aro": 0.047,
+          "route": "B",
+          "run": 62,
+          "entityId": 1,
+          "iters": 586,
+          "Tw": 0.042
+        },
+        {
+          "val": -0.976,
+          "aro": 0.064,
+          "route": "B",
+          "run": 63,
+          "entityId": 1,
+          "iters": 3764,
+          "Tw": 0.049
+        },
+        {
+          "val": -0.956,
+          "aro": -0.207,
+          "route": "B",
+          "run": 64,
+          "entityId": 1,
+          "iters": 3044,
+          "Tw": 0.187
+        },
+        {
+          "val": -0.923,
+          "aro": 0.151,
+          "route": "B",
+          "run": 65,
+          "entityId": 1,
+          "iters": 43,
+          "Tw": 0.248
+        },
+        {
+          "val": -0.988,
+          "aro": -0.122,
+          "route": "B",
+          "run": 66,
+          "entityId": 1,
+          "iters": 152,
+          "Tw": 0.033
+        },
+        {
+          "val": -0.565,
+          "aro": -0.588,
+          "route": "A",
+          "run": 67,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.413
+        },
+        {
+          "val": -0.966,
+          "aro": 0.119,
+          "route": "B",
+          "run": 68,
+          "entityId": 1,
+          "iters": 1381,
+          "Tw": 0.169
+        },
+        {
+          "val": -0.945,
+          "aro": -0.289,
+          "route": "B",
+          "run": 69,
+          "entityId": 1,
+          "iters": 4050,
+          "Tw": 0.202
+        },
+        {
+          "val": -0.983,
+          "aro": 0.085,
+          "route": "C",
+          "run": 70,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.044
+        },
+        {
+          "val": -0.976,
+          "aro": -0.109,
+          "route": "C",
+          "run": 71,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.076
+        },
+        {
+          "val": -0.944,
+          "aro": -0.248,
+          "route": "B",
+          "run": 72,
+          "entityId": 1,
+          "iters": 1184,
+          "Tw": 0.219
+        },
+        {
+          "val": -0.99,
+          "aro": -0.102,
+          "route": "B",
+          "run": 73,
+          "entityId": 1,
+          "iters": 1151,
+          "Tw": 0.146
+        },
+        {
+          "val": -0.955,
+          "aro": 0.165,
+          "route": "B",
+          "run": 74,
+          "entityId": 1,
+          "iters": 2047,
+          "Tw": 0.17
+        },
+        {
+          "val": -0.932,
+          "aro": -0.266,
+          "route": "B",
+          "run": 75,
+          "entityId": 1,
+          "iters": 2872,
+          "Tw": 0.255
+        },
+        {
+          "val": -0.888,
+          "aro": -0.567,
+          "route": "A",
+          "run": 76,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.292
+        },
+        {
+          "val": -0.952,
+          "aro": -0.232,
+          "route": "B",
+          "run": 77,
+          "entityId": 1,
+          "iters": 712,
+          "Tw": 0.243
+        },
+        {
+          "val": -0.945,
+          "aro": -0.297,
+          "route": "B",
+          "run": 78,
+          "entityId": 1,
+          "iters": 392,
+          "Tw": 0.233
+        },
+        {
+          "val": -0.964,
+          "aro": -0.249,
+          "route": "B",
+          "run": 79,
+          "entityId": 1,
+          "iters": 1142,
+          "Tw": 0.173
+        },
+        {
+          "val": -0.335,
+          "aro": -0.489,
+          "route": "A",
+          "run": 80,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.465
+        },
+        {
+          "val": -0.972,
+          "aro": -0.204,
+          "route": "C",
+          "run": 81,
+          "entityId": 1,
+          "iters": 1,
+          "Tw": 0.02
+        },
+        {
+          "val": -0.946,
+          "aro": -0.261,
+          "route": "B",
+          "run": 82,
+          "entityId": 1,
+          "iters": 2131,
+          "Tw": 0.284
+        },
+        {
+          "val": -0.901,
+          "aro": -0.37,
+          "route": "B",
+          "run": 83,
+          "entityId": 1,
+          "iters": 61,
+          "Tw": 0.289
+        },
+        {
+          "val": -0.982,
+          "aro": -0.016,
+          "route": "B",
+          "run": 84,
+          "entityId": 1,
+          "iters": 1332,
+          "Tw": 0.086
+        }
+      ],
+      "runCount": 84,
+      "karakter": {
+        "p0": 0.7,
+        "theta0": 3.141592653589793,
+        "xi0": 0.5,
+        "rho0": {
+          "vv": 0.18377223398316211,
+          "va": 3.872673214540387e-17,
+          "av": 3.872673214540387e-17,
+          "aa": 0.8162277660168379
+        }
+      },
+      "profielen": [
+        {
+          "runId": 84,
+          "timestamp": "2026-07-20T20:13:31.938Z",
+          "entityName": "E1",
+          "levensloop": "E1 begon als uitgesproken verdrietige afweger. Van die aard afgeweken: dominante zone werd boos/angstig in plaats van verdrietig. Het profiel verschoof van boos/angstig (vroeg) naar verdrietig (laat). Was 100% van de tijd gegroepeerd (G1). Zit nu in G1, de treurenden. Het beginkarakter werkt nog voor 27% door.",
+          "periods": [
+            {
+              "label": "GEBOORTE",
+              "runStart": 1,
+              "runEnd": 21,
+              "text": "GEBOORTE (run 1-21): Centrum negatief/matig in boos/angstig. deliberatie (B). sterk coherent. moeizame convergentie. Beginkarakter 95% actief. negatief eindigend. [S=0.13 P=0.96 F=0.98]"
+            },
+            {
+              "label": "MIDDEN",
+              "runStart": 22,
+              "runEnd": 55,
+              "text": "MIDDEN (run 22-55): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. moeizame convergentie. negatief eindigend. [S=0.06 P=0.99 F=0.98]"
+            },
+            {
+              "label": "LAAT",
+              "runStart": 56,
+              "runEnd": 84,
+              "text": "LAAT (run 56-84): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. moeizame convergentie. negatief eindigend. [S=0.16 P=0.96 F=0.96]"
+            }
+          ],
+          "global": "Globaal (84 runs): gamma=0.93 sterk. val-osc=0.13 aro-osc=0.23. Nog open. [S=0.14 P=0.96 F=0.97]",
+          "params": {
+            "S": 0.13728654979127414,
+            "P": 0.962214673438858,
+            "F": 0.9709777823820696,
+            "gamma": 0.9342890697911496,
+            "valOsc": 0.12763953893325128,
+            "aroOsc": 0.2307527450867689,
+            "lateC": 0.1,
+            "n": 84
+          }
+        }
+      ],
+      "groupHist": [
+        {
+          "run": 1,
+          "gid": 1
+        },
+        {
+          "run": 2,
+          "gid": 1
+        },
+        {
+          "run": 3,
+          "gid": 1
+        },
+        {
+          "run": 4,
+          "gid": 1
+        },
+        {
+          "run": 5,
+          "gid": 1
+        },
+        {
+          "run": 6,
+          "gid": 1
+        },
+        {
+          "run": 7,
+          "gid": 1
+        },
+        {
+          "run": 8,
+          "gid": 1
+        },
+        {
+          "run": 9,
+          "gid": 1
+        },
+        {
+          "run": 10,
+          "gid": 1
+        },
+        {
+          "run": 11,
+          "gid": 1
+        },
+        {
+          "run": 12,
+          "gid": 1
+        },
+        {
+          "run": 13,
+          "gid": 1
+        },
+        {
+          "run": 14,
+          "gid": 1
+        },
+        {
+          "run": 15,
+          "gid": 1
+        },
+        {
+          "run": 16,
+          "gid": 1
+        },
+        {
+          "run": 17,
+          "gid": 1
+        },
+        {
+          "run": 18,
+          "gid": 1
+        },
+        {
+          "run": 19,
+          "gid": 1
+        },
+        {
+          "run": 20,
+          "gid": 1
+        },
+        {
+          "run": 21,
+          "gid": 1
+        },
+        {
+          "run": 22,
+          "gid": 1
+        },
+        {
+          "run": 23,
+          "gid": 1
+        },
+        {
+          "run": 24,
+          "gid": 1
+        },
+        {
+          "run": 25,
+          "gid": 1
+        },
+        {
+          "run": 26,
+          "gid": 1
+        },
+        {
+          "run": 27,
+          "gid": 1
+        },
+        {
+          "run": 28,
+          "gid": 1
+        },
+        {
+          "run": 29,
+          "gid": 1
+        },
+        {
+          "run": 30,
+          "gid": 1
+        },
+        {
+          "run": 31,
+          "gid": 1
+        },
+        {
+          "run": 32,
+          "gid": 1
+        },
+        {
+          "run": 33,
+          "gid": 1
+        },
+        {
+          "run": 34,
+          "gid": 1
+        },
+        {
+          "run": 35,
+          "gid": 1
+        },
+        {
+          "run": 36,
+          "gid": 1
+        },
+        {
+          "run": 37,
+          "gid": 1
+        },
+        {
+          "run": 38,
+          "gid": 1
+        },
+        {
+          "run": 39,
+          "gid": 1
+        },
+        {
+          "run": 40,
+          "gid": 1
+        },
+        {
+          "run": 41,
+          "gid": 1
+        },
+        {
+          "run": 42,
+          "gid": 1
+        },
+        {
+          "run": 43,
+          "gid": 1
+        },
+        {
+          "run": 44,
+          "gid": 1
+        },
+        {
+          "run": 45,
+          "gid": 1
+        },
+        {
+          "run": 46,
+          "gid": 1
+        },
+        {
+          "run": 47,
+          "gid": 1
+        },
+        {
+          "run": 48,
+          "gid": 1
+        },
+        {
+          "run": 49,
+          "gid": 1
+        },
+        {
+          "run": 50,
+          "gid": 1
+        },
+        {
+          "run": 51,
+          "gid": 1
+        },
+        {
+          "run": 52,
+          "gid": 1
+        },
+        {
+          "run": 53,
+          "gid": 1
+        },
+        {
+          "run": 54,
+          "gid": 1
+        },
+        {
+          "run": 55,
+          "gid": 1
+        },
+        {
+          "run": 56,
+          "gid": 1
+        },
+        {
+          "run": 57,
+          "gid": 1
+        },
+        {
+          "run": 58,
+          "gid": 1
+        },
+        {
+          "run": 59,
+          "gid": 1
+        },
+        {
+          "run": 60,
+          "gid": 1
+        },
+        {
+          "run": 61,
+          "gid": 1
+        },
+        {
+          "run": 62,
+          "gid": 1
+        },
+        {
+          "run": 63,
+          "gid": 1
+        },
+        {
+          "run": 64,
+          "gid": 1
+        },
+        {
+          "run": 65,
+          "gid": 1
+        },
+        {
+          "run": 66,
+          "gid": 1
+        },
+        {
+          "run": 67,
+          "gid": 1
+        },
+        {
+          "run": 68,
+          "gid": 1
+        },
+        {
+          "run": 69,
+          "gid": 1
+        },
+        {
+          "run": 70,
+          "gid": 1
+        },
+        {
+          "run": 71,
+          "gid": 1
+        },
+        {
+          "run": 72,
+          "gid": 1
+        },
+        {
+          "run": 73,
+          "gid": 1
+        },
+        {
+          "run": 74,
+          "gid": 1
+        },
+        {
+          "run": 75,
+          "gid": 1
+        },
+        {
+          "run": 76,
+          "gid": 1
+        },
+        {
+          "run": 77,
+          "gid": 1
+        },
+        {
+          "run": 78,
+          "gid": 1
+        },
+        {
+          "run": 79,
+          "gid": 1
+        },
+        {
+          "run": 80,
+          "gid": 1
+        },
+        {
+          "run": 81,
+          "gid": 1
+        },
+        {
+          "run": 82,
+          "gid": 1
+        },
+        {
+          "run": 83,
+          "gid": 1
+        },
+        {
+          "run": 84,
+          "gid": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "E2",
+      "color": "#ffd54f",
+      "memory": [
+        {
+          "val": -0.239,
+          "aro": 0.453,
+          "route": "A",
+          "run": 1,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0
+        },
+        {
+          "val": 0.539,
+          "aro": 0.307,
+          "route": "A",
+          "run": 2,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.696
+        },
+        {
+          "val": 0.613,
+          "aro": -0.099,
+          "route": "B",
+          "run": 3,
+          "entityId": 2,
+          "iters": 12775,
+          "Tw": 0.593
+        },
+        {
+          "val": 0.101,
+          "aro": -0.263,
+          "route": "A",
+          "run": 4,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.672
+        },
+        {
+          "val": 0.175,
+          "aro": 0.762,
+          "route": "B",
+          "run": 5,
+          "entityId": 2,
+          "iters": 4110,
+          "Tw": 0.392
+        },
+        {
+          "val": 0.361,
+          "aro": -0.506,
+          "route": "B",
+          "run": 6,
+          "entityId": 2,
+          "iters": 7412,
+          "Tw": 0.459
+        },
+        {
+          "val": -0.446,
+          "aro": 0.253,
+          "route": "B",
+          "run": 7,
+          "entityId": 2,
+          "iters": 50000,
+          "Tw": 0.546,
+          "besluiteloos": true
+        },
+        {
+          "val": -0.79,
+          "aro": 0.405,
+          "route": "B",
+          "run": 8,
+          "entityId": 2,
+          "iters": 792,
+          "Tw": 0.568
+        },
+        {
+          "val": -0.56,
+          "aro": -0.614,
+          "route": "B",
+          "run": 9,
+          "entityId": 2,
+          "iters": 8091,
+          "Tw": 0.6
+        },
+        {
+          "val": -0.418,
+          "aro": 0.545,
+          "route": "B",
+          "run": 10,
+          "entityId": 2,
+          "iters": 50000,
+          "Tw": 0.464,
+          "besluiteloos": true
+        },
+        {
+          "val": -0.857,
+          "aro": -0.421,
+          "route": "B",
+          "run": 11,
+          "entityId": 2,
+          "iters": 11717,
+          "Tw": 0.522
+        },
+        {
+          "val": -0.623,
+          "aro": -0.309,
+          "route": "B",
+          "run": 12,
+          "entityId": 2,
+          "iters": 50000,
+          "Tw": 0.549,
+          "besluiteloos": true
+        },
+        {
+          "val": -0.871,
+          "aro": -0.291,
+          "route": "C",
+          "run": 13,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.449
+        },
+        {
+          "val": -0.97,
+          "aro": -0.175,
+          "route": "C",
+          "run": 14,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.376
+        },
+        {
+          "val": -0.93,
+          "aro": -0.359,
+          "route": "C",
+          "run": 15,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.36
+        },
+        {
+          "val": -0.895,
+          "aro": -0.436,
+          "route": "C",
+          "run": 16,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.342
+        },
+        {
+          "val": -0.797,
+          "aro": -0.507,
+          "route": "C",
+          "run": 17,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.397
+        },
+        {
+          "val": -0.911,
+          "aro": 0.075,
+          "route": "C",
+          "run": 18,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.373
+        },
+        {
+          "val": -0.895,
+          "aro": -0.435,
+          "route": "C",
+          "run": 19,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.294
+        },
+        {
+          "val": -0.964,
+          "aro": -0.143,
+          "route": "C",
+          "run": 20,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.279
+        },
+        {
+          "val": -0.748,
+          "aro": -0.466,
+          "route": "C",
+          "run": 21,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.467
+        },
+        {
+          "val": -0.964,
+          "aro": -0.238,
+          "route": "C",
+          "run": 22,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.248
+        },
+        {
+          "val": -0.96,
+          "aro": -0.169,
+          "route": "C",
+          "run": 23,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.257
+        },
+        {
+          "val": -0.926,
+          "aro": 0.098,
+          "route": "B",
+          "run": 24,
+          "entityId": 2,
+          "iters": 4715,
+          "Tw": 0.299
+        },
+        {
+          "val": -0.748,
+          "aro": -0.512,
+          "route": "B",
+          "run": 25,
+          "entityId": 2,
+          "iters": 615,
+          "Tw": 0.375
+        },
+        {
+          "val": 0.012,
+          "aro": 0.306,
+          "route": "A",
+          "run": 26,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.642
+        },
+        {
+          "val": -0.816,
+          "aro": 0.079,
+          "route": "B",
+          "run": 27,
+          "entityId": 2,
+          "iters": 9165,
+          "Tw": 0.456
+        },
+        {
+          "val": -0.919,
+          "aro": -0.365,
+          "route": "B",
+          "run": 28,
+          "entityId": 2,
+          "iters": 1057,
+          "Tw": 0.258
+        },
+        {
+          "val": -0.952,
+          "aro": -0.145,
+          "route": "B",
+          "run": 29,
+          "entityId": 2,
+          "iters": 10223,
+          "Tw": 0.276
+        },
+        {
+          "val": -0.743,
+          "aro": -0.557,
+          "route": "B",
+          "run": 30,
+          "entityId": 2,
+          "iters": 312,
+          "Tw": 0.38
+        },
+        {
+          "val": -0.945,
+          "aro": -0.079,
+          "route": "B",
+          "run": 31,
+          "entityId": 2,
+          "iters": 1332,
+          "Tw": 0.265
+        },
+        {
+          "val": -0.95,
+          "aro": -0.203,
+          "route": "B",
+          "run": 32,
+          "entityId": 2,
+          "iters": 4496,
+          "Tw": 0.192
+        },
+        {
+          "val": 0.162,
+          "aro": -0.013,
+          "route": "A",
+          "run": 33,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.812
+        },
+        {
+          "val": -0.936,
+          "aro": -0.032,
+          "route": "B",
+          "run": 34,
+          "entityId": 2,
+          "iters": 25260,
+          "Tw": 0.292
+        },
+        {
+          "val": -0.852,
+          "aro": -0.371,
+          "route": "B",
+          "run": 35,
+          "entityId": 2,
+          "iters": 21231,
+          "Tw": 0.315
+        },
+        {
+          "val": -0.95,
+          "aro": -0.272,
+          "route": "B",
+          "run": 36,
+          "entityId": 2,
+          "iters": 2196,
+          "Tw": 0.205
+        },
+        {
+          "val": -0.812,
+          "aro": -0.437,
+          "route": "B",
+          "run": 37,
+          "entityId": 2,
+          "iters": 11175,
+          "Tw": 0.469
+        },
+        {
+          "val": -0.945,
+          "aro": -0.066,
+          "route": "B",
+          "run": 38,
+          "entityId": 2,
+          "iters": 6330,
+          "Tw": 0.246
+        },
+        {
+          "val": -0.94,
+          "aro": -0.098,
+          "route": "B",
+          "run": 39,
+          "entityId": 2,
+          "iters": 9308,
+          "Tw": 0.248
+        },
+        {
+          "val": -0.937,
+          "aro": 0.179,
+          "route": "B",
+          "run": 40,
+          "entityId": 2,
+          "iters": 3260,
+          "Tw": 0.309
+        },
+        {
+          "val": -0.84,
+          "aro": 0.381,
+          "route": "B",
+          "run": 41,
+          "entityId": 2,
+          "iters": 455,
+          "Tw": 0.415
+        },
+        {
+          "val": -0.974,
+          "aro": -0.139,
+          "route": "B",
+          "run": 42,
+          "entityId": 2,
+          "iters": 622,
+          "Tw": 0.195
+        },
+        {
+          "val": -0.99,
+          "aro": 0.029,
+          "route": "B",
+          "run": 43,
+          "entityId": 2,
+          "iters": 2377,
+          "Tw": 0.173
+        },
+        {
+          "val": -0.902,
+          "aro": -0.27,
+          "route": "B",
+          "run": 44,
+          "entityId": 2,
+          "iters": 1334,
+          "Tw": 0.328
+        },
+        {
+          "val": 0.082,
+          "aro": 0.304,
+          "route": "A",
+          "run": 45,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.711
+        },
+        {
+          "val": -0.958,
+          "aro": 0.136,
+          "route": "B",
+          "run": 46,
+          "entityId": 2,
+          "iters": 1433,
+          "Tw": 0.304
+        },
+        {
+          "val": -0.957,
+          "aro": -0.184,
+          "route": "B",
+          "run": 47,
+          "entityId": 2,
+          "iters": 15691,
+          "Tw": 0.225
+        },
+        {
+          "val": -0.924,
+          "aro": -0.274,
+          "route": "B",
+          "run": 48,
+          "entityId": 2,
+          "iters": 118,
+          "Tw": 0.277
+        },
+        {
+          "val": -0.806,
+          "aro": 0.068,
+          "route": "B",
+          "run": 49,
+          "entityId": 2,
+          "iters": 6316,
+          "Tw": 0.449
+        },
+        {
+          "val": -0.867,
+          "aro": -0.347,
+          "route": "B",
+          "run": 50,
+          "entityId": 2,
+          "iters": 487,
+          "Tw": 0.349
+        },
+        {
+          "val": -0.709,
+          "aro": -0.383,
+          "route": "B",
+          "run": 51,
+          "entityId": 2,
+          "iters": 3759,
+          "Tw": 0.524
+        },
+        {
+          "val": -0.811,
+          "aro": 0.087,
+          "route": "B",
+          "run": 52,
+          "entityId": 2,
+          "iters": 3920,
+          "Tw": 0.466
+        },
+        {
+          "val": -0.927,
+          "aro": 0.174,
+          "route": "B",
+          "run": 53,
+          "entityId": 2,
+          "iters": 2034,
+          "Tw": 0.282
+        },
+        {
+          "val": -0.691,
+          "aro": -0.354,
+          "route": "B",
+          "run": 54,
+          "entityId": 2,
+          "iters": 5265,
+          "Tw": 0.607
+        },
+        {
+          "val": -0.99,
+          "aro": -0.113,
+          "route": "B",
+          "run": 55,
+          "entityId": 2,
+          "iters": 2858,
+          "Tw": 0.147
+        },
+        {
+          "val": -0.989,
+          "aro": -0.022,
+          "route": "B",
+          "run": 56,
+          "entityId": 2,
+          "iters": 2616,
+          "Tw": 0.171
+        },
+        {
+          "val": -0.973,
+          "aro": -0.194,
+          "route": "B",
+          "run": 57,
+          "entityId": 2,
+          "iters": 120,
+          "Tw": 0.14
+        },
+        {
+          "val": -0.872,
+          "aro": -0.318,
+          "route": "B",
+          "run": 58,
+          "entityId": 2,
+          "iters": 175,
+          "Tw": 0.347
+        },
+        {
+          "val": -0.001,
+          "aro": 0.014,
+          "route": "A",
+          "run": 59,
+          "entityId": 2,
+          "iters": 1,
+          "Tw": 0.641
+        },
+        {
+          "val": -0.871,
+          "aro": -0.309,
+          "route": "B",
+          "run": 60,
+          "entityId": 2,
+          "iters": 4403,
+          "Tw": 0.368
+        },
+        {
+          "val": -0.935,
+          "aro": 0.127,
+          "route": "B",
+          "run": 61,
+          "entityId": 2,
+          "iters": 210,
+          "Tw": 0.299
+        },
+        {
+          "val": -0.988,
+          "aro": -0.006,
+          "route": "B",
+          "run": 62,
+          "entityId": 2,
+          "iters": 6532,
+          "Tw": 0.147
+        },
+        {
+          "val": -0.936,
+          "aro": 0.139,
+          "route": "B",
+          "run": 63,
+          "entityId": 2,
+          "iters": 2549,
+          "Tw": 0.305
+        },
+        {
+          "val": -0.918,
+          "aro": -0.286,
+          "route": "B",
+          "run": 64,
+          "entityId": 2,
+          "iters": 1711,
+          "Tw": 0.232
+        },
+        {
+          "val": -0.908,
+          "aro": -0.088,
+          "route": "B",
+          "run": 65,
+          "entityId": 2,
+          "iters": 4975,
+          "Tw": 0.28
+        },
+        {
+          "val": -0.92,
+          "aro": -0.204,
+          "route": "B",
+          "run": 66,
+          "entityId": 2,
+          "iters": 2023,
+          "Tw": 0.234
+        },
+        {
+          "val": -0.936,
+          "aro": -0.228,
+          "route": "B",
+          "run": 67,
+          "entityId": 2,
+          "iters": 20599,
+          "Tw": 0.29
+        },
+        {
+          "val": -0.911,
+          "aro": 0.04,
+          "route": "B",
+          "run": 68,
+          "entityId": 2,
+          "iters": 7178,
+          "Tw": 0.228
+        },
+        {
+          "val": -0.939,
+          "aro": 0.006,
+          "route": "B",
+          "run": 69,
+          "entityId": 2,
+          "iters": 4061,
+          "Tw": 0.226
+        },
+        {
+          "val": -0.874,
+          "aro": -0.337,
+          "route": "B",
+          "run": 70,
+          "entityId": 2,
+          "iters": 2783,
+          "Tw": 0.306
+        },
+        {
+          "val": -0.826,
+          "aro": -0.327,
+          "route": "B",
+          "run": 71,
+          "entityId": 2,
+          "iters": 5376,
+          "Tw": 0.539
+        },
+        {
+          "val": -0.968,
+          "aro": -0.194,
+          "route": "B",
+          "run": 72,
+          "entityId": 2,
+          "iters": 1256,
+          "Tw": 0.143
+        },
+        {
+          "val": -0.723,
+          "aro": 0.061,
+          "route": "B",
+          "run": 73,
+          "entityId": 2,
+          "iters": 7598,
+          "Tw": 0.544
+        },
+        {
+          "val": -0.908,
+          "aro": -0.387,
+          "route": "B",
+          "run": 74,
+          "entityId": 2,
+          "iters": 12237,
+          "Tw": 0.226
+        },
+        {
+          "val": -0.783,
+          "aro": 0.062,
+          "route": "B",
+          "run": 75,
+          "entityId": 2,
+          "iters": 1798,
+          "Tw": 0.467
+        },
+        {
+          "val": -0.894,
+          "aro": -0.389,
+          "route": "B",
+          "run": 76,
+          "entityId": 2,
+          "iters": 9096,
+          "Tw": 0.291
+        },
+        {
+          "val": -0.917,
+          "aro": -0.351,
+          "route": "B",
+          "run": 77,
+          "entityId": 2,
+          "iters": 13,
+          "Tw": 0.197
+        },
+        {
+          "val": -0.902,
+          "aro": -0.354,
+          "route": "B",
+          "run": 78,
+          "entityId": 2,
+          "iters": 2827,
+          "Tw": 0.324
+        },
+        {
+          "val": -0.96,
+          "aro": -0.111,
+          "route": "B",
+          "run": 79,
+          "entityId": 2,
+          "iters": 11370,
+          "Tw": 0.236
+        },
+        {
+          "val": -0.827,
+          "aro": -0.183,
+          "route": "B",
+          "run": 80,
+          "entityId": 2,
+          "iters": 26636,
+          "Tw": 0.364
+        },
+        {
+          "val": -0.961,
+          "aro": -0.065,
+          "route": "B",
+          "run": 81,
+          "entityId": 2,
+          "iters": 336,
+          "Tw": 0.173
+        },
+        {
+          "val": -0.946,
+          "aro": -0.135,
+          "route": "B",
+          "run": 82,
+          "entityId": 2,
+          "iters": 6207,
+          "Tw": 0.312
+        },
+        {
+          "val": -0.966,
+          "aro": -0.121,
+          "route": "B",
+          "run": 83,
+          "entityId": 2,
+          "iters": 5809,
+          "Tw": 0.195
+        },
+        {
+          "val": -0.965,
+          "aro": -0.049,
+          "route": "B",
+          "run": 84,
+          "entityId": 2,
+          "iters": 7507,
+          "Tw": 0.204
+        }
+      ],
+      "runCount": 84,
+      "karakter": {
+        "p0": 0.24,
+        "theta0": 6.28,
+        "xi0": 0.1,
+        "rho0": {
+          "vv": 0.5,
+          "va": 0,
+          "av": 0,
+          "aa": 0.5
+        }
+      },
+      "profielen": [
+        {
+          "runId": 84,
+          "timestamp": "2026-07-20T20:13:31.940Z",
+          "entityName": "E2",
+          "levensloop": "E2 begon als open, onbepaald karakter (piekeraar). Zonder eigen richting werd de dominante zone verdrietig, gevormd door omgeving en toeval. Het profiel bleef stabiel rond verdrietig. Was 98% van de tijd gegroepeerd (G1, G2). Zit nu in G1, de treurenden. Delibereert zwaar, gemiddeld 7731 iteraties: een piekeraar in de praktijk. 3 keer besluiteloos gebleven: deliberatie afgebroken op de 50k-grens. Het beginkarakter werkt nog voor 0% door.",
+          "periods": [
+            {
+              "label": "GEBOORTE",
+              "runStart": 1,
+              "runEnd": 21,
+              "text": "GEBOORTE (run 1-21): Centrum negatief/matig in verdrietig. deliberatie (B). matig coherent. moeizame convergentie. Beginkarakter 95% actief. negatief eindigend. [S=0.80 P=0.63 F=0.74]"
+            },
+            {
+              "label": "MIDDEN",
+              "runStart": 22,
+              "runEnd": 55,
+              "text": "MIDDEN (run 22-55): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. moeizame convergentie. negatief eindigend. [S=0.41 P=0.85 F=0.83]"
+            },
+            {
+              "label": "LAAT",
+              "runStart": 56,
+              "runEnd": 84,
+              "text": "LAAT (run 56-84): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. moeizame convergentie. negatief eindigend. [S=0.17 P=0.95 F=0.94]"
+            }
+          ],
+          "global": "Globaal (84 runs): gamma=0.69 sterk. val-osc=0.37 aro-osc=0.27. Nog open. [S=0.48 P=0.82 F=0.85]",
+          "params": {
+            "S": 0.4760594922947698,
+            "P": 0.816424401348933,
+            "F": 0.8506846561888747,
+            "gamma": 0.6945197111657249,
+            "valOsc": 0.368609296342808,
+            "aroOsc": 0.26619046208152275,
+            "lateC": 0,
+            "n": 84
+          }
+        }
+      ],
+      "groupHist": [
+        {
+          "run": 1,
+          "gid": 0
+        },
+        {
+          "run": 2,
+          "gid": 1
+        },
+        {
+          "run": 3,
+          "gid": 1
+        },
+        {
+          "run": 4,
+          "gid": 1
+        },
+        {
+          "run": 5,
+          "gid": 1
+        },
+        {
+          "run": 6,
+          "gid": 1
+        },
+        {
+          "run": 7,
+          "gid": 2
+        },
+        {
+          "run": 8,
+          "gid": 2
+        },
+        {
+          "run": 9,
+          "gid": 2
+        },
+        {
+          "run": 10,
+          "gid": 1
+        },
+        {
+          "run": 11,
+          "gid": 1
+        },
+        {
+          "run": 12,
+          "gid": 1
+        },
+        {
+          "run": 13,
+          "gid": 1
+        },
+        {
+          "run": 14,
+          "gid": 1
+        },
+        {
+          "run": 15,
+          "gid": 1
+        },
+        {
+          "run": 16,
+          "gid": 1
+        },
+        {
+          "run": 17,
+          "gid": 1
+        },
+        {
+          "run": 18,
+          "gid": 1
+        },
+        {
+          "run": 19,
+          "gid": 1
+        },
+        {
+          "run": 20,
+          "gid": 1
+        },
+        {
+          "run": 21,
+          "gid": 1
+        },
+        {
+          "run": 22,
+          "gid": 1
+        },
+        {
+          "run": 23,
+          "gid": 1
+        },
+        {
+          "run": 24,
+          "gid": 1
+        },
+        {
+          "run": 25,
+          "gid": 1
+        },
+        {
+          "run": 26,
+          "gid": 2
+        },
+        {
+          "run": 27,
+          "gid": 2
+        },
+        {
+          "run": 28,
+          "gid": 2
+        },
+        {
+          "run": 29,
+          "gid": 2
+        },
+        {
+          "run": 30,
+          "gid": 1
+        },
+        {
+          "run": 31,
+          "gid": 1
+        },
+        {
+          "run": 32,
+          "gid": 1
+        },
+        {
+          "run": 33,
+          "gid": 1
+        },
+        {
+          "run": 34,
+          "gid": 1
+        },
+        {
+          "run": 35,
+          "gid": 1
+        },
+        {
+          "run": 36,
+          "gid": 2
+        },
+        {
+          "run": 37,
+          "gid": 1
+        },
+        {
+          "run": 38,
+          "gid": 2
+        },
+        {
+          "run": 39,
+          "gid": 2
+        },
+        {
+          "run": 40,
+          "gid": 2
+        },
+        {
+          "run": 41,
+          "gid": 2
+        },
+        {
+          "run": 42,
+          "gid": 0
+        },
+        {
+          "run": 43,
+          "gid": 2
+        },
+        {
+          "run": 44,
+          "gid": 1
+        },
+        {
+          "run": 45,
+          "gid": 2
+        },
+        {
+          "run": 46,
+          "gid": 1
+        },
+        {
+          "run": 47,
+          "gid": 1
+        },
+        {
+          "run": 48,
+          "gid": 1
+        },
+        {
+          "run": 49,
+          "gid": 1
+        },
+        {
+          "run": 50,
+          "gid": 1
+        },
+        {
+          "run": 51,
+          "gid": 2
+        },
+        {
+          "run": 52,
+          "gid": 2
+        },
+        {
+          "run": 53,
+          "gid": 2
+        },
+        {
+          "run": 54,
+          "gid": 2
+        },
+        {
+          "run": 55,
+          "gid": 2
+        },
+        {
+          "run": 56,
+          "gid": 2
+        },
+        {
+          "run": 57,
+          "gid": 2
+        },
+        {
+          "run": 58,
+          "gid": 2
+        },
+        {
+          "run": 59,
+          "gid": 2
+        },
+        {
+          "run": 60,
+          "gid": 2
+        },
+        {
+          "run": 61,
+          "gid": 2
+        },
+        {
+          "run": 62,
+          "gid": 2
+        },
+        {
+          "run": 63,
+          "gid": 2
+        },
+        {
+          "run": 64,
+          "gid": 2
+        },
+        {
+          "run": 65,
+          "gid": 2
+        },
+        {
+          "run": 66,
+          "gid": 2
+        },
+        {
+          "run": 67,
+          "gid": 2
+        },
+        {
+          "run": 68,
+          "gid": 1
+        },
+        {
+          "run": 69,
+          "gid": 2
+        },
+        {
+          "run": 70,
+          "gid": 2
+        },
+        {
+          "run": 71,
+          "gid": 2
+        },
+        {
+          "run": 72,
+          "gid": 2
+        },
+        {
+          "run": 73,
+          "gid": 1
+        },
+        {
+          "run": 74,
+          "gid": 1
+        },
+        {
+          "run": 75,
+          "gid": 1
+        },
+        {
+          "run": 76,
+          "gid": 1
+        },
+        {
+          "run": 77,
+          "gid": 1
+        },
+        {
+          "run": 78,
+          "gid": 1
+        },
+        {
+          "run": 79,
+          "gid": 2
+        },
+        {
+          "run": 80,
+          "gid": 2
+        },
+        {
+          "run": 81,
+          "gid": 2
+        },
+        {
+          "run": 82,
+          "gid": 2
+        },
+        {
+          "run": 83,
+          "gid": 2
+        },
+        {
+          "run": 84,
+          "gid": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "E3",
+      "color": "#ff7043",
+      "memory": [
+        {
+          "val": -0.332,
+          "aro": -0.499,
+          "route": "A",
+          "run": 1,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0
+        },
+        {
+          "val": -0.956,
+          "aro": -0.191,
+          "route": "B",
+          "run": 2,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.347
+        },
+        {
+          "val": -0.981,
+          "aro": 0.094,
+          "route": "B",
+          "run": 3,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.35
+        },
+        {
+          "val": -0.917,
+          "aro": -0.211,
+          "route": "C",
+          "run": 4,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.147
+        },
+        {
+          "val": -0.954,
+          "aro": 0.264,
+          "route": "C",
+          "run": 5,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.273
+        },
+        {
+          "val": -0.97,
+          "aro": -0.227,
+          "route": "C",
+          "run": 6,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.044
+        },
+        {
+          "val": -0.937,
+          "aro": 0.129,
+          "route": "B",
+          "run": 7,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.26
+        },
+        {
+          "val": -0.941,
+          "aro": -0.194,
+          "route": "C",
+          "run": 8,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.102
+        },
+        {
+          "val": -0.94,
+          "aro": -0.208,
+          "route": "C",
+          "run": 9,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.031
+        },
+        {
+          "val": -0.99,
+          "aro": -0.019,
+          "route": "C",
+          "run": 10,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.055
+        },
+        {
+          "val": -0.977,
+          "aro": -0.104,
+          "route": "B",
+          "run": 11,
+          "entityId": 3,
+          "iters": 17,
+          "Tw": 0.062
+        },
+        {
+          "val": -0.95,
+          "aro": -0.226,
+          "route": "B",
+          "run": 12,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.158
+        },
+        {
+          "val": -0.985,
+          "aro": -0.17,
+          "route": "C",
+          "run": 13,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.048
+        },
+        {
+          "val": -0.986,
+          "aro": -0.163,
+          "route": "C",
+          "run": 14,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.046
+        },
+        {
+          "val": -0.987,
+          "aro": -0.117,
+          "route": "B",
+          "run": 15,
+          "entityId": 3,
+          "iters": 39,
+          "Tw": 0.041
+        },
+        {
+          "val": -0.951,
+          "aro": 0.213,
+          "route": "B",
+          "run": 16,
+          "entityId": 3,
+          "iters": 14,
+          "Tw": 0.305
+        },
+        {
+          "val": -0.97,
+          "aro": 0.169,
+          "route": "B",
+          "run": 17,
+          "entityId": 3,
+          "iters": 25,
+          "Tw": 0.17
+        },
+        {
+          "val": -0.919,
+          "aro": -0.267,
+          "route": "B",
+          "run": 18,
+          "entityId": 3,
+          "iters": 7,
+          "Tw": 0.204
+        },
+        {
+          "val": -0.99,
+          "aro": 0.054,
+          "route": "B",
+          "run": 19,
+          "entityId": 3,
+          "iters": 11,
+          "Tw": 0.147
+        },
+        {
+          "val": -0.923,
+          "aro": 0.281,
+          "route": "B",
+          "run": 20,
+          "entityId": 3,
+          "iters": 6,
+          "Tw": 0.279
+        },
+        {
+          "val": -0.913,
+          "aro": 0.298,
+          "route": "B",
+          "run": 21,
+          "entityId": 3,
+          "iters": 9,
+          "Tw": 0.302
+        },
+        {
+          "val": -0.912,
+          "aro": -0.279,
+          "route": "B",
+          "run": 22,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.236
+        },
+        {
+          "val": -0.986,
+          "aro": 0.099,
+          "route": "B",
+          "run": 23,
+          "entityId": 3,
+          "iters": 21,
+          "Tw": 0.132
+        },
+        {
+          "val": -0.921,
+          "aro": -0.252,
+          "route": "B",
+          "run": 24,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.248
+        },
+        {
+          "val": -0.99,
+          "aro": -0.053,
+          "route": "B",
+          "run": 25,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.078
+        },
+        {
+          "val": -0.987,
+          "aro": 0.087,
+          "route": "B",
+          "run": 26,
+          "entityId": 3,
+          "iters": 23,
+          "Tw": 0.142
+        },
+        {
+          "val": -0.918,
+          "aro": 0.287,
+          "route": "B",
+          "run": 27,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.285
+        },
+        {
+          "val": -0.959,
+          "aro": -0.169,
+          "route": "B",
+          "run": 28,
+          "entityId": 3,
+          "iters": 7,
+          "Tw": 0.193
+        },
+        {
+          "val": -0.962,
+          "aro": 0.161,
+          "route": "B",
+          "run": 29,
+          "entityId": 3,
+          "iters": 12,
+          "Tw": 0.243
+        },
+        {
+          "val": -0.939,
+          "aro": -0.268,
+          "route": "B",
+          "run": 30,
+          "entityId": 3,
+          "iters": 9,
+          "Tw": 0.202
+        },
+        {
+          "val": -0.979,
+          "aro": 0.114,
+          "route": "B",
+          "run": 31,
+          "entityId": 3,
+          "iters": 59,
+          "Tw": 0.074
+        },
+        {
+          "val": -0.967,
+          "aro": -0.197,
+          "route": "B",
+          "run": 32,
+          "entityId": 3,
+          "iters": 11,
+          "Tw": 0.154
+        },
+        {
+          "val": -0.99,
+          "aro": -0.113,
+          "route": "B",
+          "run": 33,
+          "entityId": 3,
+          "iters": 14,
+          "Tw": 0.102
+        },
+        {
+          "val": -0.948,
+          "aro": 0.197,
+          "route": "B",
+          "run": 34,
+          "entityId": 3,
+          "iters": 6,
+          "Tw": 0.279
+        },
+        {
+          "val": -0.933,
+          "aro": -0.27,
+          "route": "B",
+          "run": 35,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.236
+        },
+        {
+          "val": -0.983,
+          "aro": -0.148,
+          "route": "B",
+          "run": 36,
+          "entityId": 3,
+          "iters": 7,
+          "Tw": 0.116
+        },
+        {
+          "val": -0.953,
+          "aro": 0.18,
+          "route": "B",
+          "run": 37,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.236
+        },
+        {
+          "val": -0.972,
+          "aro": -0.183,
+          "route": "B",
+          "run": 38,
+          "entityId": 3,
+          "iters": 13,
+          "Tw": 0.176
+        },
+        {
+          "val": -0.99,
+          "aro": 0.064,
+          "route": "B",
+          "run": 39,
+          "entityId": 3,
+          "iters": 26,
+          "Tw": 0.121
+        },
+        {
+          "val": -0.99,
+          "aro": 0.034,
+          "route": "B",
+          "run": 40,
+          "entityId": 3,
+          "iters": 21,
+          "Tw": 0.073
+        },
+        {
+          "val": -0.99,
+          "aro": -0.033,
+          "route": "B",
+          "run": 41,
+          "entityId": 3,
+          "iters": 65,
+          "Tw": 0.067
+        },
+        {
+          "val": -0.965,
+          "aro": 0.148,
+          "route": "B",
+          "run": 42,
+          "entityId": 3,
+          "iters": 9,
+          "Tw": 0.174
+        },
+        {
+          "val": -0.981,
+          "aro": -0.158,
+          "route": "B",
+          "run": 43,
+          "entityId": 3,
+          "iters": 14,
+          "Tw": 0.111
+        },
+        {
+          "val": -0.99,
+          "aro": -0.14,
+          "route": "C",
+          "run": 44,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.029
+        },
+        {
+          "val": -0.948,
+          "aro": 0.154,
+          "route": "B",
+          "run": 45,
+          "entityId": 3,
+          "iters": 37,
+          "Tw": 0.237
+        },
+        {
+          "val": -0.966,
+          "aro": -0.202,
+          "route": "B",
+          "run": 46,
+          "entityId": 3,
+          "iters": 48,
+          "Tw": 0.13
+        },
+        {
+          "val": -0.973,
+          "aro": -0.182,
+          "route": "B",
+          "run": 47,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.099
+        },
+        {
+          "val": -0.949,
+          "aro": 0.189,
+          "route": "B",
+          "run": 48,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.236
+        },
+        {
+          "val": -0.954,
+          "aro": -0.229,
+          "route": "B",
+          "run": 49,
+          "entityId": 3,
+          "iters": 34,
+          "Tw": 0.154
+        },
+        {
+          "val": -0.901,
+          "aro": -0.326,
+          "route": "B",
+          "run": 50,
+          "entityId": 3,
+          "iters": 6,
+          "Tw": 0.275
+        },
+        {
+          "val": -0.983,
+          "aro": 0.093,
+          "route": "B",
+          "run": 51,
+          "entityId": 3,
+          "iters": 12,
+          "Tw": 0.168
+        },
+        {
+          "val": -0.989,
+          "aro": -0.123,
+          "route": "B",
+          "run": 52,
+          "entityId": 3,
+          "iters": 17,
+          "Tw": 0.043
+        },
+        {
+          "val": -0.99,
+          "aro": -0.072,
+          "route": "C",
+          "run": 53,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.013
+        },
+        {
+          "val": -0.99,
+          "aro": -0.057,
+          "route": "B",
+          "run": 54,
+          "entityId": 3,
+          "iters": 53,
+          "Tw": 0.039
+        },
+        {
+          "val": -0.967,
+          "aro": -0.198,
+          "route": "B",
+          "run": 55,
+          "entityId": 3,
+          "iters": 32,
+          "Tw": 0.174
+        },
+        {
+          "val": -0.966,
+          "aro": -0.202,
+          "route": "B",
+          "run": 56,
+          "entityId": 3,
+          "iters": 33,
+          "Tw": 0.134
+        },
+        {
+          "val": -0.99,
+          "aro": -0.075,
+          "route": "B",
+          "run": 57,
+          "entityId": 3,
+          "iters": 12,
+          "Tw": 0.118
+        },
+        {
+          "val": -0.945,
+          "aro": -0.25,
+          "route": "B",
+          "run": 58,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.195
+        },
+        {
+          "val": -0.975,
+          "aro": 0.035,
+          "route": "B",
+          "run": 59,
+          "entityId": 3,
+          "iters": 35,
+          "Tw": 0.157
+        },
+        {
+          "val": -0.97,
+          "aro": -0.177,
+          "route": "B",
+          "run": 60,
+          "entityId": 3,
+          "iters": 7,
+          "Tw": 0.155
+        },
+        {
+          "val": -0.99,
+          "aro": 0.028,
+          "route": "B",
+          "run": 61,
+          "entityId": 3,
+          "iters": 4,
+          "Tw": 0.172
+        },
+        {
+          "val": -0.969,
+          "aro": 0.138,
+          "route": "B",
+          "run": 62,
+          "entityId": 3,
+          "iters": 30,
+          "Tw": 0.184
+        },
+        {
+          "val": -0.987,
+          "aro": -0.157,
+          "route": "C",
+          "run": 63,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.019
+        },
+        {
+          "val": -0.976,
+          "aro": -0.214,
+          "route": "C",
+          "run": 64,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.017
+        },
+        {
+          "val": -0.99,
+          "aro": 0.075,
+          "route": "C",
+          "run": 65,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.028
+        },
+        {
+          "val": -0.989,
+          "aro": -0.086,
+          "route": "B",
+          "run": 66,
+          "entityId": 3,
+          "iters": 42,
+          "Tw": 0.131
+        },
+        {
+          "val": -0.985,
+          "aro": 0.011,
+          "route": "B",
+          "run": 67,
+          "entityId": 3,
+          "iters": 66,
+          "Tw": 0.162
+        },
+        {
+          "val": -0.988,
+          "aro": -0.149,
+          "route": "C",
+          "run": 68,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.022
+        },
+        {
+          "val": -0.974,
+          "aro": 0.065,
+          "route": "B",
+          "run": 69,
+          "entityId": 3,
+          "iters": 12,
+          "Tw": 0.181
+        },
+        {
+          "val": -0.964,
+          "aro": -0.202,
+          "route": "B",
+          "run": 70,
+          "entityId": 3,
+          "iters": 27,
+          "Tw": 0.1
+        },
+        {
+          "val": -0.951,
+          "aro": -0.222,
+          "route": "B",
+          "run": 71,
+          "entityId": 3,
+          "iters": 7,
+          "Tw": 0.158
+        },
+        {
+          "val": -0.958,
+          "aro": 0.109,
+          "route": "B",
+          "run": 72,
+          "entityId": 3,
+          "iters": 15,
+          "Tw": 0.225
+        },
+        {
+          "val": -0.99,
+          "aro": 0.468,
+          "route": "A",
+          "run": 73,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.248
+        },
+        {
+          "val": -0.99,
+          "aro": 0.457,
+          "route": "A",
+          "run": 74,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.241
+        },
+        {
+          "val": -0.724,
+          "aro": -0.551,
+          "route": "A",
+          "run": 75,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.291
+        },
+        {
+          "val": -0.986,
+          "aro": 0.07,
+          "route": "B",
+          "run": 76,
+          "entityId": 3,
+          "iters": 48,
+          "Tw": 0.156
+        },
+        {
+          "val": -0.99,
+          "aro": -0.062,
+          "route": "C",
+          "run": 77,
+          "entityId": 3,
+          "iters": 1,
+          "Tw": 0.017
+        },
+        {
+          "val": -0.978,
+          "aro": -0.172,
+          "route": "B",
+          "run": 78,
+          "entityId": 3,
+          "iters": 28,
+          "Tw": 0.147
+        },
+        {
+          "val": -0.988,
+          "aro": -0.097,
+          "route": "B",
+          "run": 79,
+          "entityId": 3,
+          "iters": 19,
+          "Tw": 0.04
+        },
+        {
+          "val": -0.969,
+          "aro": -0.195,
+          "route": "B",
+          "run": 80,
+          "entityId": 3,
+          "iters": 8,
+          "Tw": 0.099
+        },
+        {
+          "val": -0.94,
+          "aro": -0.265,
+          "route": "B",
+          "run": 81,
+          "entityId": 3,
+          "iters": 8,
+          "Tw": 0.195
+        },
+        {
+          "val": -0.962,
+          "aro": -0.213,
+          "route": "B",
+          "run": 82,
+          "entityId": 3,
+          "iters": 15,
+          "Tw": 0.123
+        },
+        {
+          "val": -0.989,
+          "aro": -0.031,
+          "route": "B",
+          "run": 83,
+          "entityId": 3,
+          "iters": 8,
+          "Tw": 0.068
+        },
+        {
+          "val": -0.99,
+          "aro": -0.098,
+          "route": "B",
+          "run": 84,
+          "entityId": 3,
+          "iters": 21,
+          "Tw": 0.069
+        }
+      ],
+      "runCount": 84,
+      "karakter": {
+        "p0": 0.99,
+        "theta0": 3.14,
+        "xi0": 0.98,
+        "rho0": {
+          "vv": 0.005025880932256754,
+          "va": 0.0007883229741270579,
+          "av": 0.0007883229741270579,
+          "aa": 0.9949741190677432
+        }
+      },
+      "profielen": [
+        {
+          "runId": 84,
+          "timestamp": "2026-07-20T20:13:31.940Z",
+          "entityName": "E3",
+          "levensloop": "E3 begon als extreem boos-angstige vlotte beslisser. Van die aard afgeweken: dominante zone werd verdrietig in plaats van boos/angstig. Het profiel bleef stabiel rond verdrietig. Was 52% van de tijd gegroepeerd (G1). Zit nu in G1, de treurenden. Beslist vlot, gemiddeld 18 iteraties. Het beginkarakter werkt nog voor 52% door.",
+          "periods": [
+            {
+              "label": "GEBOORTE",
+              "runStart": 1,
+              "runEnd": 21,
+              "text": "GEBOORTE (run 1-21): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. vlot. Beginkarakter 95% actief. negatief eindigend. [S=0.14 P=0.96 F=0.97]"
+            },
+            {
+              "label": "MIDDEN",
+              "runStart": 22,
+              "runEnd": 55,
+              "text": "MIDDEN (run 22-55): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. vlot. negatief eindigend. [S=0.06 P=0.98 F=0.98]"
+            },
+            {
+              "label": "LAAT",
+              "runStart": 56,
+              "runEnd": 84,
+              "text": "LAAT (run 56-84): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. vlot. negatief eindigend. [S=0.09 P=0.98 F=0.98]"
+            }
+          ],
+          "global": "Globaal (84 runs): gamma=0.95 sterk. val-osc=0.08 aro-osc=0.19. Nog open. [S=0.09 P=0.98 F=0.98]",
+          "params": {
+            "S": 0.09098345718588043,
+            "P": 0.9771419794542705,
+            "F": 0.9767252072738632,
+            "gamma": 0.9543992024184654,
+            "valOsc": 0.07704165447953021,
+            "aroOsc": 0.19229921464612054,
+            "lateC": 0.1,
+            "n": 84
+          }
+        }
+      ],
+      "groupHist": [
+        {
+          "run": 1,
+          "gid": 0
+        },
+        {
+          "run": 2,
+          "gid": 1
+        },
+        {
+          "run": 3,
+          "gid": 1
+        },
+        {
+          "run": 4,
+          "gid": 1
+        },
+        {
+          "run": 5,
+          "gid": 1
+        },
+        {
+          "run": 6,
+          "gid": 1
+        },
+        {
+          "run": 7,
+          "gid": 1
+        },
+        {
+          "run": 8,
+          "gid": 1
+        },
+        {
+          "run": 9,
+          "gid": 1
+        },
+        {
+          "run": 10,
+          "gid": 1
+        },
+        {
+          "run": 11,
+          "gid": 1
+        },
+        {
+          "run": 12,
+          "gid": 1
+        },
+        {
+          "run": 13,
+          "gid": 1
+        },
+        {
+          "run": 14,
+          "gid": 1
+        },
+        {
+          "run": 15,
+          "gid": 1
+        },
+        {
+          "run": 16,
+          "gid": 1
+        },
+        {
+          "run": 17,
+          "gid": 1
+        },
+        {
+          "run": 18,
+          "gid": 1
+        },
+        {
+          "run": 19,
+          "gid": 1
+        },
+        {
+          "run": 20,
+          "gid": 1
+        },
+        {
+          "run": 21,
+          "gid": 1
+        },
+        {
+          "run": 22,
+          "gid": 1
+        },
+        {
+          "run": 23,
+          "gid": 1
+        },
+        {
+          "run": 24,
+          "gid": 0
+        },
+        {
+          "run": 25,
+          "gid": 0
+        },
+        {
+          "run": 26,
+          "gid": 0
+        },
+        {
+          "run": 27,
+          "gid": 0
+        },
+        {
+          "run": 28,
+          "gid": 0
+        },
+        {
+          "run": 29,
+          "gid": 0
+        },
+        {
+          "run": 30,
+          "gid": 0
+        },
+        {
+          "run": 31,
+          "gid": 0
+        },
+        {
+          "run": 32,
+          "gid": 0
+        },
+        {
+          "run": 33,
+          "gid": 1
+        },
+        {
+          "run": 34,
+          "gid": 0
+        },
+        {
+          "run": 35,
+          "gid": 0
+        },
+        {
+          "run": 36,
+          "gid": 0
+        },
+        {
+          "run": 37,
+          "gid": 0
+        },
+        {
+          "run": 38,
+          "gid": 0
+        },
+        {
+          "run": 39,
+          "gid": 0
+        },
+        {
+          "run": 40,
+          "gid": 0
+        },
+        {
+          "run": 41,
+          "gid": 0
+        },
+        {
+          "run": 42,
+          "gid": 0
+        },
+        {
+          "run": 43,
+          "gid": 0
+        },
+        {
+          "run": 44,
+          "gid": 0
+        },
+        {
+          "run": 45,
+          "gid": 0
+        },
+        {
+          "run": 46,
+          "gid": 0
+        },
+        {
+          "run": 47,
+          "gid": 0
+        },
+        {
+          "run": 48,
+          "gid": 0
+        },
+        {
+          "run": 49,
+          "gid": 0
+        },
+        {
+          "run": 50,
+          "gid": 0
+        },
+        {
+          "run": 51,
+          "gid": 0
+        },
+        {
+          "run": 52,
+          "gid": 1
+        },
+        {
+          "run": 53,
+          "gid": 0
+        },
+        {
+          "run": 54,
+          "gid": 0
+        },
+        {
+          "run": 55,
+          "gid": 0
+        },
+        {
+          "run": 56,
+          "gid": 0
+        },
+        {
+          "run": 57,
+          "gid": 0
+        },
+        {
+          "run": 58,
+          "gid": 1
+        },
+        {
+          "run": 59,
+          "gid": 1
+        },
+        {
+          "run": 60,
+          "gid": 0
+        },
+        {
+          "run": 61,
+          "gid": 0
+        },
+        {
+          "run": 62,
+          "gid": 0
+        },
+        {
+          "run": 63,
+          "gid": 0
+        },
+        {
+          "run": 64,
+          "gid": 0
+        },
+        {
+          "run": 65,
+          "gid": 0
+        },
+        {
+          "run": 66,
+          "gid": 1
+        },
+        {
+          "run": 67,
+          "gid": 1
+        },
+        {
+          "run": 68,
+          "gid": 1
+        },
+        {
+          "run": 69,
+          "gid": 1
+        },
+        {
+          "run": 70,
+          "gid": 0
+        },
+        {
+          "run": 71,
+          "gid": 1
+        },
+        {
+          "run": 72,
+          "gid": 1
+        },
+        {
+          "run": 73,
+          "gid": 1
+        },
+        {
+          "run": 74,
+          "gid": 1
+        },
+        {
+          "run": 75,
+          "gid": 1
+        },
+        {
+          "run": 76,
+          "gid": 1
+        },
+        {
+          "run": 77,
+          "gid": 1
+        },
+        {
+          "run": 78,
+          "gid": 1
+        },
+        {
+          "run": 79,
+          "gid": 1
+        },
+        {
+          "run": 80,
+          "gid": 1
+        },
+        {
+          "run": 81,
+          "gid": 1
+        },
+        {
+          "run": 82,
+          "gid": 1
+        },
+        {
+          "run": 83,
+          "gid": 1
+        },
+        {
+          "run": 84,
+          "gid": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "E4",
+      "color": "#64ffda",
+      "memory": [
+        {
+          "val": -0.99,
+          "aro": 0.294,
+          "route": "A",
+          "run": 1,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0
+        },
+        {
+          "val": -0.81,
+          "aro": 0.446,
+          "route": "C",
+          "run": 2,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.245
+        },
+        {
+          "val": -0.956,
+          "aro": -0.126,
+          "route": "B",
+          "run": 3,
+          "entityId": 4,
+          "iters": 7,
+          "Tw": 0.346
+        },
+        {
+          "val": -0.97,
+          "aro": -0.166,
+          "route": "C",
+          "run": 4,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.148
+        },
+        {
+          "val": -0.99,
+          "aro": -0.033,
+          "route": "C",
+          "run": 5,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.132
+        },
+        {
+          "val": -0.837,
+          "aro": 0.41,
+          "route": "C",
+          "run": 6,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.196
+        },
+        {
+          "val": -0.866,
+          "aro": -0.38,
+          "route": "B",
+          "run": 7,
+          "entityId": 4,
+          "iters": 242,
+          "Tw": 0.319
+        },
+        {
+          "val": -0.85,
+          "aro": 0.276,
+          "route": "B",
+          "run": 8,
+          "entityId": 4,
+          "iters": 446,
+          "Tw": 0.281
+        },
+        {
+          "val": -0.949,
+          "aro": 0.048,
+          "route": "B",
+          "run": 9,
+          "entityId": 4,
+          "iters": 3329,
+          "Tw": 0.034
+        },
+        {
+          "val": -0.965,
+          "aro": 0.151,
+          "route": "B",
+          "run": 10,
+          "entityId": 4,
+          "iters": 227,
+          "Tw": 0.138
+        },
+        {
+          "val": -0.927,
+          "aro": 0.275,
+          "route": "B",
+          "run": 11,
+          "entityId": 4,
+          "iters": 946,
+          "Tw": 0.17
+        },
+        {
+          "val": -0.976,
+          "aro": 0.175,
+          "route": "B",
+          "run": 12,
+          "entityId": 4,
+          "iters": 103,
+          "Tw": 0.07
+        },
+        {
+          "val": -0.884,
+          "aro": 0.383,
+          "route": "B",
+          "run": 13,
+          "entityId": 4,
+          "iters": 63,
+          "Tw": 0.216
+        },
+        {
+          "val": -0.82,
+          "aro": 0.376,
+          "route": "B",
+          "run": 14,
+          "entityId": 4,
+          "iters": 1263,
+          "Tw": 0.314
+        },
+        {
+          "val": -0.986,
+          "aro": 0.103,
+          "route": "C",
+          "run": 15,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.019
+        },
+        {
+          "val": -0.89,
+          "aro": 0.34,
+          "route": "B",
+          "run": 16,
+          "entityId": 4,
+          "iters": 586,
+          "Tw": 0.205
+        },
+        {
+          "val": -0.975,
+          "aro": -0.13,
+          "route": "B",
+          "run": 17,
+          "entityId": 4,
+          "iters": 1253,
+          "Tw": 0.221
+        },
+        {
+          "val": -0.886,
+          "aro": 0.331,
+          "route": "B",
+          "run": 18,
+          "entityId": 4,
+          "iters": 550,
+          "Tw": 0.244
+        },
+        {
+          "val": -0.953,
+          "aro": -0.17,
+          "route": "B",
+          "run": 19,
+          "entityId": 4,
+          "iters": 301,
+          "Tw": 0.247
+        },
+        {
+          "val": -0.978,
+          "aro": 0.131,
+          "route": "B",
+          "run": 20,
+          "entityId": 4,
+          "iters": 3688,
+          "Tw": 0.077
+        },
+        {
+          "val": -0.933,
+          "aro": 0.292,
+          "route": "B",
+          "run": 21,
+          "entityId": 4,
+          "iters": 231,
+          "Tw": 0.125
+        },
+        {
+          "val": -0.862,
+          "aro": 0.338,
+          "route": "B",
+          "run": 22,
+          "entityId": 4,
+          "iters": 11598,
+          "Tw": 0.268
+        },
+        {
+          "val": -0.961,
+          "aro": 0.256,
+          "route": "C",
+          "run": 23,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.032
+        },
+        {
+          "val": -0.942,
+          "aro": -0.221,
+          "route": "B",
+          "run": 24,
+          "entityId": 4,
+          "iters": 476,
+          "Tw": 0.298
+        },
+        {
+          "val": -0.985,
+          "aro": -0.039,
+          "route": "B",
+          "run": 25,
+          "entityId": 4,
+          "iters": 2761,
+          "Tw": 0.119
+        },
+        {
+          "val": -0.922,
+          "aro": 0.274,
+          "route": "B",
+          "run": 26,
+          "entityId": 4,
+          "iters": 236,
+          "Tw": 0.223
+        },
+        {
+          "val": -0.986,
+          "aro": -0.048,
+          "route": "B",
+          "run": 27,
+          "entityId": 4,
+          "iters": 2899,
+          "Tw": 0.156
+        },
+        {
+          "val": -0.383,
+          "aro": -0.238,
+          "route": "A",
+          "run": 28,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.339
+        },
+        {
+          "val": -0.98,
+          "aro": 0.119,
+          "route": "C",
+          "run": 29,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.074
+        },
+        {
+          "val": -0.975,
+          "aro": 0.095,
+          "route": "B",
+          "run": 30,
+          "entityId": 4,
+          "iters": 2941,
+          "Tw": 0.273
+        },
+        {
+          "val": -0.503,
+          "aro": -0.34,
+          "route": "A",
+          "run": 31,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.344
+        },
+        {
+          "val": -0.973,
+          "aro": 0.137,
+          "route": "B",
+          "run": 32,
+          "entityId": 4,
+          "iters": 2325,
+          "Tw": 0.11
+        },
+        {
+          "val": -0.988,
+          "aro": 0.122,
+          "route": "B",
+          "run": 33,
+          "entityId": 4,
+          "iters": 600,
+          "Tw": 0.226
+        },
+        {
+          "val": -0.988,
+          "aro": 0.06,
+          "route": "C",
+          "run": 34,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.026
+        },
+        {
+          "val": -0.979,
+          "aro": -0.092,
+          "route": "B",
+          "run": 35,
+          "entityId": 4,
+          "iters": 173,
+          "Tw": 0.115
+        },
+        {
+          "val": -0.929,
+          "aro": -0.233,
+          "route": "B",
+          "run": 36,
+          "entityId": 4,
+          "iters": 542,
+          "Tw": 0.291
+        },
+        {
+          "val": -0.961,
+          "aro": 0.207,
+          "route": "C",
+          "run": 37,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.102
+        },
+        {
+          "val": -0.95,
+          "aro": -0.133,
+          "route": "B",
+          "run": 38,
+          "entityId": 4,
+          "iters": 232,
+          "Tw": 0.292
+        },
+        {
+          "val": -0.896,
+          "aro": 0.285,
+          "route": "B",
+          "run": 39,
+          "entityId": 4,
+          "iters": 117,
+          "Tw": 0.276
+        },
+        {
+          "val": -0.92,
+          "aro": 0.237,
+          "route": "B",
+          "run": 40,
+          "entityId": 4,
+          "iters": 48,
+          "Tw": 0.22
+        },
+        {
+          "val": -0.979,
+          "aro": 0.043,
+          "route": "B",
+          "run": 41,
+          "entityId": 4,
+          "iters": 19360,
+          "Tw": 0.064
+        },
+        {
+          "val": -0.904,
+          "aro": 0.316,
+          "route": "B",
+          "run": 42,
+          "entityId": 4,
+          "iters": 17,
+          "Tw": 0.255
+        },
+        {
+          "val": -0.592,
+          "aro": -0.437,
+          "route": "A",
+          "run": 43,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.352
+        },
+        {
+          "val": -0.945,
+          "aro": 0.178,
+          "route": "B",
+          "run": 44,
+          "entityId": 4,
+          "iters": 1069,
+          "Tw": 0.208
+        },
+        {
+          "val": -0.982,
+          "aro": 0.074,
+          "route": "B",
+          "run": 45,
+          "entityId": 4,
+          "iters": 3879,
+          "Tw": 0.061
+        },
+        {
+          "val": -0.967,
+          "aro": 0.156,
+          "route": "B",
+          "run": 46,
+          "entityId": 4,
+          "iters": 441,
+          "Tw": 0.173
+        },
+        {
+          "val": -0.977,
+          "aro": -0.076,
+          "route": "B",
+          "run": 47,
+          "entityId": 4,
+          "iters": 961,
+          "Tw": 0.151
+        },
+        {
+          "val": -0.957,
+          "aro": -0.14,
+          "route": "B",
+          "run": 48,
+          "entityId": 4,
+          "iters": 374,
+          "Tw": 0.204
+        },
+        {
+          "val": -0.929,
+          "aro": 0.253,
+          "route": "B",
+          "run": 49,
+          "entityId": 4,
+          "iters": 175,
+          "Tw": 0.217
+        },
+        {
+          "val": -0.889,
+          "aro": 0.264,
+          "route": "B",
+          "run": 50,
+          "entityId": 4,
+          "iters": 140,
+          "Tw": 0.292
+        },
+        {
+          "val": -0.409,
+          "aro": 0.478,
+          "route": "A",
+          "run": 51,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.373
+        },
+        {
+          "val": -0.975,
+          "aro": -0.085,
+          "route": "B",
+          "run": 52,
+          "entityId": 4,
+          "iters": 1775,
+          "Tw": 0.171
+        },
+        {
+          "val": -0.95,
+          "aro": 0.131,
+          "route": "B",
+          "run": 53,
+          "entityId": 4,
+          "iters": 2437,
+          "Tw": 0.287
+        },
+        {
+          "val": -0.967,
+          "aro": 0.12,
+          "route": "B",
+          "run": 54,
+          "entityId": 4,
+          "iters": 3710,
+          "Tw": 0.119
+        },
+        {
+          "val": -0.953,
+          "aro": 0.219,
+          "route": "B",
+          "run": 55,
+          "entityId": 4,
+          "iters": 309,
+          "Tw": 0.168
+        },
+        {
+          "val": -0.966,
+          "aro": 0.181,
+          "route": "B",
+          "run": 56,
+          "entityId": 4,
+          "iters": 141,
+          "Tw": 0.117
+        },
+        {
+          "val": -0.978,
+          "aro": -0.1,
+          "route": "B",
+          "run": 57,
+          "entityId": 4,
+          "iters": 1250,
+          "Tw": 0.176
+        },
+        {
+          "val": -0.966,
+          "aro": -0.171,
+          "route": "B",
+          "run": 58,
+          "entityId": 4,
+          "iters": 1094,
+          "Tw": 0.19
+        },
+        {
+          "val": -0.99,
+          "aro": -0.024,
+          "route": "B",
+          "run": 59,
+          "entityId": 4,
+          "iters": 472,
+          "Tw": 0.102
+        },
+        {
+          "val": -0.973,
+          "aro": 0.083,
+          "route": "B",
+          "run": 60,
+          "entityId": 4,
+          "iters": 473,
+          "Tw": 0.129
+        },
+        {
+          "val": -0.99,
+          "aro": -0.019,
+          "route": "B",
+          "run": 61,
+          "entityId": 4,
+          "iters": 1186,
+          "Tw": 0.038
+        },
+        {
+          "val": -0.961,
+          "aro": 0.116,
+          "route": "B",
+          "run": 62,
+          "entityId": 4,
+          "iters": 1853,
+          "Tw": 0.153
+        },
+        {
+          "val": -0.977,
+          "aro": -0.14,
+          "route": "B",
+          "run": 63,
+          "entityId": 4,
+          "iters": 1285,
+          "Tw": 0.184
+        },
+        {
+          "val": -0.99,
+          "aro": -0.034,
+          "route": "B",
+          "run": 64,
+          "entityId": 4,
+          "iters": 8731,
+          "Tw": 0.092
+        },
+        {
+          "val": -0.621,
+          "aro": -0.406,
+          "route": "A",
+          "run": 65,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.32
+        },
+        {
+          "val": -0.343,
+          "aro": 0.357,
+          "route": "A",
+          "run": 66,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.352
+        },
+        {
+          "val": -0.327,
+          "aro": -0.311,
+          "route": "A",
+          "run": 67,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.401
+        },
+        {
+          "val": -0.98,
+          "aro": -0.085,
+          "route": "B",
+          "run": 68,
+          "entityId": 4,
+          "iters": 1406,
+          "Tw": 0.22
+        },
+        {
+          "val": -0.508,
+          "aro": 0.611,
+          "route": "A",
+          "run": 69,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.385
+        },
+        {
+          "val": -0.886,
+          "aro": 0.223,
+          "route": "B",
+          "run": 70,
+          "entityId": 4,
+          "iters": 314,
+          "Tw": 0.308
+        },
+        {
+          "val": -0.961,
+          "aro": 0.127,
+          "route": "B",
+          "run": 71,
+          "entityId": 4,
+          "iters": 174,
+          "Tw": 0.156
+        },
+        {
+          "val": -0.492,
+          "aro": -0.6,
+          "route": "A",
+          "run": 72,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.455
+        },
+        {
+          "val": -0.867,
+          "aro": 0.307,
+          "route": "B",
+          "run": 73,
+          "entityId": 4,
+          "iters": 65,
+          "Tw": 0.339
+        },
+        {
+          "val": -0.99,
+          "aro": -0.016,
+          "route": "B",
+          "run": 74,
+          "entityId": 4,
+          "iters": 536,
+          "Tw": 0.084
+        },
+        {
+          "val": -0.935,
+          "aro": 0.188,
+          "route": "B",
+          "run": 75,
+          "entityId": 4,
+          "iters": 908,
+          "Tw": 0.275
+        },
+        {
+          "val": -0.908,
+          "aro": -0.256,
+          "route": "B",
+          "run": 76,
+          "entityId": 4,
+          "iters": 135,
+          "Tw": 0.309
+        },
+        {
+          "val": -0.973,
+          "aro": -0.208,
+          "route": "B",
+          "run": 77,
+          "entityId": 4,
+          "iters": 515,
+          "Tw": 0.065
+        },
+        {
+          "val": -0.99,
+          "aro": -0.035,
+          "route": "B",
+          "run": 78,
+          "entityId": 4,
+          "iters": 24,
+          "Tw": 0.078
+        },
+        {
+          "val": -0.983,
+          "aro": -0.149,
+          "route": "B",
+          "run": 79,
+          "entityId": 4,
+          "iters": 4121,
+          "Tw": 0.088
+        },
+        {
+          "val": -0.921,
+          "aro": -0.273,
+          "route": "B",
+          "run": 80,
+          "entityId": 4,
+          "iters": 134,
+          "Tw": 0.321
+        },
+        {
+          "val": -0.988,
+          "aro": -0.126,
+          "route": "C",
+          "run": 81,
+          "entityId": 4,
+          "iters": 1,
+          "Tw": 0.062
+        },
+        {
+          "val": -0.935,
+          "aro": -0.291,
+          "route": "B",
+          "run": 82,
+          "entityId": 4,
+          "iters": 1675,
+          "Tw": 0.256
+        },
+        {
+          "val": -0.968,
+          "aro": -0.233,
+          "route": "B",
+          "run": 83,
+          "entityId": 4,
+          "iters": 67,
+          "Tw": 0.191
+        },
+        {
+          "val": -0.983,
+          "aro": 0.076,
+          "route": "B",
+          "run": 84,
+          "entityId": 4,
+          "iters": 340,
+          "Tw": 0.124
+        }
+      ],
+      "runCount": 84,
+      "karakter": {
+        "p0": 0.7,
+        "theta0": 3.14,
+        "xi0": 0.5,
+        "rho0": {
+          "vv": 0.183772635046129,
+          "va": 0.0005036410738208312,
+          "av": 0.0005036410738208312,
+          "aa": 0.816227364953871
+        }
+      },
+      "profielen": [
+        {
+          "runId": 84,
+          "timestamp": "2026-07-20T20:13:31.941Z",
+          "entityName": "E4",
+          "levensloop": "E4 begon als uitgesproken boos-angstige afweger. Trouw aan die aard: dominante zone is boos/angstig. Het profiel verschoof van boos/angstig (vroeg) naar verdrietig (laat). Was 100% van de tijd gegroepeerd (G1). Zit nu in G1, de treurenden. Het beginkarakter werkt nog voor 25% door.",
+          "periods": [
+            {
+              "label": "GEBOORTE",
+              "runStart": 1,
+              "runEnd": 21,
+              "text": "GEBOORTE (run 1-21): Centrum negatief/matig in boos/angstig. deliberatie (B). sterk coherent. moeizame convergentie. Beginkarakter 95% actief. negatief eindigend. [S=0.11 P=0.97 F=0.96]"
+            },
+            {
+              "label": "MIDDEN",
+              "runStart": 22,
+              "runEnd": 55,
+              "text": "MIDDEN (run 22-55): Centrum negatief/matig in boos/angstig. deliberatie (B). sterk coherent. moeizame convergentie. negatief eindigend. [S=0.14 P=0.96 F=0.96]"
+            },
+            {
+              "label": "LAAT",
+              "runStart": 56,
+              "runEnd": 84,
+              "text": "LAAT (run 56-84): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. moeizame convergentie. negatief eindigend. [S=0.20 P=0.94 F=0.92]"
+            }
+          ],
+          "global": "Globaal (84 runs): gamma=0.90 sterk. val-osc=0.16 aro-osc=0.24. Nog open. [S=0.16 P=0.95 F=0.95]",
+          "params": {
+            "S": 0.16482541402417064,
+            "P": 0.9526242293541075,
+            "F": 0.9466781149088247,
+            "gamma": 0.9018285096614184,
+            "valOsc": 0.1584255384047056,
+            "aroOsc": 0.23799980349274455,
+            "lateC": 0.1,
+            "n": 84
+          }
+        }
+      ],
+      "groupHist": [
+        {
+          "run": 1,
+          "gid": 1
+        },
+        {
+          "run": 2,
+          "gid": 1
+        },
+        {
+          "run": 3,
+          "gid": 1
+        },
+        {
+          "run": 4,
+          "gid": 1
+        },
+        {
+          "run": 5,
+          "gid": 1
+        },
+        {
+          "run": 6,
+          "gid": 1
+        },
+        {
+          "run": 7,
+          "gid": 1
+        },
+        {
+          "run": 8,
+          "gid": 1
+        },
+        {
+          "run": 9,
+          "gid": 1
+        },
+        {
+          "run": 10,
+          "gid": 1
+        },
+        {
+          "run": 11,
+          "gid": 1
+        },
+        {
+          "run": 12,
+          "gid": 1
+        },
+        {
+          "run": 13,
+          "gid": 1
+        },
+        {
+          "run": 14,
+          "gid": 1
+        },
+        {
+          "run": 15,
+          "gid": 1
+        },
+        {
+          "run": 16,
+          "gid": 1
+        },
+        {
+          "run": 17,
+          "gid": 1
+        },
+        {
+          "run": 18,
+          "gid": 1
+        },
+        {
+          "run": 19,
+          "gid": 1
+        },
+        {
+          "run": 20,
+          "gid": 1
+        },
+        {
+          "run": 21,
+          "gid": 1
+        },
+        {
+          "run": 22,
+          "gid": 1
+        },
+        {
+          "run": 23,
+          "gid": 1
+        },
+        {
+          "run": 24,
+          "gid": 1
+        },
+        {
+          "run": 25,
+          "gid": 1
+        },
+        {
+          "run": 26,
+          "gid": 1
+        },
+        {
+          "run": 27,
+          "gid": 1
+        },
+        {
+          "run": 28,
+          "gid": 1
+        },
+        {
+          "run": 29,
+          "gid": 1
+        },
+        {
+          "run": 30,
+          "gid": 1
+        },
+        {
+          "run": 31,
+          "gid": 1
+        },
+        {
+          "run": 32,
+          "gid": 1
+        },
+        {
+          "run": 33,
+          "gid": 1
+        },
+        {
+          "run": 34,
+          "gid": 1
+        },
+        {
+          "run": 35,
+          "gid": 1
+        },
+        {
+          "run": 36,
+          "gid": 1
+        },
+        {
+          "run": 37,
+          "gid": 1
+        },
+        {
+          "run": 38,
+          "gid": 1
+        },
+        {
+          "run": 39,
+          "gid": 1
+        },
+        {
+          "run": 40,
+          "gid": 1
+        },
+        {
+          "run": 41,
+          "gid": 1
+        },
+        {
+          "run": 42,
+          "gid": 1
+        },
+        {
+          "run": 43,
+          "gid": 1
+        },
+        {
+          "run": 44,
+          "gid": 1
+        },
+        {
+          "run": 45,
+          "gid": 1
+        },
+        {
+          "run": 46,
+          "gid": 1
+        },
+        {
+          "run": 47,
+          "gid": 1
+        },
+        {
+          "run": 48,
+          "gid": 1
+        },
+        {
+          "run": 49,
+          "gid": 1
+        },
+        {
+          "run": 50,
+          "gid": 1
+        },
+        {
+          "run": 51,
+          "gid": 1
+        },
+        {
+          "run": 52,
+          "gid": 1
+        },
+        {
+          "run": 53,
+          "gid": 1
+        },
+        {
+          "run": 54,
+          "gid": 1
+        },
+        {
+          "run": 55,
+          "gid": 1
+        },
+        {
+          "run": 56,
+          "gid": 1
+        },
+        {
+          "run": 57,
+          "gid": 1
+        },
+        {
+          "run": 58,
+          "gid": 1
+        },
+        {
+          "run": 59,
+          "gid": 1
+        },
+        {
+          "run": 60,
+          "gid": 1
+        },
+        {
+          "run": 61,
+          "gid": 1
+        },
+        {
+          "run": 62,
+          "gid": 1
+        },
+        {
+          "run": 63,
+          "gid": 1
+        },
+        {
+          "run": 64,
+          "gid": 1
+        },
+        {
+          "run": 65,
+          "gid": 1
+        },
+        {
+          "run": 66,
+          "gid": 1
+        },
+        {
+          "run": 67,
+          "gid": 1
+        },
+        {
+          "run": 68,
+          "gid": 1
+        },
+        {
+          "run": 69,
+          "gid": 1
+        },
+        {
+          "run": 70,
+          "gid": 1
+        },
+        {
+          "run": 71,
+          "gid": 1
+        },
+        {
+          "run": 72,
+          "gid": 1
+        },
+        {
+          "run": 73,
+          "gid": 1
+        },
+        {
+          "run": 74,
+          "gid": 1
+        },
+        {
+          "run": 75,
+          "gid": 1
+        },
+        {
+          "run": 76,
+          "gid": 1
+        },
+        {
+          "run": 77,
+          "gid": 1
+        },
+        {
+          "run": 78,
+          "gid": 1
+        },
+        {
+          "run": 79,
+          "gid": 1
+        },
+        {
+          "run": 80,
+          "gid": 1
+        },
+        {
+          "run": 81,
+          "gid": 1
+        },
+        {
+          "run": 82,
+          "gid": 1
+        },
+        {
+          "run": 83,
+          "gid": 1
+        },
+        {
+          "run": 84,
+          "gid": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "E5",
+      "color": "#b39ddb",
+      "memory": [
+        {
+          "val": -0.005,
+          "aro": -0.611,
+          "route": "A",
+          "run": 1,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0
+        },
+        {
+          "val": -0.076,
+          "aro": 0.302,
+          "route": "A",
+          "run": 2,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.992
+        },
+        {
+          "val": -0.806,
+          "aro": -0.436,
+          "route": "B",
+          "run": 3,
+          "entityId": 5,
+          "iters": 8,
+          "Tw": 0.452
+        },
+        {
+          "val": 0.236,
+          "aro": 0.224,
+          "route": "A",
+          "run": 4,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.698
+        },
+        {
+          "val": -0.522,
+          "aro": 0.793,
+          "route": "B",
+          "run": 5,
+          "entityId": 5,
+          "iters": 37,
+          "Tw": 0.464
+        },
+        {
+          "val": 0.396,
+          "aro": -0.492,
+          "route": "A",
+          "run": 6,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.639
+        },
+        {
+          "val": -0.709,
+          "aro": 0.515,
+          "route": "B",
+          "run": 7,
+          "entityId": 5,
+          "iters": 25,
+          "Tw": 0.469
+        },
+        {
+          "val": -0.695,
+          "aro": 0.392,
+          "route": "B",
+          "run": 8,
+          "entityId": 5,
+          "iters": 13,
+          "Tw": 0.402
+        },
+        {
+          "val": -0.591,
+          "aro": -0.587,
+          "route": "B",
+          "run": 9,
+          "entityId": 5,
+          "iters": 7,
+          "Tw": 0.533
+        },
+        {
+          "val": -0.632,
+          "aro": -0.394,
+          "route": "B",
+          "run": 10,
+          "entityId": 5,
+          "iters": 59,
+          "Tw": 0.492
+        },
+        {
+          "val": -0.528,
+          "aro": 0.301,
+          "route": "B",
+          "run": 11,
+          "entityId": 5,
+          "iters": 170,
+          "Tw": 0.55
+        },
+        {
+          "val": -0.962,
+          "aro": 0.136,
+          "route": "B",
+          "run": 12,
+          "entityId": 5,
+          "iters": 18,
+          "Tw": 0.298
+        },
+        {
+          "val": -0.783,
+          "aro": 0.454,
+          "route": "C",
+          "run": 13,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.376
+        },
+        {
+          "val": -0.693,
+          "aro": 0.295,
+          "route": "B",
+          "run": 14,
+          "entityId": 5,
+          "iters": 4,
+          "Tw": 0.474
+        },
+        {
+          "val": -0.921,
+          "aro": 0.308,
+          "route": "C",
+          "run": 15,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.236
+        },
+        {
+          "val": -0.93,
+          "aro": -0.238,
+          "route": "C",
+          "run": 16,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.303
+        },
+        {
+          "val": -0.952,
+          "aro": -0.051,
+          "route": "B",
+          "run": 17,
+          "entityId": 5,
+          "iters": 175,
+          "Tw": 0.328
+        },
+        {
+          "val": -0.925,
+          "aro": -0.18,
+          "route": "C",
+          "run": 18,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.276
+        },
+        {
+          "val": -0.874,
+          "aro": 0.383,
+          "route": "C",
+          "run": 19,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.273
+        },
+        {
+          "val": -0.949,
+          "aro": 0.173,
+          "route": "B",
+          "run": 20,
+          "entityId": 5,
+          "iters": 158,
+          "Tw": 0.338
+        },
+        {
+          "val": -0.956,
+          "aro": -0.119,
+          "route": "C",
+          "run": 21,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.227
+        },
+        {
+          "val": -0.913,
+          "aro": 0.358,
+          "route": "C",
+          "run": 22,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.169
+        },
+        {
+          "val": -0.862,
+          "aro": -0.24,
+          "route": "B",
+          "run": 23,
+          "entityId": 5,
+          "iters": 4,
+          "Tw": 0.328
+        },
+        {
+          "val": -0.771,
+          "aro": -0.227,
+          "route": "B",
+          "run": 24,
+          "entityId": 5,
+          "iters": 6,
+          "Tw": 0.481
+        },
+        {
+          "val": -0.946,
+          "aro": -0.076,
+          "route": "B",
+          "run": 25,
+          "entityId": 5,
+          "iters": 47,
+          "Tw": 0.231
+        },
+        {
+          "val": -0.949,
+          "aro": -0.013,
+          "route": "B",
+          "run": 26,
+          "entityId": 5,
+          "iters": 57,
+          "Tw": 0.162
+        },
+        {
+          "val": -0.967,
+          "aro": -0.234,
+          "route": "B",
+          "run": 27,
+          "entityId": 5,
+          "iters": 10,
+          "Tw": 0.198
+        },
+        {
+          "val": -0.903,
+          "aro": -0.03,
+          "route": "B",
+          "run": 28,
+          "entityId": 5,
+          "iters": 44,
+          "Tw": 0.227
+        },
+        {
+          "val": -0.854,
+          "aro": -0.395,
+          "route": "B",
+          "run": 29,
+          "entityId": 5,
+          "iters": 11,
+          "Tw": 0.386
+        },
+        {
+          "val": -0.878,
+          "aro": 0.189,
+          "route": "B",
+          "run": 30,
+          "entityId": 5,
+          "iters": 4,
+          "Tw": 0.371
+        },
+        {
+          "val": -0.982,
+          "aro": -0.134,
+          "route": "C",
+          "run": 31,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.125
+        },
+        {
+          "val": -0.99,
+          "aro": -0.009,
+          "route": "B",
+          "run": 32,
+          "entityId": 5,
+          "iters": 13,
+          "Tw": 0.122
+        },
+        {
+          "val": -0.954,
+          "aro": 0.158,
+          "route": "B",
+          "run": 33,
+          "entityId": 5,
+          "iters": 19,
+          "Tw": 0.205
+        },
+        {
+          "val": -0.834,
+          "aro": -0.409,
+          "route": "B",
+          "run": 34,
+          "entityId": 5,
+          "iters": 5,
+          "Tw": 0.415
+        },
+        {
+          "val": -0.99,
+          "aro": -0.047,
+          "route": "B",
+          "run": 35,
+          "entityId": 5,
+          "iters": 38,
+          "Tw": 0.125
+        },
+        {
+          "val": -0.883,
+          "aro": -0.337,
+          "route": "B",
+          "run": 36,
+          "entityId": 5,
+          "iters": 34,
+          "Tw": 0.349
+        },
+        {
+          "val": -0.99,
+          "aro": 0.008,
+          "route": "B",
+          "run": 37,
+          "entityId": 5,
+          "iters": 91,
+          "Tw": 0.127
+        },
+        {
+          "val": -0.953,
+          "aro": 0.004,
+          "route": "B",
+          "run": 38,
+          "entityId": 5,
+          "iters": 9,
+          "Tw": 0.125
+        },
+        {
+          "val": -0.941,
+          "aro": -0.233,
+          "route": "B",
+          "run": 39,
+          "entityId": 5,
+          "iters": 99,
+          "Tw": 0.22
+        },
+        {
+          "val": -0.834,
+          "aro": -0.399,
+          "route": "B",
+          "run": 40,
+          "entityId": 5,
+          "iters": 7,
+          "Tw": 0.375
+        },
+        {
+          "val": -0.955,
+          "aro": 0.18,
+          "route": "B",
+          "run": 41,
+          "entityId": 5,
+          "iters": 87,
+          "Tw": 0.195
+        },
+        {
+          "val": -0.842,
+          "aro": -0.351,
+          "route": "B",
+          "run": 42,
+          "entityId": 5,
+          "iters": 40,
+          "Tw": 0.404
+        },
+        {
+          "val": -0.168,
+          "aro": -0.34,
+          "route": "A",
+          "run": 43,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.479
+        },
+        {
+          "val": -0.791,
+          "aro": -0.383,
+          "route": "B",
+          "run": 44,
+          "entityId": 5,
+          "iters": 16,
+          "Tw": 0.445
+        },
+        {
+          "val": -0.909,
+          "aro": -0.219,
+          "route": "B",
+          "run": 45,
+          "entityId": 5,
+          "iters": 17,
+          "Tw": 0.302
+        },
+        {
+          "val": -0.975,
+          "aro": -0.18,
+          "route": "B",
+          "run": 46,
+          "entityId": 5,
+          "iters": 15,
+          "Tw": 0.108
+        },
+        {
+          "val": -0.92,
+          "aro": -0.338,
+          "route": "B",
+          "run": 47,
+          "entityId": 5,
+          "iters": 104,
+          "Tw": 0.226
+        },
+        {
+          "val": -0.917,
+          "aro": -0.344,
+          "route": "B",
+          "run": 48,
+          "entityId": 5,
+          "iters": 51,
+          "Tw": 0.202
+        },
+        {
+          "val": -0.974,
+          "aro": -0.134,
+          "route": "B",
+          "run": 49,
+          "entityId": 5,
+          "iters": 308,
+          "Tw": 0.178
+        },
+        {
+          "val": -0.902,
+          "aro": -0.338,
+          "route": "B",
+          "run": 50,
+          "entityId": 5,
+          "iters": 76,
+          "Tw": 0.285
+        },
+        {
+          "val": -0.953,
+          "aro": -0.257,
+          "route": "B",
+          "run": 51,
+          "entityId": 5,
+          "iters": 66,
+          "Tw": 0.097
+        },
+        {
+          "val": -0.955,
+          "aro": -0.041,
+          "route": "B",
+          "run": 52,
+          "entityId": 5,
+          "iters": 33,
+          "Tw": 0.138
+        },
+        {
+          "val": -0.967,
+          "aro": -0.177,
+          "route": "B",
+          "run": 53,
+          "entityId": 5,
+          "iters": 239,
+          "Tw": 0.18
+        },
+        {
+          "val": -0.955,
+          "aro": 0.011,
+          "route": "B",
+          "run": 54,
+          "entityId": 5,
+          "iters": 139,
+          "Tw": 0.153
+        },
+        {
+          "val": -0.918,
+          "aro": -0.333,
+          "route": "B",
+          "run": 55,
+          "entityId": 5,
+          "iters": 392,
+          "Tw": 0.196
+        },
+        {
+          "val": -0.929,
+          "aro": -0.322,
+          "route": "B",
+          "run": 56,
+          "entityId": 5,
+          "iters": 14,
+          "Tw": 0.249
+        },
+        {
+          "val": -0.976,
+          "aro": -0.2,
+          "route": "B",
+          "run": 57,
+          "entityId": 5,
+          "iters": 86,
+          "Tw": 0.077
+        },
+        {
+          "val": -0.947,
+          "aro": 0.074,
+          "route": "B",
+          "run": 58,
+          "entityId": 5,
+          "iters": 123,
+          "Tw": 0.194
+        },
+        {
+          "val": -0.93,
+          "aro": -0.029,
+          "route": "B",
+          "run": 59,
+          "entityId": 5,
+          "iters": 89,
+          "Tw": 0.174
+        },
+        {
+          "val": -0.916,
+          "aro": 0.095,
+          "route": "B",
+          "run": 60,
+          "entityId": 5,
+          "iters": 20,
+          "Tw": 0.277
+        },
+        {
+          "val": -0.945,
+          "aro": -0.298,
+          "route": "B",
+          "run": 61,
+          "entityId": 5,
+          "iters": 85,
+          "Tw": 0.151
+        },
+        {
+          "val": -0.332,
+          "aro": 0.481,
+          "route": "A",
+          "run": 62,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.475
+        },
+        {
+          "val": -0.95,
+          "aro": -0.292,
+          "route": "C",
+          "run": 63,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.074
+        },
+        {
+          "val": -0.936,
+          "aro": 0.041,
+          "route": "B",
+          "run": 64,
+          "entityId": 5,
+          "iters": 14,
+          "Tw": 0.211
+        },
+        {
+          "val": -0.974,
+          "aro": -0.186,
+          "route": "C",
+          "run": 65,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.074
+        },
+        {
+          "val": -0.924,
+          "aro": -0.368,
+          "route": "C",
+          "run": 66,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.076
+        },
+        {
+          "val": -0.948,
+          "aro": -0.28,
+          "route": "C",
+          "run": 67,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.071
+        },
+        {
+          "val": -0.832,
+          "aro": -0.414,
+          "route": "B",
+          "run": 68,
+          "entityId": 5,
+          "iters": 253,
+          "Tw": 0.367
+        },
+        {
+          "val": -0.946,
+          "aro": -0.295,
+          "route": "B",
+          "run": 69,
+          "entityId": 5,
+          "iters": 159,
+          "Tw": 0.19
+        },
+        {
+          "val": -0.842,
+          "aro": -0.484,
+          "route": "B",
+          "run": 70,
+          "entityId": 5,
+          "iters": 9,
+          "Tw": 0.299
+        },
+        {
+          "val": -0.912,
+          "aro": 0.112,
+          "route": "B",
+          "run": 71,
+          "entityId": 5,
+          "iters": 31,
+          "Tw": 0.269
+        },
+        {
+          "val": -0.928,
+          "aro": 0.065,
+          "route": "B",
+          "run": 72,
+          "entityId": 5,
+          "iters": 36,
+          "Tw": 0.248
+        },
+        {
+          "val": -0.965,
+          "aro": 0.035,
+          "route": "B",
+          "run": 73,
+          "entityId": 5,
+          "iters": 202,
+          "Tw": 0.162
+        },
+        {
+          "val": -0.918,
+          "aro": -0.383,
+          "route": "B",
+          "run": 74,
+          "entityId": 5,
+          "iters": 12,
+          "Tw": 0.177
+        },
+        {
+          "val": -0.913,
+          "aro": -0.357,
+          "route": "B",
+          "run": 75,
+          "entityId": 5,
+          "iters": 34,
+          "Tw": 0.215
+        },
+        {
+          "val": -0.932,
+          "aro": -0.339,
+          "route": "C",
+          "run": 76,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.084
+        },
+        {
+          "val": -0.116,
+          "aro": -0.307,
+          "route": "A",
+          "run": 77,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.493
+        },
+        {
+          "val": -0.896,
+          "aro": -0.422,
+          "route": "B",
+          "run": 78,
+          "entityId": 5,
+          "iters": 22,
+          "Tw": 0.201
+        },
+        {
+          "val": -0.963,
+          "aro": -0.068,
+          "route": "B",
+          "run": 79,
+          "entityId": 5,
+          "iters": 138,
+          "Tw": 0.202
+        },
+        {
+          "val": -0.966,
+          "aro": -0.127,
+          "route": "B",
+          "run": 80,
+          "entityId": 5,
+          "iters": 499,
+          "Tw": 0.167
+        },
+        {
+          "val": -0.946,
+          "aro": -0.314,
+          "route": "B",
+          "run": 81,
+          "entityId": 5,
+          "iters": 203,
+          "Tw": 0.139
+        },
+        {
+          "val": -0.93,
+          "aro": -0.057,
+          "route": "B",
+          "run": 82,
+          "entityId": 5,
+          "iters": 524,
+          "Tw": 0.251
+        },
+        {
+          "val": -0.917,
+          "aro": -0.236,
+          "route": "B",
+          "run": 83,
+          "entityId": 5,
+          "iters": 215,
+          "Tw": 0.332
+        },
+        {
+          "val": -0.977,
+          "aro": -0.206,
+          "route": "C",
+          "run": 84,
+          "entityId": 5,
+          "iters": 1,
+          "Tw": 0.079
+        }
+      ],
+      "runCount": 84,
+      "karakter": {
+        "p0": 0.39,
+        "theta0": 1.35,
+        "xi0": 0.72,
+        "rho0": {
+          "vv": 0.5,
+          "va": 0,
+          "av": 0,
+          "aa": 0.5
+        }
+      },
+      "profielen": [
+        {
+          "runId": 84,
+          "timestamp": "2026-07-20T20:13:31.941Z",
+          "entityName": "E5",
+          "levensloop": "E5 begon als open, onbepaald karakter (vlotte beslisser). Zonder eigen richting werd de dominante zone verdrietig, gevormd door omgeving en toeval. Het profiel bleef stabiel rond verdrietig. Was 98% van de tijd gegroepeerd (G1, G2). Zit nu in G1, de treurenden. Het beginkarakter werkt nog voor 17% door.",
+          "periods": [
+            {
+              "label": "GEBOORTE",
+              "runStart": 1,
+              "runEnd": 21,
+              "text": "GEBOORTE (run 1-21): Centrum negatief/matig in boos/angstig. deliberatie (B). sterk coherent. vlot. Beginkarakter 95% actief. negatief eindigend. [S=0.64 P=0.73 F=0.70]"
+            },
+            {
+              "label": "MIDDEN",
+              "runStart": 22,
+              "runEnd": 55,
+              "text": "MIDDEN (run 22-55): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. vlot. negatief eindigend. [S=0.12 P=0.97 F=0.97]"
+            },
+            {
+              "label": "LAAT",
+              "runStart": 56,
+              "runEnd": 84,
+              "text": "LAAT (run 56-84): Centrum negatief/matig in verdrietig. deliberatie (B). sterk coherent. deliberatief. negatief eindigend. [S=0.18 P=0.95 F=0.95]"
+            }
+          ],
+          "global": "Globaal (84 runs): gamma=0.80 sterk. val-osc=0.27 aro-osc=0.28. Nog open. [S=0.33 P=0.89 F=0.90]",
+          "params": {
+            "S": 0.32950565321387293,
+            "P": 0.8862853508330507,
+            "F": 0.8986126802610083,
+            "gamma": 0.7964272545881558,
+            "valOsc": 0.27141576933050493,
+            "aroOsc": 0.27971042763483883,
+            "lateC": 0.2,
+            "n": 84
+          }
+        }
+      ],
+      "groupHist": [
+        {
+          "run": 1,
+          "gid": 1
+        },
+        {
+          "run": 2,
+          "gid": 1
+        },
+        {
+          "run": 3,
+          "gid": 1
+        },
+        {
+          "run": 4,
+          "gid": 1
+        },
+        {
+          "run": 5,
+          "gid": 1
+        },
+        {
+          "run": 6,
+          "gid": 2
+        },
+        {
+          "run": 7,
+          "gid": 2
+        },
+        {
+          "run": 8,
+          "gid": 2
+        },
+        {
+          "run": 9,
+          "gid": 2
+        },
+        {
+          "run": 10,
+          "gid": 1
+        },
+        {
+          "run": 11,
+          "gid": 1
+        },
+        {
+          "run": 12,
+          "gid": 1
+        },
+        {
+          "run": 13,
+          "gid": 1
+        },
+        {
+          "run": 14,
+          "gid": 1
+        },
+        {
+          "run": 15,
+          "gid": 1
+        },
+        {
+          "run": 16,
+          "gid": 1
+        },
+        {
+          "run": 17,
+          "gid": 1
+        },
+        {
+          "run": 18,
+          "gid": 1
+        },
+        {
+          "run": 19,
+          "gid": 1
+        },
+        {
+          "run": 20,
+          "gid": 1
+        },
+        {
+          "run": 21,
+          "gid": 1
+        },
+        {
+          "run": 22,
+          "gid": 1
+        },
+        {
+          "run": 23,
+          "gid": 1
+        },
+        {
+          "run": 24,
+          "gid": 1
+        },
+        {
+          "run": 25,
+          "gid": 1
+        },
+        {
+          "run": 26,
+          "gid": 2
+        },
+        {
+          "run": 27,
+          "gid": 2
+        },
+        {
+          "run": 28,
+          "gid": 2
+        },
+        {
+          "run": 29,
+          "gid": 2
+        },
+        {
+          "run": 30,
+          "gid": 1
+        },
+        {
+          "run": 31,
+          "gid": 1
+        },
+        {
+          "run": 32,
+          "gid": 1
+        },
+        {
+          "run": 33,
+          "gid": 1
+        },
+        {
+          "run": 34,
+          "gid": 1
+        },
+        {
+          "run": 35,
+          "gid": 1
+        },
+        {
+          "run": 36,
+          "gid": 1
+        },
+        {
+          "run": 37,
+          "gid": 1
+        },
+        {
+          "run": 38,
+          "gid": 2
+        },
+        {
+          "run": 39,
+          "gid": 2
+        },
+        {
+          "run": 40,
+          "gid": 0
+        },
+        {
+          "run": 41,
+          "gid": 2
+        },
+        {
+          "run": 42,
+          "gid": 0
+        },
+        {
+          "run": 43,
+          "gid": 1
+        },
+        {
+          "run": 44,
+          "gid": 1
+        },
+        {
+          "run": 45,
+          "gid": 2
+        },
+        {
+          "run": 46,
+          "gid": 1
+        },
+        {
+          "run": 47,
+          "gid": 1
+        },
+        {
+          "run": 48,
+          "gid": 1
+        },
+        {
+          "run": 49,
+          "gid": 1
+        },
+        {
+          "run": 50,
+          "gid": 2
+        },
+        {
+          "run": 51,
+          "gid": 2
+        },
+        {
+          "run": 52,
+          "gid": 2
+        },
+        {
+          "run": 53,
+          "gid": 2
+        },
+        {
+          "run": 54,
+          "gid": 2
+        },
+        {
+          "run": 55,
+          "gid": 2
+        },
+        {
+          "run": 56,
+          "gid": 2
+        },
+        {
+          "run": 57,
+          "gid": 2
+        },
+        {
+          "run": 58,
+          "gid": 2
+        },
+        {
+          "run": 59,
+          "gid": 2
+        },
+        {
+          "run": 60,
+          "gid": 2
+        },
+        {
+          "run": 61,
+          "gid": 2
+        },
+        {
+          "run": 62,
+          "gid": 2
+        },
+        {
+          "run": 63,
+          "gid": 2
+        },
+        {
+          "run": 64,
+          "gid": 2
+        },
+        {
+          "run": 65,
+          "gid": 2
+        },
+        {
+          "run": 66,
+          "gid": 2
+        },
+        {
+          "run": 67,
+          "gid": 1
+        },
+        {
+          "run": 68,
+          "gid": 1
+        },
+        {
+          "run": 69,
+          "gid": 2
+        },
+        {
+          "run": 70,
+          "gid": 2
+        },
+        {
+          "run": 71,
+          "gid": 2
+        },
+        {
+          "run": 72,
+          "gid": 1
+        },
+        {
+          "run": 73,
+          "gid": 1
+        },
+        {
+          "run": 74,
+          "gid": 1
+        },
+        {
+          "run": 75,
+          "gid": 1
+        },
+        {
+          "run": 76,
+          "gid": 1
+        },
+        {
+          "run": 77,
+          "gid": 1
+        },
+        {
+          "run": 78,
+          "gid": 2
+        },
+        {
+          "run": 79,
+          "gid": 2
+        },
+        {
+          "run": 80,
+          "gid": 2
+        },
+        {
+          "run": 81,
+          "gid": 2
+        },
+        {
+          "run": 82,
+          "gid": 2
+        },
+        {
+          "run": 83,
+          "gid": 1
+        },
+        {
+          "run": 84,
+          "gid": 1
+        }
+      ]
+    }
+  ]
+}

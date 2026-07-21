@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bewustzijn v5.3 — Multi-Entiteit QM Model</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
+  :root{
+    --bg:#06080f;--sur:#0d1117;--bdr:#1a2030;--txt:#c8d4e8;--dim:#4a5568;
+    --cw:#4fc3f7;--ch:#b39ddb;--cm:#80cbc4;--ret:#ff7043;
+    --inst:#64ffda;--del:#ffd54f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--txt);font-family:'Space Grotesk',sans-serif;min-height:100vh;background-color:#06080f;}
+  header{padding:12px 16px 8px;border-bottom:1px solid var(--bdr);}
+  .ey{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:4px;}
+  h1{font-size:clamp(13px,2.2vw,20px);font-weight:700;color:#e8f0ff;}
+  h1 em{color:var(--cw);font-style:normal;}
+  .fx{font-family:'Space Mono',monospace;font-size:7px;color:var(--cm);margin-top:3px;opacity:.5;line-height:1.5;}
+  main{padding:10px 16px;display:grid;gap:10px;}
+  /* TABS */
+  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--bdr);margin-bottom:10px;}
+  .tab{font-family:'Space Mono',monospace;font-size:9px;padding:7px 14px;cursor:pointer;border:1px solid transparent;border-bottom:none;color:var(--dim);background:transparent;border-radius:3px 3px 0 0;}
+  .tab.active{color:var(--cw);border-color:var(--bdr);background:var(--sur);}
+  .tab-content{display:none;} .tab-content.active{display:grid;gap:10px;}
+  /* ENTITY SELECTOR */
+  .ent-bar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:8px 10px;background:var(--sur);border:1px solid var(--bdr);border-radius:3px;}
+  .ent-btn{font-family:'Space Mono',monospace;font-size:9px;padding:5px 10px;border:1px solid var(--bdr);border-radius:2px;background:transparent;color:var(--dim);cursor:pointer;min-height:32px;}
+  .ent-btn.active{color:var(--bg);border-color:transparent;}
+  .ent-add{border-color:var(--cm);color:var(--cm);}
+  .ent-label{font-family:'Space Mono',monospace;font-size:8px;color:var(--dim);margin-right:4px;}
+  /* MODUS SELECTOR */
+  .mode-bar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+  .mode-btn{font-family:'Space Mono',monospace;font-size:8px;padding:4px 10px;border:1px solid var(--bdr);border-radius:2px;background:transparent;color:var(--dim);cursor:pointer;}
+  .mode-btn.active{border-color:var(--del);color:var(--del);}
+  /* STATE STRIP */
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:3px;overflow:hidden;}
+  .cell{background:var(--sur);padding:8px 9px;}
+  .ck{font-family:'Space Mono',monospace;font-size:7px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:2px;}
+  .cv{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#e8f0ff;}
+  .cv.inst{color:var(--inst);}.cv.del{color:var(--del);}.cv.w{color:var(--cw);}.cv.r{color:var(--ret);}
+  .cs{font-size:8px;color:var(--dim);margin-top:1px;line-height:1.3;}
+  /* BLOCKS */
+  .blk{background:var(--sur);border:1px solid var(--bdr);border-radius:3px;padding:11px 13px;}
+  .bt{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+  .cw2{background:var(--sur);border:1px solid var(--bdr);border-radius:3px;overflow:hidden;min-height:60px;}
+  canvas{display:block;}
+  /* CONTROLS */
+  .sr{display:flex;align-items:center;gap:7px;margin-bottom:6px;}
+  .sn{font-size:10px;color:var(--txt);min-width:130px;}
+  input[type=range]{flex:1;-webkit-appearance:none;height:2px;background:var(--bdr);border-radius:2px;outline:none;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:var(--cw);cursor:pointer;}
+  .sv2{font-family:'Space Mono',monospace;font-size:9px;color:var(--cw);min-width:24px;text-align:right;}
+  .br{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:6px;}
+  button{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;padding:9px 14px;border:1px solid var(--bdr);border-radius:2px;background:transparent;color:var(--txt);cursor:pointer;transition:all .15s;min-height:38px;}
+  button:hover{border-color:var(--cw);color:var(--cw);}
+  button.pri{background:var(--cw);color:var(--bg);border-color:var(--cw);width:100%;font-size:13px;padding:12px;}
+  button.pri:hover{background:#81d4fa;}
+  button.red{border-color:#ef535055;color:#ef5350;}
+  button.red:hover{background:#ef5350;color:var(--bg);}
+  /* MEMORY */
+  .mb{background:var(--sur);border:1px solid var(--bdr);border-radius:3px;padding:10px 12px;}
+  .mh{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px;}
+  .cr{display:flex;align-items:center;gap:6px;margin-bottom:5px;padding:4px 6px;border-radius:2px;background:#0a0e18;}
+  .cb{font-family:'Space Mono',monospace;font-size:8px;font-weight:700;min-width:64px;flex-shrink:0;line-height:1.4;}
+  .cd{display:flex;flex-wrap:wrap;gap:3px;flex:1;}
+  .mdot{width:10px;height:10px;border-radius:50%;cursor:pointer;transition:transform .1s;flex-shrink:0;}
+  .mdot:hover{transform:scale(1.6);}
+  .cm2{font-family:'Space Mono',monospace;font-size:7px;color:var(--dim);min-width:100px;text-align:right;flex-shrink:0;white-space:pre;}
+  .tip{position:fixed;background:#0d1117;border:1px solid #2a3040;border-radius:3px;padding:7px 10px;font-family:'Space Mono',monospace;font-size:8px;color:var(--txt);pointer-events:none;z-index:100;display:none;line-height:1.6;max-width:200px;}
+  .ms{font-family:'Space Mono',monospace;font-size:8px;color:var(--dim);margin-top:5px;}
+  /* EXPORT */
+  .export-area{width:100%;background:#090d14;border:1px solid var(--bdr);border-radius:2px;color:var(--cm);font-family:'Space Mono',monospace;font-size:8px;padding:7px;resize:vertical;min-height:55px;}
+  /* VERGELIJKINGSTABEL */
+  .ent-table{width:100%;border-collapse:collapse;font-family:'Space Mono',monospace;font-size:8px;}
+  .ent-table th{color:var(--dim);padding:4px 8px;text-align:left;border-bottom:1px solid var(--bdr);}
+  .ent-table td{padding:4px 8px;border-bottom:1px solid #0a0e18;color:var(--txt);}
+  .ent-table tr.active-row td{background:#0d1520;}
+  /* PAPER */
+  .paper{background:#090d14;border:1px solid var(--bdr);border-radius:3px;padding:10px 14px;font-family:'Space Mono',monospace;font-size:7px;color:var(--dim);line-height:1.8;}
+  footer{padding:8px 16px;border-top:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:7px;color:var(--dim);}
+</style>
+</head>
+<body>
+<div class="tip" id="tip"></div>
+<input type="file" id="file-import" accept=".json,application/json" style="display:none">
+<header>
+  <div class="ey">Conceptueel Model — Speculatief — v5.3 Multi-Entiteit</div>
+  <h1>Bewustzijn als <em>Quantummeetmoment</em> — Multi-Entiteit</h1>
+  <div class="fx">
+    Ψ = (A_w + γ·A_retentie + δ·A_h + β_g·A_groep + β_e·A_extern) / |...| — open kwantumsysteem: superpositie + decoherente relaxatie<br>
+    Route A→B→C→(A bij extremen) | Alle drempels emergent uit dichtheidsmatrix
+  </div>
+</header>
+<main>
+
+<!-- TABS -->
+<div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('shared',this)">Gedeelde Ruimte</button>
+    <button class="tab" onclick="switchTab('individual',this)">Individuele Entiteit</button>
+    <button class="tab" onclick="switchTab('compare',this)">Vergelijking</button>
+  </div>
+
+  <!-- TAB 1: GEDEELDE RUIMTE -->
+  <div class="tab-content active" id="tab-shared">
+    <!-- Entity selector -->
+    <div class="ent-bar">
+      <span class="ent-label">Entiteiten:</span>
+      <div id="ent-buttons"></div>
+      <button class="ent-btn ent-add" onclick="addEntity()">+ Entiteit</button>
+      <span style="flex:1"></span>
+    </div>
+
+    <!-- Gedeeld circumplex -->
+    <div class="cw2"><canvas id="shared-circ" height="320" style="max-width:400px;width:100%;display:block;margin:0 auto"></canvas></div>
+
+    <!-- Gedeelde realiteit stats -->
+    <div class="strip" id="shared-strip">
+      <div class="cell"><div class="ck">Entiteiten</div><div class="cv w" id="ss-entities">1</div><div class="cs">actief</div></div>
+      <div class="cell"><div class="ck">Gedeelde S</div><div class="cv" id="ss-entropy" style="color:var(--del)">—</div><div class="cs">von Neumann</div></div>
+      <div class="cell"><div class="ck">Gedeelde P</div><div class="cv" id="ss-purity" style="color:var(--cm)">—</div><div class="cs">purity ρ_gedeeld</div></div>
+      <div class="cell"><div class="ck">Convergentie</div><div class="cv" id="ss-conv" style="color:var(--inst)">—</div><div class="cs">spread entiteiten</div></div>
+      <div class="cell"><div class="ck">Gedeelde zone</div><div class="cv" id="ss-zone" style="color:var(--ret)">—</div><div class="cs">gedeelde realiteit</div></div>
+      <div class="cell"><div class="ck">β gedeeld</div><div class="cv" id="ss-beta" style="color:var(--ch)">—</div><div class="cs">emergent</div></div>
+      <div class="cell"><div class="ck">Groepen</div><div class="cv" id="ss-groups" style="color:var(--inst)">—</div><div class="cs" id="ss-groups-sub">detectie</div></div>
+    </div>
+
+    <!-- Groepenoverzicht -->
+    <div class="blk">
+      <div class="bt">Groepen — samenstelling</div>
+      <div id="groepen-lijst" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"><span style="color:var(--dim)">nog geen groepen</span></div>
+    </div>
+
+    <!-- Run controls -->
+    <div class="blk">
+      <div class="bt">Bediening</div>
+      <button class="pri" id="btn-run-shared">▶ Nieuwe waarneming</button>
+      <div class="mode-bar" style="margin-top:8px">
+        <span class="ent-label">Modus:</span>
+        <button class="mode-btn active" data-mode="single" onclick="setMode('single')">Per entiteit</button>
+        <button class="mode-btn" data-mode="all" onclick="setMode('all')">Simultaan</button>
+        <button class="mode-btn" data-mode="auto" onclick="setMode('auto')">Autonoom</button>
+      </div>
+      <div class="br" style="margin-top:8px">
+        <button id="btn-pause-shared">⏸ Pauzeer</button>
+        <button class="red" id="btn-reset-all">↺ Reset alles</button>
+        <button class="sm" onclick="toggleAnim()" style="border-color:var(--inst);color:var(--inst)">Animatie</button>
+        <button id="btn-export-shared" style="border-color:var(--cm);color:var(--cm)">↑ Exporteer</button>
+        <button onclick="document.getElementById('file-import').click()" style="border-color:var(--cm);color:var(--cm)">📂 Laad bestand</button>
+      </div>
+      <div class="sr" style="margin-top:8px">
+        <span class="sn">Bandbreedte situatie</span>
+        <input type="range" id="sl-bw-shared" min="10" max="100" value="70">
+        <span class="sv2" id="lb-bw-shared">70</span>
+      </div>
+      <div id="auto-speed-row" style="display:none">
+        <div class="sr">
+          <span class="sn">Autonoom snelheid (ms)</span>
+          <input type="range" id="sl-auto-speed" min="200" max="3000" value="1500" step="100">
+          <span class="sv2" id="lb-auto-speed">1500</span>
+        </div>
+      </div>
+      <p style="font-size:8px;color:var(--dim);margin-top:6px;line-height:1.5" id="mode-desc">Per entiteit: klik selecteert actieve entiteit, run doet één waarneming.</p>
+    </div>
+  </div>
+
+  <!-- TAB 2: INDIVIDUELE ENTITEIT -->
+  <div class="tab-content" id="tab-individual">
+    <div class="blk" style="margin-bottom:8px">
+      <div class="bt">Bediening</div>
+      <button class="pri" onclick="document.getElementById('btn-run-shared').click()">▶ Nieuwe waarneming</button>
+      <div class="mode-bar" style="margin-top:8px">
+        <span class="ent-label">Modus:</span>
+        <button class="mode-btn" data-mode="single" onclick="setMode('single')">Per entiteit</button>
+        <button class="mode-btn" data-mode="all" onclick="setMode('all')">Simultaan</button>
+        <button class="mode-btn" data-mode="auto" onclick="setMode('auto')">Autonoom</button>
+      </div>
+      <div class="br" style="margin-top:8px">
+        <button onclick="document.getElementById('btn-pause-shared').click()">⏸ Pauzeer</button>
+        <button class="red" onclick="document.getElementById('btn-reset-all').click()">↺ Reset alles</button>
+        <button class="sm" onclick="toggleAnim()" style="border-color:var(--inst);color:var(--inst)">Animatie</button>
+
+      </div>
+    </div>
+
+    <div class="ent-bar">
+      <span class="ent-label">Bekijk entiteit:</span>
+      <div id="ent-buttons-ind"></div>
+      <span style="flex:1"></span>
+      <span id="ind-pers" class="ent-label" style="color:var(--ch)"></span>
+    </div>
+
+    <!-- State strip individueel -->
+    <div class="strip">
+      <div class="cell"><div class="ck">Route</div><div class="cv inst" id="sv-route">—</div><div class="cs" id="sv-route-sub">wacht</div></div>
+      <div class="cell"><div class="ck">Valentie</div><div class="cv w" id="sv-val">—</div><div class="cs">negatief↔positief</div></div>
+      <div class="cell"><div class="ck">Arousal</div><div class="cv w" id="sv-aro">—</div><div class="cs">laag↔hoog</div></div>
+      <div class="cell"><div class="ck">Emotie zone</div><div class="cv r" id="sv-emo">—</div><div class="cs" id="sv-emo-sub">—</div></div>
+      <div class="cell"><div class="ck">Herinneringen</div><div class="cv" id="sv-mem" style="color:var(--ch)">0</div><div class="cs" id="sv-mem-sub">lege staat</div></div>
+      <div class="cell"><div class="ck">Coherentie</div><div class="cv inst" id="sv-coh">—</div><div class="cs">fidelity</div></div>
+      <div class="cell"><div class="ck">Emotie bias</div><div class="cv" id="sv-bias" style="color:var(--del)">—</div><div class="cs" id="sv-bias-sub">γ richting</div></div>
+      <div class="cell"><div class="ck">Diepte</div><div class="cv" id="sv-depth" style="color:var(--ch)">—</div><div class="cs" id="sv-depth-sub">1-S</div></div>
+      <div class="cell"><div class="ck">δ eigen</div><div class="cv" id="sv-delta" style="color:var(--cm)">—</div><div class="cs">herinneringsampl.</div></div>
+      <div class="cell"><div class="ck">β gedeeld</div><div class="cv" id="sv-beta" style="color:var(--ch)">—</div><div class="cs">gedeelde ampl.</div></div>
+    </div>
+
+    <!-- Superpositie canvas -->
+    <div style="display:flex;gap:8px;align-items:flex-start"><div style="width:calc(50% - 4px)"><canvas id="c" height="420" style="width:100%;max-width:100%;display:block"></canvas></div><div style="width:calc(50% - 4px)"><canvas id="circ" height="420" style="width:100%;max-width:100%;display:block"></canvas></div></div>
+
+    <!-- Route grafiek -->
+    <div class="blk">
+      <div class="bt"><span>Route A/B/C over tijd</span><span id="route-ratio" style="font-weight:normal;color:var(--dim)">—</span></div>
+      <canvas id="graph" height="65" style="width:100%;max-width:100%;display:block;"></canvas>
+      <div style="display:flex;gap:12px;margin-top:4px">
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--ret)">■ A Primitief</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--del)">■ B Deliberatief</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--inst)">■ C Geleerd</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:#ef5350">■ B besluiteloos (afgebroken na 50k)</span>
+      </div>
+    </div>
+
+    <!-- Geheugen -->
+    <div class="mb">
+      <div class="mh">
+        <span>Herinneringsstructuur — <span id="mc">0</span> collapsen</span>
+        <span id="mroute-hint" style="color:var(--cm);font-family:'Space Mono',monospace;font-size:7px">→ Route A</span>
+      </div>
+      <div id="cluster-rows"></div>
+      <div class="ms" id="mstats">Geen herinneringen</div>
+    </div>
+
+    <!-- Export -->
+    <div class="blk">
+      <div class="bt"><span>Geheugen opslaan/laden</span><span id="storage-status" style="font-family:'Space Mono',monospace;font-size:7px;color:var(--dim)">● geen opslag</span></div>
+      <p style="font-size:8px;color:var(--dim);margin-bottom:7px;line-height:1.5">Exporteer na elke sessie. Importeer bij nieuwe sessie.</p>
+      <div class="br">
+        <button id="btn-export">↑ Exporteer</button>
+        <button class="sm" id="btn-profiel" onclick="genereerProfiel(true)" style="border-color:var(--ch);color:var(--ch)">Profiel</button>
+        <button id="btn-import">↓ Importeer</button>
+        <button onclick="document.getElementById('file-import').click()" style="border-color:var(--cm);color:var(--cm)">📂 Laad bestand</button>
+        <button id="btn-copy" style="border-color:var(--cm);color:var(--cm)">⎘ Kopieer</button>
+      </div>
+      <textarea class="export-area" id="export-area" placeholder="Exporteer of plak data..." rows="4"></textarea>
+    </div>
+  </div>
+
+  <!-- Karakterprofielen sectie -->
+  <div id="profiel-sectie" style="display:none;background:#090d14;border:1px solid #1a2030;border-radius:4px;padding:8px;margin:8px 0 0 0">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:4px;border-bottom:1px solid #1a2030;margin-bottom:6px">
+      <span style="font-size:8px;letter-spacing:.08em;color:var(--dim)">KARAKTERPROFIELEN</span>
+      <span style="font-size:9px;color:var(--dim);cursor:pointer" onclick="document.getElementById('profiel-sectie').style.display='none'">sluiten x</span>
+    </div>
+    <div id="profiel-lijst" style="max-height:400px;overflow-y:auto"></div>
+  </div>
+
+
+    <!-- Route sequentie per entiteit -->
+    <div class="blk">
+      <div class="bt">Route sequentie per entiteit</div>
+      <div id="route-sequences" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"></div>
+    </div>
+
+    <!-- Groep historie per entiteit -->
+    <div class="blk">
+      <div class="bt">Groep historie per entiteit — groepsnummer per eigen run, - = ongegroepeerd</div>
+      <div id="group-sequences" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"></div>
+    </div>
+  </div>
+</div>
+  <!-- TAB 3: VERGELIJKING -->
+  <div class="tab-content" id="tab-compare">
+    <div class="blk">
+      <div class="bt">Vergelijkingstabel — alle entiteiten</div>
+      <div style="overflow-x:auto">
+        <table class="ent-table" id="compare-table">
+          <thead><tr>
+            <th>Entiteit</th><th>Runs</th><th>Route dist.</th>
+            <th>Entropie S</th><th>Purity P</th><th>Coherentie F</th>
+            <th>δ</th><th>β</th><th>Dom. zone</th><th>Clusters</th>
+          </tr></thead>
+          <tbody id="compare-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+
+<!-- PAPER NOTITIE -->
+<div class="paper">
+  <span style="color:var(--cm);letter-spacing:.12em">PAPER NOTITIE v5.4</span><br>
+  <span style="color:var(--dim)">Quantum-gespireerd Formeel Raamwerk voor Experientiële Toestandsevolutie</span><br><br>
+  <span style="color:var(--cw)">Formele definitie:</span> Psi = (A_w + delta*A_h + beta*A_s) / |...|<br><br>
+  <span style="color:var(--ch)">Originele bijdragen:</span><br>
+  (1) Toestandsruimte 2D: inwendig product. Projectieve normalisatie (niet Born-regel).<br>
+  (2) Automatische routekeuze via clustergeometrie van geheugen — geen externe parameters.<br>
+  (3) gamma = P*F: Husserl retentie als QM-grootheid. Hoog gamma = sterke experientiële identiteit.<br>
+  (4) Route A-&gt;B-&gt;C-&gt;A emergent. Drempels: T(rho_w,rho_mem) &gt; 1.5*(1-P) en S(rho) &lt; 1.5*(1-P).<br>
+  (5) Bloch-bol geometrie 2x2. Coherentie = quantum fidelity | Diepte = 1-S(von Neumann).<br>
+  (6) tau_d = xi0/(1-P0+eps): beslisprecisie emergeert uit rho0. Hoog = deliberatief, laag = impulsief.<br>
+  (7) Gedeelde realiteit: convergentie meetbaar via von Neumann entropie.<br>
+  (8) Groepsdecoherentie bij N&gt;8. Optimum 3-6. beta_groep &gt; beta_extern.<br>
+  (9) Groep != gedeelde realiteit: orthogonale begrippen met eigen QM-grootheden.<br>
+  (10) QM-valide parameters: T als drempel, gamma max P*(1-S*0.3), beta max P/sqrt(N).<br>
+  (11) Groep = superadditieve purity: P(groep) &gt; gemiddelde P(individu). beta_lokaal &gt; beta_globaal.<br>
+  (12) Projectieve normalisatie bewust anders dan Born-regel: collapse is meest-waarschijnlijk niet probabilistisch.<br>
+  (13) 2D emotieruimte als collapse-uitkomst: Russell circumplex als QM-collapse ipv klassieke selectie.<br>
+  (14) Adaptieve Gaussische clustering als geheugenstructuur zonder externe parameters.<br>
+  (15) delta = P(rho_mem): coherent geheugen oefent maximaal zijn eigen purity uit op superpositie.<br>
+  (16) Groepsdecoherentie bij N&gt;8: beta-invloeden neutraliseren, gedeelde S-&gt;1. Optimum 3-6.<br>
+  (17) Groepsaffiniteit via agglomeratieve clustering op trace-afstandsmatrix.<br>
+  (18) beta_groep &gt; beta_extern: groepsleden wegen zwaarder. Sociale identiteit als QM-subsysteem.<br>
+  (19) tau_d herinterpretatie: beslisprecisie ipv geduld. Hoog tau_d = ruimtolerant. Laag = precies/lang.<br>
+  (20) Karakter rho0 vervalt met dynamische lambda = (sigma_w/xi0)*0.05 + S*(1-P)*0.3.<br><br>
+  <span style="color:#ff704360">TODO: bandbreedte emergent vanuit aandacht/verwachting entiteit</span><br><br>
+  <span style="color:var(--dim)">Indienen: </span><span style="color:var(--ch)">Topics in Cognitive Science · Journal of Mathematical Psychology · Frontiers in Psychology</span><br>
+  <span style="color:var(--dim)">Bespreken: </span><span style="color:var(--ch)">Busemeyer &amp; Bruza · Atmanspacher · Friston · Price &amp; Wharton</span>
+</div>
+
+
+</main>
+<footer>Conceptueel speculatief model v5.3 — Ψ=(A_w+δ·A_h+β·A_s)/|...| — Aharonov TSVF · Russell Circumplex · Friston Free Energy — niet empirisch bewezen</footer>
+
+<script>
+// ==================== ENTITEIT KLEUREN ====================
+const ENT_COLORS=['#4fc3f7','#ffd54f','#ff7043','#64ffda','#b39ddb','#a5d6a7','#ff8a65','#80cbc4'];
+
+// ==================== KARAKTERPROFIEL GENERATOR ====================
+// Levensloop: begrijpende beschrijving van de entiteit (aard, verschuiving, groepen, beslisstijl)
+function levensloopVan(ent){
+  const mem=ent.memory; if(!mem||mem.length<5) return '';
+  const zin=[];
+  const k=ent.karakter;
+  const zoneCount=m=>{const z={};m.forEach(e=>{const n=emotionZone(e.val,e.aro).name;z[n]=(z[n]||0)+1;});return Object.entries(z).sort((a,b)=>b[1]-a[1])[0][0];};
+  const dom=zoneCount(mem);
+  if(k){
+    zin.push(ent.name+' begon als '+persoonlijkheidsNaam(k)+'.');
+    const m0=Math.sqrt(Math.max(0,2*Math.min(Math.max(k.p0||0.5,0.5),0.99)-1));
+    if(m0>=0.15){
+      const doelZone=emotionZone(Math.cos(k.theta0),Math.sin(k.theta0)).name;
+      zin.push(dom===doelZone?('Trouw aan die aard: dominante zone is '+dom+'.'):('Van die aard afgeweken: dominante zone werd '+dom+' in plaats van '+doelZone+'.'));
+    } else {
+      zin.push('Zonder eigen richting werd de dominante zone '+dom+', gevormd door omgeving en toeval.');
+    }
+  }
+  const derde=Math.max(2,Math.floor(mem.length/3));
+  const dVroeg=zoneCount(mem.slice(0,derde)),dLaat=zoneCount(mem.slice(-derde));
+  zin.push(dVroeg!==dLaat?('Het profiel verschoof van '+dVroeg+' (vroeg) naar '+dLaat+' (laat).'):('Het profiel bleef stabiel rond '+dVroeg+'.'));
+  const gh=ent.groupHist||[];
+  if(gh.length){
+    const gids=[...new Set(gh.filter(h=>h.gid>0).map(h=>h.gid))];
+    const inG=gh.filter(h=>h.gid>0).length;
+    if(!gids.length){ zin.push('Nooit lid van een groep geweest: een einzelganger.'); }
+    else{
+      zin.push('Was '+Math.round(100*inG/gh.length)+'% van de tijd gegroepeerd ('+gids.map(g=>'G'+g).join(', ')+').');
+      const cur=gh[gh.length-1].gid;
+      const curGroep=cur>0?getCachedGroups().find(g=>g.gid===cur):null;
+      zin.push(cur>0?('Zit nu in G'+cur+(curGroep&&groepsNaam(curGroep)?(', '+groepsNaam(curGroep)):'')+'.'):'Staat nu buiten elke groep.');
+    }
+  }
+  const b=mem.filter(e=>e.route==='B');
+  if(b.length>=2){
+    const gi=b.reduce((s,e)=>s+(e.iters||1),0)/b.length;
+    if(gi>2000) zin.push('Delibereert zwaar, gemiddeld '+Math.round(gi)+' iteraties: een piekeraar in de praktijk.');
+    else if(gi<30) zin.push('Beslist vlot, gemiddeld '+Math.round(gi)+' iteraties.');
+  }
+  const besl=mem.filter(e=>e.besluiteloos).length;
+  if(besl>0) zin.push(besl+' keer besluiteloos gebleven: deliberatie afgebroken op de 50k-grens.');
+  const kw=charWeight(ent);
+  zin.push('Het beginkarakter werkt nog voor '+(kw*100).toFixed(0)+'% door.');
+  return zin.join(' ');
+}
+
+function generateKarakterProfiel(ent){
+  const mem=ent.memory;const n=mem.length;
+  if(n<5)return null;
+  const i1=Math.max(3,Math.round(n*0.25));
+  const i2=Math.max(i1+3,Math.round(n*0.65));
+  const p1=mem.slice(0,i1),p2=mem.slice(i1,i2),p3=mem.slice(i2);
+  function avgM(m){if(!m.length)return{val:0,aro:0};return{val:m.reduce((s,e)=>s+e.val,0)/m.length,aro:m.reduce((s,e)=>s+e.aro,0)/m.length};}
+  function Sm(m){if(m.length<2)return 1;let vv=0,va=0,aa=0;m.forEach(e=>{const th=Math.atan2(e.aro,e.val);const v=Math.cos(th/2),a=Math.sin(th/2);vv+=v*v;va+=v*a;aa+=a*a;});vv/=m.length;va/=m.length;aa/=m.length;const tr=vv+aa;const det=vv*aa-va*va;const disc=Math.max(0,(tr/2)**2-det);const l1=Math.max(0,tr/2+Math.sqrt(disc)),l2=Math.max(0,tr/2-Math.sqrt(disc));const h=l=>l>.0001?-l*Math.log2(l):0;return Math.min(1,h(l1)+h(l2));}
+  function Pm(m){if(!m.length)return .5;let vv=0,va=0,aa=0;m.forEach(e=>{const th=Math.atan2(e.aro,e.val);const v=Math.cos(th/2),a=Math.sin(th/2);vv+=v*v;va+=v*a;aa+=a*a;});vv/=m.length;va/=m.length;aa/=m.length;return Math.min(1,vv*vv+2*va*va+aa*aa);}
+  function Fm(m){if(m.length<2)return 0;let s=0;for(let i=1;i<m.length;i++){s+=quantumFidelity(m[i],m[i-1]);}return s/(m.length-1);}
+  function domZone(m){if(!m.length)return'onbekend';const z={};m.forEach(e=>{const zn=emotionZone(e.val,e.aro).name;z[zn]=(z[zn]||0)+1;});return Object.entries(z).sort((a,b)=>b[1]-a[1])[0][0];}
+  function bAvg(m){const b=m.filter(e=>e.route==='B'&&(e.iters||1)>1);return b.length?b.reduce((s,e)=>s+(e.iters||1),0)/b.length:0;}
+  function descPeriod(m,label,rs,re){
+    if(!m||m.length<2)return null;
+    const av=avgM(m),Sv=Sm(m),Pv=Pm(m),Fv=Fm(m);
+    const aC=m.filter(e=>e.route==='A').length,bC=m.filter(e=>e.route==='B').length,cC=m.filter(e=>e.route==='C').length;
+    const dz=domZone(m),bIter=bAvg(m),kw=Math.exp(-0.05*rs);
+    const vDir=av.val>0.3?'positief':av.val<-0.3?'negatief':'neutraal';
+    const aDir=av.aro>0.3?'hoog':av.aro<-0.3?'laag':'matig';
+    const domR=cC/m.length>0.5?'patroonherkenning (C)':bC/m.length>0.4?'deliberatie (B)':'verkenning (A)';
+    const coh=Pv>0.65?'sterk coherent':Pv>0.55?'matig coherent':'diffuus';
+    const bes=bIter>200?'moeizame convergentie':bIter>80?'deliberatief':bIter>0?'vlot':'-';
+    const kInf=kw>0.5?` Beginkarakter ${(kw*100).toFixed(0)}% actief.`:'';
+    const t3=avgM(m.slice(-3));
+    const trend=t3.aro>0.5?'stijgende spanning':t3.aro<-0.5?'toenemende rust':t3.val>0.5?'positief eindigend':t3.val<-0.5?'negatief eindigend':'stabiel';
+    return{label,runStart:rs,runEnd:re,text:`${label} (run ${rs}-${re}): Centrum ${vDir}/${aDir} in ${dz}. ${domR}. ${coh}. ${bes}.${kInf} ${trend}. [S=${Sv.toFixed(2)} P=${Pv.toFixed(2)} F=${Fv.toFixed(2)}]`};
+  }
+  const allS=Sm(mem),allP=Pm(mem),allF=Fm(mem),gamma=allP*allF;
+  const lateC=mem.slice(-10).filter(e=>e.route==='C').length/Math.min(10,n);
+  const avgAll=avgM(mem);
+  const valOsc=Math.sqrt(mem.reduce((s,e)=>s+(e.val-avgAll.val)**2,0)/n);
+  const aroOsc=Math.sqrt(mem.reduce((s,e)=>s+(e.aro-avgAll.aro)**2,0)/n);
+  return{
+    runId:n,timestamp:new Date().toISOString(),entityName:ent.name,
+    levensloop:levensloopVan(ent),
+    periods:[descPeriod(p1,'GEBOORTE',1,i1),p2.length>=2?descPeriod(p2,'MIDDEN',i1+1,i2):null,p3.length>=2?descPeriod(p3,'LAAT',i2+1,n):null].filter(Boolean),
+    global:`Globaal (${n} runs): gamma=${gamma.toFixed(2)} ${gamma>0.4?'sterk':gamma>0.25?'matig':'zwak'}. val-osc=${valOsc.toFixed(2)} aro-osc=${aroOsc.toFixed(2)}. ${lateC>0.6?'Patroon gevestigd':lateC>0.4?'In consolidatie':'Nog open'}. [S=${allS.toFixed(2)} P=${allP.toFixed(2)} F=${allF.toFixed(2)}]`,
+    params:{S:allS,P:allP,F:allF,gamma,valOsc,aroOsc,lateC,n}
+  };
+}
+
+function toonProfielen(){
+  const lijst=document.getElementById('profiel-lijst');
+  if(!lijst)return;
+  lijst.innerHTML='';
+  entities.forEach(ent=>{
+  if(!ent.profielen||ent.profielen.length===0)return;
+  [...ent.profielen].reverse().forEach(p=>{
+    const card=document.createElement('div');
+    card.style.cssText='background:#0a0e18;border:1px solid #1a2030;border-radius:3px;padding:8px;margin:4px 0;font-size:9px;font-family:Space Mono,monospace';
+    const hdr=document.createElement('div');
+    hdr.style.cssText='display:flex;justify-content:space-between;margin-bottom:6px';
+    hdr.innerHTML=`<span style="color:${ent.color};font-weight:700">${p.entityName} na run ${p.runId}</span><span style="color:#4a5568">${new Date(p.timestamp).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'})}</span>`;
+    card.appendChild(hdr);
+    p.periods.forEach(period=>{
+      if(!period)return;
+      const col=period.label==='GEBOORTE'?'#ff7043':period.label==='MIDDEN'?'#ffd54f':'#64ffda';
+      const pdiv=document.createElement('div');
+      pdiv.style.cssText=`margin:3px 0;padding:4px 6px;background:#06080f;border-radius:2px;border-left:2px solid ${col}`;
+      pdiv.innerHTML=`<span style="color:${col};font-weight:700">${period.label}</span> <span style="color:#8a9ab0">${period.text.split(': ').slice(1).join(': ')}</span>`;
+      card.appendChild(pdiv);
+    });
+    if(p.levensloop){
+      const ldiv=document.createElement('div');
+      ldiv.style.cssText='margin:5px 0 2px 0;padding:5px 7px;background:#06080f;border-radius:2px;border-left:2px solid '+ent.color+';color:#a8b8d0;font-size:9px;line-height:1.7';
+      ldiv.textContent=p.levensloop;
+      card.appendChild(ldiv);
+    }
+    const gdiv=document.createElement('div');
+    gdiv.style.cssText='margin-top:4px;padding:3px 6px;border-top:1px solid #1a2030;color:#4a5568;font-size:8px';
+    gdiv.textContent=p.global;
+    card.appendChild(gdiv);
+    lijst.appendChild(card);
+  });
+  });
+}
+
+function genereerProfiel(force){
+  // Genereer profielen voor ALLE entiteiten met voldoende geheugen
+  entities.forEach(ent=>{
+    if(!ent.profielen)ent.profielen=[];
+    if(ent.profielen.some(p=>p.runId===ent.runCount))return; // al gemaakt op deze stand
+    const profiel=generateKarakterProfiel(ent);
+    if(profiel)ent.profielen.push(profiel);
+  });
+  toonProfielen();
+  if(force||entities.some(e=>e.profielen?.length>0))showProfielSectie();
+}
+
+function showProfielSectie(){
+  const sec=document.getElementById('profiel-sectie');
+  if(sec){sec.style.display='block';sec.scrollIntoView({behavior:'smooth',block:'nearest'});}
+}
+
+function maybeSaveProfielOnPause(){
+  entities.forEach(e=>{
+    if(!e.memory||e.memory.length<5)return;
+    if(!e.profielen)e.profielen=[];
+    if(e.profielen.some(p=>p.runId===e.runCount))return;
+    const p=generateKarakterProfiel(e);
+    if(p){e.profielen.push(p);}
+  });
+  // Update weergave: alle entiteiten
+  if(entities.some(e=>e.profielen?.length>0)){
+    toonProfielen();
+    showProfielSectie();
+  }
+}
+
+const CCOLORS=['#4fc3f7','#ffd54f','#ff7043','#b39ddb','#64ffda','#a5d6a7','#ff8a65','#80cbc4'];
+
+// ==================== DATA STRUCTUUR ====================
+// entities: [{id, name, memory:[], runCount}]
+let entities = [{id:1, name:'E1', memory:[], runCount:0, color:ENT_COLORS[0], profielen:[], karakter:defaultKarakter(), groupHist:[]}];
+let activeEntityId = 1;
+let runMode = 'single'; // single | all | auto
+let autoTimer = null;
+let autoSpeed = 1500;
+let globalBW = 70;
+
+function getEntity(id){ return entities.find(e=>e.id===id); }
+function getActive(){ return getEntity(activeEntityId); }
+function allMemory(){ return entities.flatMap(e=>e.memory); }
+
+// Gedeeld geheugen = alle memories van ANDERE entiteiten
+function sharedMemory(forEntityId){
+  return entities.flatMap(e=>e.id!==forEntityId?e.memory:[]);
+}
+
+// ==================== GROEPSDETECTIE ====================
+const GROUP_COLORS=['#26a69a','#ab47bc','#ffa726','#42a5f5','#ec407a','#9ccc65'];
+
+// Fidelity en trace-afstand tussen 2x2 dichtheidsmatrices (qubit gesloten vorm)
+function fidelityRho(r1,r2){
+  const tr=r1.vv*r2.vv+r1.va*r2.av+r1.av*r2.va+r1.aa*r2.aa;
+  const d1=Math.max(0,r1.vv*r1.aa-r1.va*r1.av);
+  const d2=Math.max(0,r2.vv*r2.aa-r2.va*r2.av);
+  return Math.min(1,tr+2*Math.sqrt(d1*d2));
+}
+function traceDistRho(r1,r2){
+  // ECHTE trace distance: T = 1/2 ||rho - sigma||_1. Voor qubits met trace 1 is het verschil
+  // traceloos met eigenwaarden +/- sqrt(dv^2 + dva^2), dus T = sqrt(dv^2 + dva^2), exact.
+  // (Was eerder sqrt(1-F), een Bures/infidelity-maat; nu klopt de naam met de wiskunde.)
+  const dv=r1.vv-r2.vv, dva=r1.va-r2.va;
+  return Math.min(1,Math.sqrt(dv*dv+dva*dva));
+}
+
+function affinityMatrix(){
+  // Dispositionele affiniteit (bijdrage 17): trace-afstand tussen dichtheidsmatrices
+  // van de laatste 10 collapsen. Momentane emoties fluctueren per run; disposities niet.
+  const mat={},rhos={};
+  entities.forEach(e=>{ rhos[e.id]=(e.memory.length>0||e.karakter?.rho0)?rhoDispositionOf(e):null; });
+  entities.forEach(ei=>{
+    mat[ei.id]={};
+    entities.forEach(ej=>{
+      if(ei.id===ej.id){mat[ei.id][ej.id]=0;return;}
+      if(!rhos[ei.id]||!rhos[ej.id]){mat[ei.id][ej.id]=1;return;}
+      mat[ei.id][ej.id]=traceDistRho(rhos[ei.id],rhos[ej.id]);
+    });
+  });
+  return mat;
+}
+
+function detectGroups(){
+  const active=entities.filter(e=>e.memory.length>0);
+  if(active.length<2) return active.map(e=>({members:[e],centroid:e.memory[e.memory.length-1]||{val:0,aro:0}}));
+  const mat=affinityMatrix();
+  // Drempel = coherentielengte (bijdrage 8): de eigen dispositionele fluctuatie van een
+  // entiteit (trace-afstand tussen haar rho van run -20..-10 en -10..0) bepaalt de resolutie
+  // waaronder twee entiteiten ononderscheidbaar zijn. Factor 1.5 volgt de bestaande conventie.
+  const selfT=active.map(e=>{
+    const m=e.memory;
+    if(m.length<6) return 0.3;
+    const rec=m.slice(-Math.min(20,m.length));
+    const half=Math.floor(rec.length/2);
+    return traceDistRho(blochRhoOf(rec.slice(0,half)),blochRhoOf(rec.slice(half)));
+  });
+  const threshold=clamp(1.5*(selfT.reduce((s,v)=>s+v,0)/selfT.length),0.05,0.6);
+  let clusters=active.map(e=>({members:[e],centroid:e.memory[e.memory.length-1]}));
+  let merged=true;
+  while(merged&&clusters.length>1){
+    merged=false;
+    let bestDist=Infinity,bestI=-1,bestJ=-1;
+    for(let i=0;i<clusters.length;i++){
+      for(let j=i+1;j<clusters.length;j++){
+        let dSum=0,dN=0;
+        clusters[i].members.forEach(ei=>{
+          clusters[j].members.forEach(ej=>{
+            dSum+=mat[ei.id]?.[ej.id]||1; dN++;
+          });
+        });
+        const d=dN>0?dSum/dN:1;
+        if(d<threshold&&d<bestDist){bestDist=d;bestI=i;bestJ=j;}
+      }
+    }
+    if(bestI>=0){
+      const mc={
+        members:[...clusters[bestI].members,...clusters[bestJ].members],
+        centroid:clusterCenter([...clusters[bestI].members,...clusters[bestJ].members]
+          .map(e=>e.memory[e.memory.length-1]||{val:0,aro:0}))
+      };
+      clusters.splice(bestJ,1); clusters.splice(bestI,1);
+      clusters.push(mc); merged=true;
+    }
+  }
+  return clusters;
+}
+
+// Stabiele groeps-IDs over runs heen: match gedetecteerde groepen op ledenoverlap (Jaccard)
+let groupTracks=[],nextGroupId=1;
+function attachStableIds(groups){
+  const used=new Set();
+  groups.forEach(g=>{
+    if(g.members.length<2){g.gid=0;return;}
+    const ids=g.members.map(m=>m.id);
+    let best=null,bestScore=0;
+    groupTracks.forEach(t=>{
+      if(used.has(t.gid))return;
+      const inter=ids.filter(id=>t.members.has(id)).length;
+      const uni=new Set([...ids,...t.members]).size;
+      const sc=uni>0?inter/uni:0;
+      if(sc>bestScore){bestScore=sc;best=t;}
+    });
+    if(best&&bestScore>=0.4){g.gid=best.gid;best.members=new Set(ids);used.add(best.gid);}
+    else{g.gid=nextGroupId++;groupTracks.push({gid:g.gid,members:new Set(ids)});used.add(g.gid);}
+  });
+}
+
+let _groupCache=null, _groupCacheRun=-1;
+function getCachedGroups(){
+  const totalRuns=entities.reduce((s,e)=>s+(e.runCount||0),0);
+  if(_groupCache&&totalRuns===_groupCacheRun) return _groupCache;
+  _groupCache=detectGroups();
+  attachStableIds(_groupCache);
+  _groupCacheRun=totalRuns;
+  return _groupCache;
+}
+
+// Beta in twee componenten (bijdrage 9/18): eigen groep en extern, elk QM-begrensd
+// met P/sqrt(N) (bijdrage 10). Omdat de groep kleiner is dan de populatie volgt
+// beta_groep >= beta_extern automatisch uit de grens, zonder extra parameter.
+function groupMemFor(eid){
+  const groups=getCachedGroups();
+  const myGroup=groups.find(g=>g.members.some(e=>e.id===eid));
+  if(!myGroup||myGroup.members.length<=1){
+    return {groupMem:[],outerMem:entities.flatMap(e=>e.id!==eid?e.memory:[]),groupSize:1};
+  }
+  return {
+    groupMem:myGroup.members.filter(e=>e.id!==eid).flatMap(e=>e.memory),
+    outerMem:entities.filter(e=>e.id!==eid&&!myGroup.members.some(m=>m.id===e.id)).flatMap(e=>e.memory),
+    groupSize:myGroup.members.length
+  };
+}
+
+function betasFor(eid,ownMem){
+  const {groupMem,outerMem,groupSize}=groupMemFor(eid);
+  const P=purityOf(ownMem||[]);
+  const N=Math.max(2,entities.length);
+  const bg=groupMem.length>=2?Math.min(computeBetaOf(groupMem),P/Math.sqrt(Math.max(2,groupSize))):0;
+  const be=outerMem.length>=2?Math.min(computeBetaOf(outerMem),P/Math.sqrt(N)):0;
+  const gcl=groupMem.length?clusterMemoryOf(groupMem):[];
+  const ecl=outerMem.length?clusterMemoryOf(outerMem):[];
+  return {
+    bg,be,
+    ag:gcl.length?{...clusterCenter(gcl[0])}:{val:0,aro:0},
+    ae:ecl.length?{...clusterCenter(ecl[0])}:{val:0,aro:0}
+  };
+}
+
+// ==================== QM KERN ====================
+function clamp(v,a,b){ return Math.min(Math.max(v,a),b); }
+function euclidean(a,b){ return Math.sqrt((a.val-b.val)**2+(a.aro-b.aro)**2); }
+function clusterCenter(cl){ return {val:cl.reduce((s,e)=>s+e.val,0)/cl.length,aro:cl.reduce((s,e)=>s+e.aro,0)/cl.length}; }
+function clusterSigma(cl){
+  if(cl.length<2) return 0;
+  const c=clusterCenter(cl);
+  return Math.sqrt(cl.reduce((s,e)=>s+euclidean(e,c)**2,0)/cl.length);
+}
+function globalSigmaOf(mem){
+  if(mem.length<2) return 0.08;
+  const c=clusterCenter(mem);
+  return Math.sqrt(mem.reduce((s,e)=>s+euclidean(e,c)**2,0)/mem.length);
+}
+
+function clusterMemoryOf(mem){
+  if(mem.length===0) return [];
+  const minSig=Math.max(0.04,0.3*globalSigmaOf(mem));
+  const clusters=[],centers=[];
+  [...mem].sort((a,b)=>euclidean(a,{val:0,aro:0})-euclidean(b,{val:0,aro:0})).forEach(entry=>{
+    let bi=-1,bd=Infinity;
+    centers.forEach((c,i)=>{ const d=euclidean(entry,c); const s=Math.max(minSig,clusterSigma(clusters[i])); if(d<s*2&&d<bd){bd=d;bi=i;} });
+    if(bi>=0){ clusters[bi].push(entry); centers[bi]=clusterCenter(clusters[bi]); }
+    else{ clusters.push([entry]); centers.push({val:entry.val,aro:entry.aro}); }
+  });
+  return clusters.sort((a,b)=>b.length-a.length);
+}
+
+function densityMatrixOf(mem){
+  // BLOCH-CONVENTIE (migratie 20 juli avond): toestandshoek = emotiehoek/2.
+  // Tegenovergestelde emoties zijn nu orthogonaal. Voorheen (volle hoek) gaf pendelen
+  // tussen bijv. tevreden en boos DEZELFDE rho: ambivalentie oogde als coherentie.
+  const n=mem.length; if(n===0) return {vv:0.5,va:0,av:0,aa:0.5};
+  let vv=0,va=0,aa=0;
+  mem.forEach(e=>{
+    const th=Math.atan2(e.aro,e.val);
+    const c=Math.cos(th/2),s=Math.sin(th/2);
+    vv+=c*c;va+=c*s;aa+=s*s;
+  });
+  return {vv:vv/n,va:va/n,av:va/n,aa:aa/n};
+}
+
+function vonNeumannEntropyOf(mem){
+  const r=densityMatrixOf(mem);
+  const disc=Math.max(0,((r.vv+r.aa)/2)**2-(r.vv*r.aa-r.va*r.av));
+  const l1=(r.vv+r.aa)/2+Math.sqrt(disc),l2=(r.vv+r.aa)/2-Math.sqrt(disc);
+  const h=(l)=>l>0.0001?-l*Math.log2(l):0;
+  return Math.min(1,h(l1)+h(l2));
+}
+
+function purityOf(mem){ const r=densityMatrixOf(mem); return Math.min(1,r.vv**2+2*r.va*r.av+r.aa**2); }
+
+// ==================== KARAKTER (rho0, bijdrage 20) ====================
+// BLOCH-CONVENTIE voor disposities: de emotiecirkel (0-360 graden) is de Bloch-equator.
+// Toestandshoek = emotiehoek/2, zodat tegenovergestelde emoties (bijv. tevreden vs boos)
+// ORTHOGONALE toestanden zijn (trace-afstand 1). Zonder halve hoek zijn v en -v dezelfde rho
+// (kwadratische producten) en is de dispositiemeting blind voor emotionele tegenstelling.
+function blochRhoOf(mem){ return densityMatrixOf(mem); } // sinds de migratie identiek; alias blijft voor leesbaarheid
+
+function makeRho0(p0,theta0){
+  // 2x2 dichtheidsmatrix van het beginkarakter in Bloch-conventie (halve hoek).
+  // Bloch-lengte m = sqrt(2*p0-1), rho0 = I/2 + m*(pure(theta0/2) - I/2)
+  const m=Math.sqrt(Math.max(0,2*clamp(p0,0.5,0.99)-1));
+  const h=theta0/2;
+  const c=Math.cos(h),s=Math.sin(h);
+  return {vv:0.5+m*(c*c-0.5),va:m*c*s,av:m*c*s,aa:0.5+m*(s*s-0.5)};
+}
+
+function defaultKarakter(){ return {p0:0.7,theta0:Math.PI,xi0:0.5,rho0:makeRho0(0.7,Math.PI)}; }
+
+// Menselijke labels voor karaktereigenschappen, consistent met de emotiezone-namen
+// p0 = purity van rho0; fysisch bereik [0.5, 1): 0.5 is maximaal gemengd (geen richting).
+function charP0Label(p){ return p.toFixed(2)+' '+(p<0.52?'vrijwel richtingloos':p<0.6?'mild':p<0.75?'uitgesproken':p<0.9?'sterk':'extreem'); }
+function charThetaLabel(th){ return emotionZone(Math.cos(th),Math.sin(th)).name; }
+function charXiLabel(x){ return x.toFixed(2)+' '+(x<0.35?'piekeraar':x<0.65?'afgewogen':'vlot'); }
+
+// Eenduidige persoonlijkheidsbenaming uit de drie startcriteria.
+// Dit is de STARTpersoonlijkheid (rho0): via charWeight (kw) vervalt hij en neemt
+// de geleefde geschiedenis het over.
+const ZONE_ADJ={'tevreden':'tevreden','enthousiast':'enthousiaste','gespannen':'gespannen','boos/angstig':'boos-angstige','verdrietig':'verdrietige','uitgeput':'uitgeputte','ontspannen':'ontspannen','vredig':'vredige','neutraal':'neutrale'};
+function persoonlijkheidsNaam(k){
+  if(!k) return 'onbepaald';
+  const xi=k.xi0!=null?k.xi0:0.5;
+  const stijl=xi<0.35?'piekeraar':xi<0.65?'afweger':'vlotte beslisser';
+  const m=Math.sqrt(Math.max(0,2*Math.min(Math.max(k.p0||0.5,0.5),0.99)-1));
+  if(m<0.15) return 'open, onbepaald karakter ('+stijl+')';
+  const zn=emotionZone(Math.cos(k.theta0),Math.sin(k.theta0)).name;
+  const sterkte=k.p0<0.6?'mild':k.p0<0.75?'uitgesproken':k.p0<0.9?'sterk':'extreem';
+  return sterkte+' '+(ZONE_ADJ[zn]||zn)+' '+stijl;
+}
+
+function updateCharPers(){
+  const el=document.getElementById('char-pers'); if(!el) return;
+  const p0=+document.getElementById('char-p0').value/100;
+  const th=+document.getElementById('char-theta').value/100;
+  const xi=+document.getElementById('char-xi').value/100;
+  el.textContent='Startpersoonlijkheid: '+persoonlijkheidsNaam({p0,theta0:th,xi0:xi});
+}
+
+// Groepsnaam op basis van de subrealiteit (gepoold geheugen) van de leden
+const GROEP_NAMEN={'tevreden':'de tevredenen','enthousiast':'de enthousiastelingen','gespannen':'de gespannenen','boos/angstig':'de verhitten','verdrietig':'de treurenden','uitgeput':'de uitgeblusten','ontspannen':'de ontspannenen','vredig':'de vredigen','neutraal':'de zwevenden'};
+function groepsNaam(g){
+  const pool=g.members.flatMap(m=>m.memory);
+  if(pool.length<2) return '';
+  const c=clusterCenter(pool);
+  const zn=emotionZone(c.val,c.aro).name;
+  return GROEP_NAMEN[zn]||('de '+zn+'-groep');
+}
+
+function charWeight(ent){
+  // Gewicht van het beginkarakter, vervalt dynamisch (bijdrage 20):
+  // lambda = (sigma_w/xi0)*0.05 + S*(1-P)*0.3 ; kw = exp(-lambda*runCount)
+  const k=ent?.karakter; if(!k||!k.rho0) return 0;
+  const mem=ent.memory||[];
+  if(mem.length===0) return 1;
+  const S=vonNeumannEntropyOf(mem),P=purityOf(mem);
+  // sigma_w = spreiding van de waarneming zelf (bijdrage 20), analytisch uit de bandbreedte:
+  // magnitude uniform op [0.3*bw, 1.0*bw] geeft sd = 0.7*bw/sqrt(12) ~ 0.2*bw
+  const sigw=0.2*(globalBW/100);
+  const lambda=(sigw/Math.max(0.1,k.xi0||0.5))*0.05+S*(1-P)*0.3;
+  return Math.exp(-lambda*ent.runCount);
+}
+
+function tauD(k){
+  // Beslisprecisie (bijdrage 6, herinterpretatie bijdrage 19): tau_d = xi0/(1-P0+0.1),
+  // genormaliseerd op het default karakter (0.5/0.4) zodat tau=1 neutraal is.
+  // LAAG tau_d = precieze beslisser = strakkere stabiliteitseis = langere deliberatie.
+  // LET OP: T4 moet hierdoor herformuleerd (lage tau_d -> langere route B, niet hoge xi0).
+  if(!k) return 1;
+  const t=(k.xi0||0.5)/(1-(k.p0||0.7)+0.1);
+  return t/(0.5/0.4);
+}
+
+function rhoDispositionOf(ent){
+  // Effectieve dispositie: kw*rho0 + (1-kw)*rho over het VOLLEDIGE geheugen.
+  // Momentane emoties fluctueren; de dispositie zit in de hele geschiedenis (incl. karakter-gekleurde geboortefase).
+  const kw=charWeight(ent);
+  const rm=ent.memory&&ent.memory.length>0?blochRhoOf(ent.memory):{vv:0.5,va:0,av:0,aa:0.5};
+  const r0=ent?.karakter?.rho0||{vv:0.5,va:0,av:0,aa:0.5};
+  return {vv:kw*r0.vv+(1-kw)*rm.vv,va:kw*r0.va+(1-kw)*rm.va,av:kw*r0.av+(1-kw)*rm.av,aa:kw*r0.aa+(1-kw)*rm.aa};
+}
+
+function quantumFidelity(e1,e2){
+  // Bloch: F = cos^2(delta_theta/2). Tegenovergestelde emoties geven nu F=0;
+  // voorheen gaf cos^2(180) = 1: flip-floppen tussen opposities telde als perfecte coherentie.
+  const m1=Math.hypot(e1.val,e1.aro),m2=Math.hypot(e2.val,e2.aro);
+  if(m1<0.001||m2<0.001) return 0;
+  const dth=Math.atan2(e1.aro,e1.val)-Math.atan2(e2.aro,e2.val);
+  return Math.min(1,Math.cos(dth/2)**2);
+}
+
+function quantumRelativeEntropy(w,h){
+  const mw=Math.hypot(w.val,w.aro),mh=Math.hypot(h.val,h.aro);
+  if(mw<0.0001||mh<0.0001) return 1;
+  const dth=Math.atan2(w.aro,w.val)-Math.atan2(h.aro,h.val);
+  const fid=Math.min(0.9999,Math.max(0.0001,Math.cos(dth/2)**2));
+  return Math.min(2,-Math.log(fid));
+}
+
+function relativeEntropyToMemory(w,mem){
+  if(mem.length===0) return 2;
+  const rho=densityMatrixOf(mem);
+  const wMag=Math.hypot(w.val,w.aro); if(wMag<0.0001) return 1;
+  const thw=Math.atan2(w.aro,w.val);
+  const wv=Math.cos(thw/2),wa=Math.sin(thw/2);
+  const fid=Math.min(0.9999,Math.max(0.0001,wv*wv*rho.vv+2*wv*wa*rho.va+wa*wa*rho.aa));
+  return Math.min(2,-Math.log(fid));
+}
+
+function computeSAOf(mem){
+  const n=mem.length;
+  if(n<3) return {coherence:0,biaVal:0,biaAro:0,depth:0,feedbackVec:{val:0,aro:0},gamma:0,entropy:1,purityVal:0.5};
+  let fSum=0;
+  for(let i=1;i<n;i++) fSum+=quantumFidelity(mem[i],mem[i-1]);
+  const coherence=fSum/(n-1);
+  const entropy=vonNeumannEntropyOf(mem);
+  const depth=1-entropy;
+  const purityVal=purityOf(mem);
+  const lambda=0.05+entropy*0.3;
+  let wSV=0,wSA=0,wS=0;
+  mem.forEach((e,i)=>{ const age=n-1-i; const w=Math.exp(-lambda*age); wSV+=e.val*w;wSA+=e.aro*w;wS+=w; });
+  const biaVal=wSV/wS,biaAro=wSA/wS;
+  // gamma = P*F, natuurlijk begrensd op 1. De oude cap 0.72 satureerde bij vrijwel elke
+  // coherente entiteit (anker 2-bevinding) en is verwijderd: gamma is nu onderscheidend.
+  const gamma=purityVal*coherence;
+  return {coherence,biaVal,biaAro,depth,feedbackVec:{val:biaVal*gamma,aro:biaAro*gamma},gamma,entropy,purityVal};
+}
+
+// Delta (bijdrage 15): coherent geheugen oefent zijn purity uit op de superpositie.
+// Geimplementeerd als Bloch-lengte m = sqrt(2P-1) van rho_mem: bijectief met P,
+// random geheugen (P~0.5) geeft delta~0, coherent geheugen (P->1) geeft delta->1.
+// Opbouwfactor n/20 en cap 0.85 blijven (bestaande conventies).
+function computeDeltaOf(mem){
+  if(mem.length<2) return 0;
+  const P=purityOf(mem);
+  const m=Math.sqrt(Math.max(0,2*P-1));
+  return Math.min(0.85,m*Math.min(1,mem.length/20));
+}
+
+// Beta: emergent uit gedeelde clusterstructuur - identieke formule als delta.
+// GEEN vaste cap meer: de theoretische grens P/sqrt(N) (bijdrage 10) wordt in betasFor afgedwongen.
+function computeBetaOf(sharedMem){
+  if(sharedMem.length<2) return 0;
+  const cl=clusterMemoryOf(sharedMem); const biggest=cl[0];
+  const dom=biggest.length/sharedMem.length;
+  const sig=clusterSigma(biggest);
+  return dom*(1-Math.min(1,sig*2.5))*Math.min(1,sharedMem.length/20);
+}
+
+function interfere(aw,ah,delta,as_,beta,as2,beta2){
+  // Vijf bronnen: waarneming, retentie (vorige collapse, gewicht gamma), eigen geheugen,
+  // groepsgeheugen (beta) en extern geheugen (beta2). De retentiebron leest de run-context
+  // (currentAR/currentGammaR): hij is interne toestand en fluctueert niet mee met omgevingsruis.
+  const b2=beta2||0, a2=as2||{val:0,aro:0};
+  const gr=currentGammaR||0, ar=currentAR||{val:0,aro:0};
+  const re=aw.val+gr*ar.val+delta*ah.val+beta*(as_?.val||0)+b2*a2.val;
+  const im=aw.aro+gr*ar.aro+delta*ah.aro+beta*(as_?.aro||0)+b2*a2.aro;
+  const mag=Math.sqrt(re*re+im*im);
+  const norm=mag>0.0001?1/mag:0;
+  // Intensiteit = interferentie-zichtbaarheid: |Psi| voor normalisatie gedeeld door de
+  // maximaal haalbare magnitude. 1 = volledig constructief (bronnen wijzen dezelfde kant op),
+  // -> 0 = destructief (waarneming en geheugen spreken elkaar tegen). Ambivalentie dempt de emotie.
+  const denom=Math.hypot(aw.val,aw.aro)+gr*Math.hypot(ar.val,ar.aro)+delta*Math.hypot(ah.val,ah.aro)
+    +beta*Math.hypot(as_?.val||0,as_?.aro||0)+b2*Math.hypot(a2.val,a2.aro);
+  const intensity=denom>0.0001?Math.min(1,mag/denom):1;
+  return {val:re*norm,aro:im*norm,mag,intensity};
+}
+
+// Collapse-punt Route B: gemiddelde richting van de laatste 3 iteraties (genormaliseerd),
+// geschaald met de gemiddelde interferentie-intensiteit. Toestand = straal, straal in circumplex = intensiteit.
+function collapseFromIters(){
+  const stV=iterHist.slice(-3);
+  if(stV.length===0) return {val:0,aro:0};
+  let v=stV.reduce((s,e)=>s+e.val,0)/stV.length;
+  let a=stV.reduce((s,e)=>s+e.aro,0)/stV.length;
+  const m=Math.hypot(v,a)||1; v/=m; a/=m;
+  const I=stV.reduce((s,e)=>s+(e.intensity!=null?e.intensity:1),0)/stV.length;
+  return {val:clamp(v*I,-0.99,0.99),aro:clamp(a*I,-0.99,0.99)};
+}
+
+// Collapse-punt Route C: winnaar via |Psi|^2 op de ONgenormaliseerde kandidaten (interferentiesterkte
+// als kansmaat), uitkomst daarna genormaliseerd als richting en geschaald met de intensiteit.
+// Dit herstelt de QM-consistentie: geen toestanden meer buiten de eenheidscirkel.
+function collapseFromCandidates(){
+  if(candidates.length===0){
+    const itf=interfere(currentAW,currentAH,currentDelta,currentAS,currentBeta,currentAS2,currentBeta2);
+    return {val:clamp(itf.val*itf.intensity,-0.99,0.99),aro:clamp(itf.aro*itf.intensity,-0.99,0.99)};
+  }
+  let win=0,maxP=candidates[0].mag**2;
+  candidates.forEach((c,i)=>{if(c.mag**2>maxP){maxP=c.mag**2;win=i;}});
+  const w=candidates[win];
+  const m=Math.hypot(w.val,w.aro)||1;
+  const I=w.intensity!=null?w.intensity:1;
+  return {val:clamp(w.val/m*I,-0.99,0.99),aro:clamp(w.aro/m*I,-0.99,0.99)};
+}
+
+// Routekeuze: EMERGENTE drempels uit de eigen geschiedenis (gekozen 20 juli, laat).
+// PAPER-RELEVANT: het oude gedocumenteerde criterium S < 1.5*(1-P) is voor qubits wiskundig
+// ONVERVULBAAR (S en P deterministisch gekoppeld); de oude code compenseerde met S < 1.5-P
+// dat vrijwel altijd waar is (C=83%). Beide vervangen door drempels ZONDER schaalconstantes:
+//   herkenning (C): T < eigen dispositionele ruis (coherentielengte, bijdrage 8)
+//   verrassing (A): T > p90 van de zelf meegemaakte afstanden (adaptatieniveau: verrassing is relatief)
+//   ertussen: deliberatie (B)
+// QM-lezing: T is via de Helstrom-grens de optimale onderscheidbaarheidskans (p_fout = (1-T)/2).
+// Bekende eigenschappen van deze keuze: B wordt dominant (~65%), A ligt per constructie rond 10%
+// voor elke entiteit, en de vloer T_min = (1-m)/2 tussen pure en gemengde toestanden onderdrukt C.
+function rhoPureOf(w){
+  const th=Math.atan2(w.aro,w.val);
+  const c=Math.cos(th/2),s=Math.sin(th/2);
+  return {vv:c*c,va:c*s,av:c*s,aa:s*s};
+}
+function selfFluctOf(mem){
+  if(!mem||mem.length<6) return 0.3;
+  const rec=mem.slice(-Math.min(20,mem.length));
+  const half=Math.floor(rec.length/2);
+  return Math.max(0.03,traceDistRho(densityMatrixOf(rec.slice(0,half)),densityMatrixOf(rec.slice(half))));
+}
+let lastRunT=0;
+function determineRouteFor(currentW,mem){
+  if(mem.length===0) return 'A';
+  if(!currentW||Math.hypot(currentW.val,currentW.aro)<0.001) return 'B';
+  const T=traceDistRho(rhoPureOf(currentW),densityMatrixOf(mem));
+  lastRunT=T;
+  const xi=selfFluctOf(mem);
+  const hist=mem.slice(-30).map(e=>e.Tw).filter(t=>t!=null).sort((a,b)=>a-b);
+  const surprise=hist.length>=8?hist[Math.floor(hist.length*0.9)]:0.6;
+  if(T>surprise) return 'A';
+  if(T<xi) return 'C';
+  return 'B';
+}
+
+// ==================== EMOTIE ====================
+function emotionZone(v,a){
+  const mag=Math.sqrt(v*v+a*a);
+  if(mag<0.15) return {name:'neutraal',color:'#78909c',short:'neut'};
+  const angle=Math.atan2(a,v)*180/Math.PI;
+  const deg=angle<0?angle+360:angle;
+  if(deg<45)  return {name:'tevreden',color:'#a5d6a7',short:'tevr'};
+  if(deg<90)  return {name:'enthousiast',color:'#ffd54f',short:'enth'};
+  if(deg<135) return {name:'gespannen',color:'#ffb74d',short:'gesp'};
+  if(deg<180) return {name:'boos/angstig',color:'#ff7043',short:'boos'};
+  if(deg<225) return {name:'verdrietig',color:'#b39ddb',short:'verd'};
+  if(deg<270) return {name:'uitgeput',color:'#9575cd',short:'uitg'};
+  if(deg<315) return {name:'ontspannen',color:'#64ffda',short:'onts'};
+  return {name:'vredig',color:'#80cbc4',short:'vred'};
+}
+
+// ==================== RUN ====================
+let playing=false,frame=0,animId=null,animEnabled=true;
+let userPaused=false;      // expliciete pauze-intentie van de gebruiker
+let pendingRunTimers=[];   // ingeplande runs (simultaanmodus) zodat pauze ze kan wissen
+const MAX_ITERS=50000;     // deliberatiegrens: daarboven = BESLUITELOOSHEID (betekenisvol modelgedrag)
+let lastRunBesluiteloos=false;
+let currentRunT=0;         // trace-afstand van de waarneming bij routekeuze, gaat mee in de memory entry
+let lastAutoSaveCount=-1;  // voorkomt dubbele auto-opslag bij pauzeren zonder nieuwe runs
+let currentRoute='A',runActive=false,runDone=false;
+let currentAW={val:0,aro:0},currentAH={val:0,aro:0},currentAS={val:0,aro:0},currentAS2={val:0,aro:0};
+let currentDelta=0,currentBeta=0,currentBeta2=0;
+// Retentie (Husserl, bijdrage 3 waargemaakt): de VORIGE collapse werkt door in de superpositie
+let currentAR={val:0,aro:0},currentGammaR=0;
+let candidates=[],iterHist=[],iterStab=-1,lastIterF=0;
+let lastCollapse=null,lastW=null,lastH=null;
+let runningEntityId=1;
+let currentTab='shared';
+
+function doRunForEntity(eid){
+  const ent=getEntity(eid); if(!ent||runActive) return;
+  runningEntityId=eid;
+  activeEntityId=eid;
+  updateEntityButtons();
+
+  playing=false; if(animId){cancelAnimationFrame(animId);animId=null;}
+  runActive=true; runDone=false; frame=0;
+  iterHist=[]; iterStab=-1; lastIterF=0; candidates=[]; lastRunBesluiteloos=false;
+  lastCollapse=null;
+  ent.runCount++;
+
+  const mem=ent.memory;
+  const sa=computeSAOf(mem);
+  // Retentiebron: de vorige collapse (incl. zijn intensiteit) weegt mee met gewicht gamma.
+  // Dit is momentane doorwerking (emotionele traagheid), naast de dispositie-pull van het geheugen.
+  const lastC=mem.length>0?mem[mem.length-1]:null;
+  currentAR=lastC?{val:lastC.val,aro:lastC.aro}:{val:0,aro:0};
+  currentGammaR=lastC?sa.gamma:0;
+  // Karakter: richtingsvector uit rho0 met Bloch-lengte, gewicht kw vervalt dynamisch (bijdrage 20)
+  const kw=charWeight(ent);
+  const kk=ent.karakter;
+  const mChar=kk?Math.sqrt(Math.max(0,2*(kk.p0||0.7)-1)):0;
+  const charVec=kk?{val:Math.cos(kk.theta0)*mChar,aro:Math.sin(kk.theta0)*mChar}:{val:0,aro:0};
+  // delta: geheugen-delta, maar het beginkarakter draagt vroeg bij met zijn eigen purity-lengte
+  currentDelta=Math.min(0.85,Math.max(computeDeltaOf(mem),kw*mChar));
+  const bet=betasFor(eid,mem);
+  currentBeta=bet.bg; currentBeta2=bet.be;
+  currentAS=bet.ag; currentAS2=bet.ae;
+
+  // A_waarneming
+  const bw=globalBW/100;
+  const angle=Math.random()*Math.PI*2;
+  const mag=Math.max(0.08,(0.3+Math.random()*0.7)*bw);
+  const rawW={val:Math.cos(angle)*mag,aro:Math.sin(angle)*mag};
+  // Karakter als initiele retentie (bijdrage 3): rho0 kleurt de waarneming via de feedbackvector,
+  // met gewicht kw en gecapt op de gamma-grens 0.72. Vervalt mee met het karakter (bijdrage 20).
+  const g0=Math.min(0.72,kk?.p0||0);
+  const fbV=sa.feedbackVec.val+kw*charVec.val*g0;
+  const fbA=sa.feedbackVec.aro+kw*charVec.aro*g0;
+  currentAW={val:clamp(rawW.val+fbV,-0.99,0.99),aro:clamp(rawW.aro+fbA,-0.99,0.99)};
+
+  // A_herinnering eigen: geheugencluster gemengd met beginkarakter (kw-gewogen)
+  const cl=clusterMemoryOf(mem);
+  const memVec=mem.length>0?clusterCenter(cl[0]):{val:0,aro:0};
+  currentAH={val:kw*charVec.val+(1-kw)*memVec.val,aro:kw*charVec.aro+(1-kw)*memVec.aro};
+
+  lastW={...currentAW}; lastH={...currentAH};
+  currentRoute=determineRouteFor(currentAW,mem);
+  currentRunT=lastRunT; // vastleggen voor de memory entry (displays herberekenen lastRunT)
+
+  // Update individual tab UI
+  updateIndividualUI();
+
+  if(currentRoute==='C'){
+    const interf=interfere(currentAW,currentAH,currentDelta,currentAS,currentBeta,currentAS2,currentBeta2);
+    const nCand=Math.max(2,Math.min(7,Math.round(2+sa.entropy*5)));
+    for(let i=0;i<nCand;i++){
+      const nv=clamp(interf.val+(Math.random()*2-1)*0.15,-0.99,0.99);
+      const na=clamp(interf.aro+(Math.random()*2-1)*0.15,-0.99,0.99);
+      candidates.push({val:nv,aro:na,mag:Math.sqrt(nv*nv+na*na),intensity:interf.intensity,color:CCOLORS[i%CCOLORS.length],label:'K'+(i+1)});
+    }
+  }
+
+  if(animEnabled){
+    playing=true;
+    document.getElementById('btn-pause-shared').textContent='|| Pauzeer';
+    setTimeout(()=>{ if(playing) animLoop(); },32);
+  } else {
+    finishRunInstant();
+  }
+}
+
+async function onCollapse(v,a){
+  if(runDone) return; runDone=true;
+  lastCollapse={val:v,aro:a};
+  const ent=getEntity(runningEntityId); if(!ent) return;
+  const zone=emotionZone(v,a);
+  const itersCount=currentRoute==='A'?1:currentRoute==='C'?1:iterHist.length;
+
+  // Update individual state strip
+  document.getElementById('sv-val').textContent=v.toFixed(3);
+  document.getElementById('sv-aro').textContent=a.toFixed(3);
+  document.getElementById('sv-emo').textContent=zone.name;
+  document.getElementById('sv-emo').style.color=zone.color;
+  document.getElementById('sv-emo-sub').textContent='run #'+ent.runCount;
+
+  ent.memory.push({val:parseFloat(v.toFixed(3)),aro:parseFloat(a.toFixed(3)),route:currentRoute,run:ent.runCount,entityId:runningEntityId,iters:itersCount,Tw:parseFloat(currentRunT.toFixed(3)),besluiteloos:lastRunBesluiteloos||undefined});
+
+  // Groepen herberekenen op de nieuwe collapse en groepshistorie vastleggen
+  _groupCache=null;_groupCacheRun=-1;
+  const _g=getCachedGroups().find(g=>g.gid>0&&g.members.some(m=>m.id===ent.id));
+  ent.groupHist=ent.groupHist||[];
+  ent.groupHist.push({run:ent.runCount,gid:_g?_g.gid:0});
+
+  updateAllUI();
+  drawSharedCircumplex(); // direct update na elke collapse
+  autoExport();
+
+  setTimeout(()=>{
+    playing=false;
+    if(animId){cancelAnimationFrame(animId);animId=null;}
+    animId=null;
+    runActive=false;
+    if(!userPaused) document.getElementById('btn-pause-shared').textContent='|| Pauzeer';
+    if(currentTab==='individual'){ draw(); drawCircumplex(lastCollapse,lastW,lastH); }
+    drawSharedCircumplex(); // update gedeelde tab altijd
+    updateSharedStats(); // update stats
+
+    // Auto next in auto mode - NIET als de gebruiker net gepauzeerd heeft
+    if(runMode==='auto'&&!autoTimer&&!userPaused){
+      autoTimer=setTimeout(()=>{ autoTimer=null; nextAutoRun(); },autoSpeed);
+    }
+  },animEnabled?1200:80);
+}
+
+function updateAnimButtons(){
+  document.querySelectorAll('[onclick="toggleAnim()"]').forEach(btn=>{
+    btn.textContent=animEnabled?'Animatie aan':'Animatie uit';
+    btn.style.opacity=animEnabled?'1':'0.5';
+  });
+}
+
+function toggleAnim(){
+  animEnabled=!animEnabled;
+  updateAnimButtons();
+  // Loopt er een run terwijl animatie net uitgezet is: maak hem direct af
+  if(!animEnabled&&runActive&&!runDone) finishRunInstant();
+}
+
+// Run zonder animatie direct afmaken (zelfde route-logica als animLoop, synchroon)
+function finishRunInstant(){
+  playing=false;
+  if(animId){cancelAnimationFrame(animId);animId=null;}
+  if(runDone) return;
+  if(currentRoute==='A'){
+    onCollapse(currentAW.val,currentAW.aro);
+  } else if(currentRoute==='C'){
+    const cp=collapseFromCandidates();
+    onCollapse(cp.val,cp.aro);
+  } else {
+    // Route B: synchroon itereren tot stabiliteit
+    const mem=getEntity(runningEntityId)?.memory||[];
+    const sa=computeSAOf(mem);
+    const MINR=0.03;
+    const stabM=Math.max(0.005,0.15*(1-sa.coherence)*tauD(getEntity(runningEntityId)?.karakter));
+    let guard=0;
+    while(iterStab<0&&guard<MAX_ITERS){
+      guard++;
+      const nW={val:clamp(currentAW.val+(Math.random()-0.5)*Math.max(MINR,(1-Math.abs(currentAW.val))*0.35),-0.99,0.99),
+                aro:clamp(currentAW.aro+(Math.random()-0.5)*Math.max(MINR,(1-Math.abs(currentAW.aro))*0.35),-0.99,0.99)};
+      const itr=interfere(nW,currentAH,currentDelta,currentAS,currentBeta,currentAS2,currentBeta2);
+      iterHist.push({val:clamp(itr.val,-0.99,0.99),aro:clamp(itr.aro,-0.99,0.99),mag:itr.mag,intensity:itr.intensity});
+      if(iterHist.length>=4){
+        const nn=iterHist.length;
+        let ok=true;
+        for(let k=nn-3;k<nn;k++){if(euclidean(iterHist[k],iterHist[k-1])>stabM){ok=false;break;}}
+        if(ok) iterStab=nn-1;
+      }
+    }
+    if(iterStab<0) lastRunBesluiteloos=true; // grens bereikt zonder convergentie: besluiteloosheid
+    const cv=collapseFromIters();
+    onCollapse(cv.val,cv.aro);
+  }
+}
+function nextAutoRun(){
+  if(runMode!=='auto'||userPaused) return;
+  // Round-robin door entiteiten
+  const idx=entities.findIndex(e=>e.id===runningEntityId);
+  const next=entities[(idx+1)%entities.length];
+  doRunForEntity(next.id);
+}
+
+// ==================== ENTITY MANAGEMENT ====================
+function addEntity(){
+  // Open karakter configuratie modal
+  const modal=document.getElementById('char-modal');
+  if(modal){
+    // Reset sliders naar default
+    document.getElementById('char-p0').value=70;
+    document.getElementById('char-p0-val').textContent=charP0Label(0.70);
+    document.getElementById('char-theta').value=314;
+    document.getElementById('char-theta-val').textContent=charThetaLabel(3.14);
+    document.getElementById('char-xi').value=50;
+    document.getElementById('char-xi-val').textContent=charXiLabel(0.50);
+    modal.style.display='flex';
+  } else {
+    // Fallback zonder modal
+    const id=entities.length+1;
+    entities.push({id,name:'E'+id,memory:[],runCount:0,color:ENT_COLORS[(id-1)%ENT_COLORS.length],karakter:defaultKarakter(),profielen:[]});
+    updateEntityButtons();updateAllUI();
+  }
+}
+function confirmAddEntity(){
+  const p0=parseFloat(document.getElementById('char-p0').value)/100;
+  const theta=parseFloat(document.getElementById('char-theta').value)/100;
+  const xi=parseFloat(document.getElementById('char-xi').value)/100;
+  const id=entities.length+1;
+  const k={p0,theta0:theta,xi0:xi};
+  if(typeof makeRho0==='function') k.rho0=makeRho0(p0,theta);
+  entities.push({id,name:'E'+id,memory:[],runCount:0,color:ENT_COLORS[(id-1)%ENT_COLORS.length],karakter:k,profielen:[]});
+  document.getElementById('char-modal').style.display='none';
+  updateEntityButtons();updateAllUI();
+}
+
+function setActiveEntity(id){
+  activeEntityId=id;
+  updateEntityButtons();
+  if(currentTab==='individual'){
+    updateIndividualUI();
+    const ent=getEntity(id);
+    if(ent){
+      updateMemUI(ent.memory,id);
+      drawRouteGraph(ent.memory);
+      drawCircumplex(null,null,null);
+      draw();
+    }
+  }
+}
+
+function updateEntityButtons(){
+  ['ent-buttons','ent-buttons-ind'].forEach(containerId=>{
+    const container=document.getElementById(containerId); if(!container) return;
+    // Hergebruik bestaande knoppen - alleen updaten wat veranderd is
+    // Dit voorkomt DOM flikkering bij elke run
+    entities.forEach((ent,i)=>{
+      let btn=container.children[i];
+      if(!btn){
+        btn=document.createElement('button');
+        btn.className='ent-btn';
+        btn.onclick=()=>setActiveEntity(ent.id);
+        container.appendChild(btn);
+      }
+      const isActive=ent.id===activeEntityId;
+      btn.className='ent-btn'+(isActive?' active':'');
+      btn.style.background=isActive?ent.color:'transparent';
+      btn.style.borderColor=ent.color;
+      btn.style.color=isActive?'#06080f':ent.color;
+      btn.textContent=ent.name+' ('+ent.memory.length+')';
+    });
+    // Verwijder overtollige knoppen
+    while(container.children.length>entities.length) container.removeChild(container.lastChild);
+  });
+}
+
+// ==================== MODE ====================
+function setMode(mode){
+  runMode=mode;
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+  const descs={
+    single:'Per entiteit: selecteer actieve entiteit, run doet een waarneming voor die entiteit.',
+    all:'Simultaan: een run doet waarneming voor alle entiteiten tegelijk.',
+    auto:'Autonoom: entiteiten draaien automatisch round-robin. Stop via pauzeer.'
+  };
+  const md=document.getElementById('mode-desc'); if(md) md.textContent=descs[mode];
+  const asr=document.getElementById('auto-speed-row'); if(asr) asr.style.display=mode==='auto'?'block':'none';
+  if(mode!=='auto'&&autoTimer){ clearTimeout(autoTimer); autoTimer=null; }
+}
+
+// ==================== RUN HANDLER ====================
+document.getElementById('btn-run-shared').addEventListener('click',()=>{
+  userPaused=false;
+  document.getElementById('btn-pause-shared').textContent='|| Pauzeer';
+  if(runMode==='single'){
+    doRunForEntity(activeEntityId);
+  } else if(runMode==='all'){
+    // Simultaan: alle entiteiten in volgorde, timers bijhouden zodat pauze ze kan wissen
+    pendingRunTimers.forEach(t=>clearTimeout(t));pendingRunTimers=[];
+    let delay=0;
+    entities.forEach(ent=>{
+      pendingRunTimers.push(setTimeout(()=>doRunForEntity(ent.id),delay));
+      delay+=animEnabled?1500:250;
+    });
+  } else if(runMode==='auto'){
+    nextAutoRun();
+  }
+});
+
+// Automatische sessie-opslag bij pauzeren: alleen als er sinds de vorige opslag nieuwe collapsen zijn
+function autoSaveOnPause(){
+  const tot=allMemory().length;
+  if(tot>4&&tot!==lastAutoSaveCount){
+    autoExport();
+    downloadExport();
+    lastAutoSaveCount=tot;
+  }
+}
+
+document.getElementById('btn-pause-shared').addEventListener('click',()=>{
+  setTimeout(()=>maybeSaveProfielOnPause(),200);
+  setTimeout(()=>{ if(userPaused) autoSaveOnPause(); },300);
+  const btn=document.getElementById('btn-pause-shared');
+  if(runMode==='auto'&&autoTimer){ clearTimeout(autoTimer); autoTimer=null; }
+  pendingRunTimers.forEach(t=>clearTimeout(t));pendingRunTimers=[];
+  if(!runActive){
+    // Geen lopende run: toggle pauze-intentie (blokkeert ook de eerstvolgende autonome run)
+    userPaused=!userPaused;
+    btn.textContent=userPaused?'> Hervat':'|| Pauzeer';
+    if(!userPaused&&runMode==='auto') nextAutoRun();
+    return;
+  }
+  playing=!playing;
+  userPaused=!playing;
+  btn.textContent=playing?'|| Pauzeer':'> Hervat';
+  if(playing) animLoop();
+  else{ if(animId){cancelAnimationFrame(animId);animId=null;} draw(); }
+});
+
+document.getElementById('btn-reset-all').addEventListener('click',()=>{
+  if(autoTimer){clearTimeout(autoTimer);autoTimer=null;}
+  playing=false; if(animId){cancelAnimationFrame(animId);animId=null;}
+  entities.forEach(e=>{ e.memory=[]; e.runCount=0; e.groupHist=[]; });
+  groupTracks=[];nextGroupId=1;_groupCache=null;_groupCacheRun=-1;
+  lastAutoSaveCount=-1;
+  runActive=false; runDone=false; frame=0;
+  candidates=[]; iterHist=[]; iterStab=-1;
+  currentAW={val:0,aro:0}; currentAH={val:0,aro:0}; currentAS={val:0,aro:0}; currentAS2={val:0,aro:0};
+  currentBeta=0; currentBeta2=0; currentAR={val:0,aro:0}; currentGammaR=0;
+  lastCollapse=null; lastW=null; lastH=null;
+  document.getElementById('export-area').value='';
+  updateAllUI(); draw(); drawCircumplex(); drawSharedCircumplex();
+});
+
+// Sliders
+document.getElementById('sl-bw-shared').addEventListener('input',e=>{ globalBW=+e.target.value; document.getElementById('lb-bw-shared').textContent=e.target.value; });
+document.getElementById('sl-auto-speed').addEventListener('input',e=>{ autoSpeed=+e.target.value; document.getElementById('lb-auto-speed').textContent=e.target.value; });
+
+// ==================== UI UPDATE ====================
+function updateIndividualUI(){
+  const ent=getEntity(activeEntityId); if(!ent) return;
+  const mem=ent.memory;
+  // Startpersoonlijkheid + resterende invloed (kw)
+  const pEl=document.getElementById('ind-pers');
+  if(pEl){
+    const kw=charWeight(ent);
+    pEl.textContent=ent.karakter?('start: '+persoonlijkheidsNaam(ent.karakter)+' | werkt nog '+(kw*100).toFixed(0)+'% door'):'';
+  }
+  const sa=computeSAOf(mem);
+  const route=determineRouteFor(currentAW,mem);
+  const routeLabels={'A':'A - Primitief','B':'B - Deliberatief','C':'C - Geleerd'};
+  const routeSubs={'A':'oerreactie','B':'interferentie-convergentie','C':'herkenning + coherentie'};
+  const routeClasses={'A':'cv r','B':'cv del','C':'cv inst'};
+  document.getElementById('sv-route').textContent=routeLabels[currentRoute]||'-';
+  document.getElementById('sv-route').className=routeClasses[currentRoute]||'cv';
+  document.getElementById('sv-route-sub').textContent=routeSubs[currentRoute]||'wacht';
+  document.getElementById('sv-mem').textContent=mem.length;
+  document.getElementById('sv-mem-sub').textContent=mem.length===0?'lege staat':mem.length<5?'vroeg':mem.length<20?'groeiend':'ervaren';
+  if(mem.length>=3){
+    document.getElementById('sv-coh').textContent=(sa.coherence*100).toFixed(0)+'%';
+    document.getElementById('sv-depth').textContent=(sa.depth*100).toFixed(0)+'%';
+    document.getElementById('sv-depth-sub').textContent='S='+sa.entropy.toFixed(2)+' P='+sa.purityVal.toFixed(2);
+    const bz=emotionZone(sa.biaVal,sa.biaAro);
+    document.getElementById('sv-bias').textContent=bz.name.split('/')[0];
+    document.getElementById('sv-bias').style.color=bz.color;
+    document.getElementById('sv-bias-sub').textContent='γ='+sa.gamma.toFixed(2);
+    document.getElementById('sv-delta').textContent=computeDeltaOf(mem).toFixed(2);
+    const bts=betasFor(activeEntityId,mem);
+    document.getElementById('sv-beta').textContent=bts.bg.toFixed(2)+'/'+bts.be.toFixed(2);
+  }
+}
+
+function updateAllUI(){
+  updateEntityButtons();
+  updateSharedStats();
+  drawSharedCircumplex();
+  if(currentTab==='individual'){
+    const ent=getEntity(activeEntityId);
+    if(ent){
+      updateMemUI(ent.memory,activeEntityId);
+      updateIndividualUI();
+      drawRouteGraph(ent.memory);
+    }
+  }
+  if(currentTab==='compare') updateCompareTable();
+}
+
+function updateSharedStats(){
+  const all=allMemory();
+  document.getElementById('ss-entities').textContent=entities.length;
+
+  // Groepsdetectie stats
+  const grEl=document.getElementById('ss-groups'),grSub=document.getElementById('ss-groups-sub');
+  if(grEl&&grSub){
+    const groups=getCachedGroups();
+    const multi=groups.filter(g=>g.members.length>1);
+    grEl.textContent=multi.length;
+    grSub.textContent=multi.length?multi.map(g=>'G'+g.gid+': '+g.members.map(m=>m.name).join('+')).join(' | '):'geen groepen';
+
+    // Groepenoverzicht blok
+    const gl=document.getElementById('groepen-lijst');
+    if(gl){
+      const singles=groups.filter(g=>g.members.length===1);
+      let html='';
+      multi.forEach(g=>{
+        const col=GROUP_COLORS[((g.gid||1)-1)%GROUP_COLORS.length];
+        const lasts=g.members.map(m=>m.memory[m.memory.length-1]).filter(Boolean);
+        let dSum=0,dN=0;
+        for(let i=0;i<lasts.length;i++)for(let j=i+1;j<lasts.length;j++){dSum+=euclidean(lasts[i],lasts[j]);dN++;}
+        const spread=dN>0?dSum/dN:0;
+        const pool=g.members.flatMap(m=>m.memory);
+        const pz=pool.length>=2?emotionZone(clusterCenter(pool).val,clusterCenter(pool).aro):null;
+        const gnaam=groepsNaam(g);
+        html+='<div><span style="color:'+col+';font-weight:700">G'+g.gid+(gnaam?' &ldquo;'+gnaam+'&rdquo;':'')+'</span> '
+          +g.members.map(m=>'<span style="color:'+m.color+'">'+m.name+'</span>').join(' + ')
+          +' <span style="color:var(--dim)">| '+g.members.length+' leden | spread '+spread.toFixed(2)
+          +(pz?' | subrealiteit: '+pz.name:'')+'</span></div>';
+      });
+      if(singles.length) html+='<div style="color:var(--dim)">ongegroepeerd: '+singles.map(s=>s.members[0].name).join(', ')+'</div>';
+      gl.innerHTML=html||'<span style="color:var(--dim)">nog geen groepen (min. 2 entiteiten met runs)</span>';
+    }
+  }
+
+  if(all.length<2){ return; }
+  const S=vonNeumannEntropyOf(all);
+  const P=purityOf(all);
+  document.getElementById('ss-entropy').textContent=S.toFixed(3);
+  document.getElementById('ss-purity').textContent=P.toFixed(3);
+
+  // Convergentie = gemiddelde onderlinge afstand van laatste collapsen
+  const lastCollapses=entities.filter(e=>e.memory.length>0).map(e=>e.memory[e.memory.length-1]);
+  if(lastCollapses.length>=2){
+    let dSum=0,dN=0;
+    for(let i=0;i<lastCollapses.length;i++) for(let j=i+1;j<lastCollapses.length;j++){
+      dSum+=euclidean(lastCollapses[i],lastCollapses[j]); dN++;
+    }
+    const spread=dSum/dN;
+    document.getElementById('ss-conv').textContent=spread.toFixed(3);
+    document.getElementById('ss-conv').style.color=spread<0.3?'#64ffda':spread<0.6?'#ffd54f':'#ff7043';
+  }
+
+  // Gedeelde zone
+  if(all.length>0){
+    const c=clusterCenter(all);
+    const z=emotionZone(c.val,c.aro);
+    document.getElementById('ss-zone').textContent=z.name;
+    document.getElementById('ss-zone').style.color=z.color;
+  }
+
+  // Globale beta
+  document.getElementById('ss-beta').textContent=computeBetaOf(all).toFixed(3);
+}
+
+function updateCompareTable(){
+  const tbody=document.getElementById('compare-tbody'); if(!tbody) return;
+  tbody.innerHTML='';
+  entities.forEach(ent=>{
+    const mem=ent.memory; if(mem.length===0){ const tr=document.createElement('tr'); tr.innerHTML='<td style="color:'+ent.color+'">'+ent.name+'</td><td colspan="9" style="color:var(--dim)">geen data</td>'; tbody.appendChild(tr); return; }
+    const sa=computeSAOf(mem);
+    const cl=clusterMemoryOf(mem);
+    const zones={}; mem.forEach(e=>{ const z=emotionZone(e.val,e.aro).name; zones[z]=(zones[z]||0)+1; });
+    const domZone=Object.entries(zones).sort((a,b)=>b[1]-a[1])[0][0];
+    const aR=mem.filter(e=>e.route==='A').length,bR=mem.filter(e=>e.route==='B').length,cR=mem.filter(e=>e.route==='C').length;
+    const tr=document.createElement('tr');
+    if(ent.id===activeEntityId) tr.className='active-row';
+    tr.innerHTML=`
+      <td style="color:${ent.color}">${ent.name}</td>
+      <td>${mem.length}</td>
+      <td style="font-size:7px">A:${aR} B:${bR} C:${cR}</td>
+      <td>${sa.entropy.toFixed(3)}</td>
+      <td>${sa.purityVal.toFixed(3)}</td>
+      <td>${sa.coherence.toFixed(3)}</td>
+      <td>${computeDeltaOf(mem).toFixed(2)}</td>
+      <td>${(b=>b.bg.toFixed(2)+'/'+b.be.toFixed(2))(betasFor(ent.id,mem))}</td>
+      <td style="color:${emotionZone(0,0).color}">${domZone}</td>
+      <td>${cl.length}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Route sequenties
+  const seqDiv=document.getElementById('route-sequences'); if(!seqDiv) return;
+  seqDiv.innerHTML='';
+  entities.forEach(ent=>{
+    if(ent.memory.length===0) return;
+    // Route-letters in de routekleuren; besluiteloze B-runs in rood
+    const seq=ent.memory.map(e=>{
+      if(e.route==='A') return '<span style="color:#ff7043">A</span>';
+      if(e.route==='C') return '<span style="color:#64ffda">C</span>';
+      return e.besluiteloos?'<span style="color:#ef5350">b</span>':'<span style="color:#ffd54f">b</span>';
+    }).join('');
+    const div=document.createElement('div');
+    div.style.marginBottom='6px';
+    div.innerHTML='<span style="color:'+ent.color+';margin-right:8px">'+ent.name+'</span>'+seq;
+    seqDiv.appendChild(div);
+  });
+
+  // Groep historie per entiteit
+  const gseqDiv=document.getElementById('group-sequences');
+  if(gseqDiv){
+    gseqDiv.innerHTML='';
+    entities.forEach(ent=>{
+      if(!ent.groupHist||ent.groupHist.length===0) return;
+      const spans=ent.groupHist.map(h=>{
+        if(!h.gid) return '<span style="color:var(--dim)">-</span>';
+        const c=GROUP_COLORS[(h.gid-1)%GROUP_COLORS.length];
+        return '<span style="color:'+c+'">'+h.gid+'</span>';
+      }).join('');
+      const div=document.createElement('div');
+      div.style.marginBottom='6px';
+      div.innerHTML='<span style="color:'+ent.color+';margin-right:8px">'+ent.name+'</span>'+spans;
+      gseqDiv.appendChild(div);
+    });
+    if(!gseqDiv.innerHTML) gseqDiv.innerHTML='<span style="color:var(--dim)">Nog geen groepshistorie</span>';
+  }
+}
+
+// ==================== MEMORY UI ====================
+function updateMemUI(mem,entityId){
+  const n=mem.length;
+  document.getElementById('mc').textContent=n;
+  const clusters=clusterMemoryOf(mem);
+  const route=determineRouteFor(currentAW,mem);
+  const hint=document.getElementById('mroute-hint');
+  hint.textContent='→ Route '+route;
+  hint.style.color=route==='A'?'var(--ret)':route==='C'?'var(--inst)':'var(--del)';
+  const container=document.getElementById('cluster-rows');
+  container.innerHTML='';
+  clusters.forEach((cl,ci)=>{
+    const color=CCOLORS[ci%CCOLORS.length];
+    const center=clusterCenter(cl); const sigma=clusterSigma(cl);
+    const zone=emotionZone(center.val,center.aro);
+    const cMag=Math.sqrt(center.val**2+center.aro**2);
+    const intensity=cMag<0.3?'licht':cMag<0.6?'matig':'intens';
+    const row=document.createElement('div'); row.className='cr';
+    const badge=document.createElement('div'); badge.className='cb';
+    badge.style.color=color;
+    badge.style.fontSize=Math.max(8,Math.min(12,7+cl.length*0.6))+'px';
+    badge.textContent='C'+(ci+1)+' ('+cl.length+'x)\n'+zone.name+'\n'+intensity;
+    row.appendChild(badge);
+    const dotsWrap=document.createElement('div'); dotsWrap.className='cd';
+    const rc=getEntity(entityId)?.runCount||n;
+    [...cl].sort((a,b)=>a.run-b.run).forEach(entry=>{
+      const d=document.createElement('div'); d.className='mdot';
+      if(entry.route==='B'){const sz=Math.round(dotRadius(5,entry)*2);d.style.width=sz+'px';d.style.height=sz+'px';}
+      const age=rc-entry.run; const maxAge=Math.max(1,rc-1);
+      const entryZone=emotionZone(entry.val,entry.aro);
+      const routeColor=entry.route==='A'?'#ff7043':entry.route==='C'?'#64ffda':'#ffd54f';
+      d.style.background=entryZone.color;
+      d.style.opacity=0.3+0.7*(1-age/maxAge);
+      // Besluiteloosheid (afgebroken na MAX_ITERS): unieke rode gestreepte markering
+      if(entry.besluiteloos){ d.style.outline='2px dashed #ef5350'; d.style.outlineOffset='0px'; }
+      else { d.style.outline='1.5px solid '+routeColor; d.style.outlineOffset='-1px'; }
+      function showTip(e){
+        const t=document.getElementById('tip');
+        t.innerHTML='Run #'+entry.run+'<br>v:'+entry.val.toFixed(3)+' a:'+entry.aro.toFixed(3)+'<br>Zone: '+emotionZone(entry.val,entry.aro).name+'<br>Route: '+entry.route+(entry.route==='B'?'<br>Iters: '+(entry.iters||1):'')+(entry.besluiteloos?'<br><span style="color:#ef5350">BESLUITELOOS (afgebroken na 50k)</span>':'');
+        t.style.display='block';
+        const cx=e.clientX||(e.touches?.[0]?.clientX||0);
+        const cy2=e.clientY||(e.touches?.[0]?.clientY||0);
+        t.style.left=(cx+12)+'px'; t.style.top=(cy2-8)+'px';
+      }
+      d.addEventListener('mouseenter',showTip); d.addEventListener('mousemove',showTip);
+      d.addEventListener('mouseleave',()=>{ document.getElementById('tip').style.display='none'; });
+      d.addEventListener('touchstart',showTip,{passive:true});
+      d.addEventListener('touchend',()=>{ document.getElementById('tip').style.display='none'; });
+      dotsWrap.appendChild(d);
+    });
+    row.appendChild(dotsWrap);
+    const meta=document.createElement('div'); meta.className='cm2';
+    meta.textContent='v:'+center.val.toFixed(2)+' a:'+center.aro.toFixed(2)+'\nspr:'+sigma.toFixed(3);
+    row.appendChild(meta); container.appendChild(row);
+  });
+  if(n===0) container.innerHTML='';
+  document.getElementById('mstats').textContent=clusters.length+' clusters | '+n+' collapsen | route: '+route;
+}
+
+// ==================== CANVAS ====================
+const canvas=document.getElementById('c');
+const ctx=canvas.getContext('2d');
+const circCanvas=document.getElementById('circ');
+const circCtx=circCanvas.getContext('2d');
+const sharedCircCanvas=document.getElementById('shared-circ');
+const sharedCircCtx=sharedCircCanvas.getContext('2d');
+
+// Sla bekende canvas breedtes op zodat hidden tabs toch kunnen renderen
+const canvasWidths={};
+function getCanvasWidth(cv){
+  if(!cv) return 300;
+  const w=cv.offsetWidth;
+  if(w>10&&w<4000){ canvasWidths[cv.id]=w; return w; }
+  const stored=canvasWidths[cv.id];
+  if(stored&&stored>10&&stored<4000) return stored;
+  return 300; // veilige fallback
+}
+
+function resize(){
+  [canvas,circCanvas,sharedCircCanvas,document.getElementById('graph')].filter(cv=>cv&&cv.nodeType===1).forEach(cv=>{
+    const W=cv.offsetWidth;
+    if(W>10){ canvasWidths[cv.id]=W; } // alleen opslaan als zinvolle breedte
+    const useW=canvasWidths[cv.id]||300;
+    // Gebruik vaste CSS hoogtes - NIET het canvas height attribuut
+    // (canvas.height = interne resolutie in device pixels, niet CSS pixels)
+    const cssHeights={'c':420,'circ':420,'shared-circ':Math.min(useW,400),'graph':65}; // shared-circ vierkant: hoogte=breedte
+    const H=cssHeights[cv.id]||300;
+    if(useW<10||useW>4000) return; // skip als breedte onbekend of absurd
+    const newW=Math.round(Math.min(useW,1200)*devicePixelRatio); // max 1200px
+    const newH=Math.round(Math.min(H,800)*devicePixelRatio);    // max 800px
+    // KRITIEK: alleen resizen als afmeting echt veranderd is
+    // canvas.width=x wist de canvas ALTIJD, ook bij zelfde waarde
+    if(cv.width!==newW||cv.height!==newH){
+      cv.width=newW; cv.height=newH;
+      cv.getContext('2d').setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    }
+  });
+}
+resize();
+let resizeTimer=null;
+window.addEventListener('resize',()=>{
+  if(resizeTimer) clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(()=>{
+    resizeTimer=null;
+    resize();
+    if(currentTab==='individual'){ draw(); drawCircumplex(); drawRouteGraph(); }
+    else if(currentTab==='shared'){ drawSharedCircumplex(); }
+  }, 150); // debounce 150ms
+});
+
+function lerp(a,b,t){ return a+(b-a)*t; }
+
+// Punt in circumplex: clamp radiale magnitude op 1 zodat niets buiten de cirkel valt
+function circPoint(cx,cy,R,val,aro){
+  const m=Math.sqrt(val*val+aro*aro);
+  const f=m>1?1/m:1;
+  return {x:cx+val*f*R,y:cy-aro*f*R};
+}
+
+// Straal van een bolletje: Route B collapsen schalen mee met aantal iteraties (log)
+function dotRadius(base,e){
+  if(!e||e.route!=='B') return base;
+  return base+Math.min(base*1.4,Math.log10((e.iters||1)+1)*base*0.6);
+}
+
+function wv(cy,amp,freq,phase,col,alpha,lw){
+  const W=getCanvasWidth(canvas)||canvas.width/devicePixelRatio; if(W<=0||amp<=0) return;
+  ctx.save();ctx.globalAlpha=alpha;ctx.strokeStyle=col;ctx.lineWidth=lw||1.5;
+  ctx.beginPath();
+  for(let x=0;x<=W;x+=2){
+    const tt=x/W;
+    const y=cy+Math.sin(tt*freq*Math.PI*2+phase)*amp+Math.sin(tt*freq*.6*Math.PI*2+phase*1.4)*amp*.28;
+    x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  }
+  ctx.stroke();ctx.restore();
+}
+
+function circ2(x,y,r,col,lb,sub,alpha){
+  ctx.save();ctx.globalAlpha=Math.max(0,alpha);
+  let glowColor='rgba(128,128,128,0.1)';
+  if(col.startsWith('#')&&col.length>=7){
+    const rv=parseInt(col.slice(1,3),16),gv=parseInt(col.slice(3,5),16),bv=parseInt(col.slice(5,7),16);
+    glowColor='rgba('+rv+','+gv+','+bv+',0.12)';
+  } else if(col.startsWith('rgba(')){
+    glowColor=col.replace(/,[^,)]+\)$/,',0.12)');
+  } else if(col.startsWith('rgb(')){
+    glowColor=col.replace('rgb(','rgba(').replace(')',',0.12)');
+  }
+  const g=ctx.createRadialGradient(x,y,0,x,y,r*3);
+  g.addColorStop(0,glowColor);g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r*3,0,Math.PI*2);ctx.fill();
+  ctx.strokeStyle=col;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.stroke();
+  ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,r*.28,0,Math.PI*2);ctx.fill();
+  ctx.font='500 10px Space Grotesk,sans-serif';ctx.textAlign='center';ctx.fillText(lb,x,y-r-7);
+  if(sub){ctx.fillStyle='#4a5568';ctx.font='9px Space Mono,monospace';ctx.fillText(sub,x,y+r+13);}
+  ctx.restore();
+}
+
+function ar2(x1,y1,x2,y2,col,alpha){
+  ctx.save();ctx.globalAlpha=Math.max(0,alpha);ctx.strokeStyle=col;ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+  const a=Math.atan2(y2-y1,x2-x1);
+  ctx.fillStyle=col;ctx.beginPath();
+  ctx.moveTo(x2,y2);ctx.lineTo(x2-7*Math.cos(a-.4),y2-7*Math.sin(a-.4));ctx.lineTo(x2-7*Math.cos(a+.4),y2-7*Math.sin(a+.4));
+  ctx.closePath();ctx.fill();ctx.restore();
+}
+
+function tx(x,y,t,col,sz){
+  ctx.save();ctx.fillStyle=col||'#4a5568';ctx.font=(sz||9)+'px Space Mono,monospace';ctx.textAlign='left';ctx.fillText(t,x,y);ctx.restore();
+}
+
+// ==================== SUPERPOSITIE LAAG ====================
+function drawSuperpos(W,t,sy){
+  const ent=getEntity(activeEntityId);
+  const mem=ent?ent.memory:[];
+  const memStr=Math.min(0.62,mem.length*0.035);
+  const magW=Math.sqrt(currentAW.val**2+currentAW.aro**2);
+  const magH=Math.sqrt(currentAH.val**2+currentAH.aro**2);
+  const magS=Math.sqrt(currentAS.val**2+currentAS.aro**2);
+  const interf=interfere(currentAW,currentAH,currentDelta,currentAS,currentBeta,currentAS2,currentBeta2);
+
+  // Golf 1: A_waarneming
+  const wAmp=Math.max(4,magW*18);
+  wv(sy,wAmp,3+magW*.3,t*2.1,'#4fc3f7',.4+magW*.25,1.8);
+  wv(sy,wAmp*.2,5.5,t*1.8+1,'#4fc3f7',.1,1);
+
+  // Golf 2: δ·A_herinnering eigen
+  const hAmp=Math.max(currentDelta>0.05?3:0,currentDelta*magH*16);
+  if(hAmp>0){
+    wv(sy+28,hAmp,3.5+magH*.2,t*1.5+1.2,'#b39ddb',.35+currentDelta*.3,1.8);
+    wv(sy+28,hAmp*.18,5,t*1.9+2,'#b39ddb',.08,1);
+  }
+
+  // Golf 3: β·A_herinnering gedeeld (groep + extern gecombineerd in weergave)
+  const magS2=Math.sqrt(currentAS2.val**2+currentAS2.aro**2);
+  const bTot=currentBeta+currentBeta2;
+  const sAmp=Math.max(bTot>0.02?2:0,(currentBeta*magS+currentBeta2*magS2)*14);
+  if(sAmp>0){
+    wv(sy+56,sAmp,4+magS*.15,t*1.3+0.8,'#ffd54f',.3+bTot*.4,1.5);
+    wv(sy+56,sAmp*.15,6,t*2.1+1.5,'#ffd54f',.06,1);
+  }
+
+  // Golf 4: Ψ resultante
+  const intAmp=Math.max(3,interf.mag*16);
+  wv(sy+84,intAmp,4,t*2.2+0.6,'#80cbc4',.5,2.2);
+
+  tx(16,14,'LAAG 1 - SUPERPOSITIE Ψ=(A_w+δ·A_h+β·A_s)/|...|','#1a2030');
+  tx(16,sy-11,'A_waarneming  |A|='+magW.toFixed(3),'#4fc3f7',8);
+  tx(16,sy+17,'δ·A_herinnering_eigen  δ='+currentDelta.toFixed(2),(currentDelta>0.05?'#b39ddb':'#4a5568'),8);
+  tx(16,sy+45,'β·A_gedeeld  βg='+currentBeta.toFixed(2)+' βe='+currentBeta2.toFixed(2),((currentBeta+currentBeta2)>0.02?'#ffd54f':'#4a5568'),8);
+  tx(16,sy+73,'Ψ_resultante  |Ψ|='+interf.mag.toFixed(3),'#80cbc4',8);
+
+  ctx.save();ctx.strokeStyle='#1a2030';ctx.lineWidth=1;ctx.setLineDash([5,7]);
+  ctx.beginPath();ctx.moveTo(0,sy+104);ctx.lineTo(W,sy+104);ctx.stroke();ctx.restore();
+  tx(W-10,sy+100,'BEWUSTZIJNSDREMPEL','#1a2030',8);
+}
+
+// ==================== GEDEELD CIRCUMPLEX ====================
+function drawSharedCircumplex(){
+  if(!sharedCircCanvas) return;
+  const CW=getCanvasWidth(sharedCircCanvas); if(CW<=0) return;
+  const CH=CW;
+  sharedCircCtx.clearRect(0,0,CW,CH);
+  sharedCircCtx.fillStyle='#090d14';sharedCircCtx.fillRect(0,0,CW,CH);
+  const cx=CW/2,cy=CH/2,R=Math.min(cx,cy)-28;
+
+  // Acht zones
+  const zones8=[
+    {name:'vredig',color:'#80cbc4',startDeg:0},{name:'ontspannen',color:'#64ffda',startDeg:45},
+    {name:'uitgeput',color:'#9575cd',startDeg:90},{name:'verdrietig',color:'#b39ddb',startDeg:135},
+    {name:'boos/angstig',color:'#ff7043',startDeg:180},{name:'gespannen',color:'#ffb74d',startDeg:225},
+    {name:'enthousiast',color:'#ffd54f',startDeg:270},{name:'tevreden',color:'#a5d6a7',startDeg:315},
+  ];
+  zones8.forEach(z=>{
+    const sr=z.startDeg*Math.PI/180,er=sr+Math.PI/4;
+    sharedCircCtx.fillStyle=z.color+'18';
+    sharedCircCtx.beginPath();sharedCircCtx.moveTo(cx,cy);
+    sharedCircCtx.arc(cx,cy,R,sr,er);sharedCircCtx.closePath();sharedCircCtx.fill();
+    const mr=sr+Math.PI/8;
+    sharedCircCtx.fillStyle=z.color+'88';sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';
+    sharedCircCtx.fillText(z.name,cx+Math.cos(mr)*R*.7,cy+Math.sin(mr)*R*.7);
+  });
+
+  // Assen
+  sharedCircCtx.strokeStyle='#1a2030';sharedCircCtx.lineWidth=1;
+  sharedCircCtx.beginPath();sharedCircCtx.moveTo(cx-R,cy);sharedCircCtx.lineTo(cx+R,cy);sharedCircCtx.stroke();
+  sharedCircCtx.beginPath();sharedCircCtx.moveTo(cx,cy-R);sharedCircCtx.lineTo(cx,cy+R);sharedCircCtx.stroke();
+  sharedCircCtx.beginPath();sharedCircCtx.arc(cx,cy,R,0,Math.PI*2);sharedCircCtx.stroke();
+
+  // As labels
+  sharedCircCtx.fillStyle='#4a5568';sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';
+  sharedCircCtx.fillText('+ valentie',cx+R,cy-5);sharedCircCtx.fillText('- valentie',cx-R,cy-5);
+  sharedCircCtx.fillText('+ arousal',cx,cy-R-6);sharedCircCtx.fillText('- arousal',cx,cy+R+12);
+
+  // Groepen als licht gekleurde achtergrondvlakken, geclipt op de circumplex
+  const _groups=getCachedGroups().filter(g=>g.members.length>1);
+  _groups.forEach(g=>{
+    const pts=g.members.map(m=>{
+      const l=m.memory[m.memory.length-1];
+      return l?circPoint(cx,cy,R,l.val,l.aro):null;
+    }).filter(Boolean);
+    if(pts.length<2) return;
+    const gcx=pts.reduce((s,p)=>s+p.x,0)/pts.length;
+    const gcy=pts.reduce((s,p)=>s+p.y,0)/pts.length;
+    const rad=Math.max(24,...pts.map(p=>Math.hypot(p.x-gcx,p.y-gcy)))+16;
+    const col=GROUP_COLORS[((g.gid||1)-1)%GROUP_COLORS.length];
+    sharedCircCtx.save();
+    // Clip op de cirkel: groepsvlak loopt netjes door tot de rand en niet buiten het canvas
+    sharedCircCtx.beginPath();sharedCircCtx.arc(cx,cy,R,0,Math.PI*2);sharedCircCtx.clip();
+    sharedCircCtx.fillStyle=col;sharedCircCtx.globalAlpha=0.08;
+    sharedCircCtx.beginPath();sharedCircCtx.arc(gcx,gcy,rad,0,Math.PI*2);sharedCircCtx.fill();
+    sharedCircCtx.globalAlpha=0.35;sharedCircCtx.strokeStyle=col;sharedCircCtx.lineWidth=1;sharedCircCtx.setLineDash([5,5]);
+    sharedCircCtx.beginPath();sharedCircCtx.arc(gcx,gcy,rad,0,Math.PI*2);sharedCircCtx.stroke();sharedCircCtx.setLineDash([]);
+    sharedCircCtx.restore();
+    // Label binnen de cirkel houden
+    const ly=Math.max(cy-R+12,gcy-rad-4);
+    sharedCircCtx.save();
+    sharedCircCtx.globalAlpha=0.8;sharedCircCtx.fillStyle=col;
+    sharedCircCtx.font='700 9px Space Mono,monospace';sharedCircCtx.textAlign='center';
+    sharedCircCtx.fillText('G'+g.gid,gcx,ly);
+    sharedCircCtx.restore();
+    // Subrealiteit van de groep: centrum van het gepoolde groepsgeheugen
+    const pool=g.members.flatMap(m=>m.memory);
+    if(pool.length>=2){
+      const rc=clusterCenter(pool);
+      const rp=circPoint(cx,cy,R,rc.val,rc.aro);
+      sharedCircCtx.save();
+      sharedCircCtx.strokeStyle=col;sharedCircCtx.lineWidth=2;sharedCircCtx.globalAlpha=0.6;
+      sharedCircCtx.setLineDash([2,3]);
+      sharedCircCtx.beginPath();sharedCircCtx.arc(rp.x,rp.y,10,0,Math.PI*2);sharedCircCtx.stroke();
+      sharedCircCtx.setLineDash([]);
+      sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';sharedCircCtx.fillStyle=col;
+      sharedCircCtx.fillText('R'+g.gid,rp.x,rp.y+18);
+      sharedCircCtx.restore();
+    }
+  });
+
+  // Gedeelde realiteit: gewogen centrum van alle collapsen
+  const all=allMemory();
+  if(all.length>=2){
+    const gc=clusterCenter(all);
+    const gp=circPoint(cx,cy,R,gc.val,gc.aro),px=gp.x,py=gp.y;
+    const gz=emotionZone(gc.val,gc.aro);
+    // Gedeelde realiteit ring
+    sharedCircCtx.strokeStyle='#ffffff';sharedCircCtx.lineWidth=2;sharedCircCtx.globalAlpha=0.25;
+    sharedCircCtx.setLineDash([4,4]);
+    sharedCircCtx.beginPath();sharedCircCtx.arc(px,py,16,0,Math.PI*2);sharedCircCtx.stroke();
+    sharedCircCtx.setLineDash([]);
+    sharedCircCtx.globalAlpha=0.5;sharedCircCtx.fillStyle='#ffffff';
+    sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';
+    sharedCircCtx.fillText('realiteit',px,py+22);sharedCircCtx.globalAlpha=1;
+  }
+
+  // Alle entiteiten - trail van recente collapsen + actuele positie
+  entities.forEach(ent=>{
+    const mem=ent.memory; if(mem.length===0) return;
+    const recent=mem.slice(-10); // trail loopt maximaal over de laatste 10 runs
+    const older=mem.slice(0,-10);
+    // Oudere runs blijven allemaal zichtbaar: kleiner maar iteratie-proportioneel, dikkere outline
+    older.forEach(e=>{
+      const p=circPoint(cx,cy,R,e.val,e.aro);
+      const tZone=emotionZone(e.val,e.aro);
+      const r=dotRadius(2,e);
+      sharedCircCtx.globalAlpha=0.28;
+      sharedCircCtx.fillStyle=tZone.color;
+      sharedCircCtx.beginPath();sharedCircCtx.arc(p.x,p.y,r,0,Math.PI*2);sharedCircCtx.fill();
+      sharedCircCtx.globalAlpha=0.5;
+      sharedCircCtx.strokeStyle=ent.color;sharedCircCtx.lineWidth=1.2;
+      sharedCircCtx.beginPath();sharedCircCtx.arc(p.x,p.y,r,0,Math.PI*2);sharedCircCtx.stroke();
+      if(e.besluiteloos){
+        sharedCircCtx.save();sharedCircCtx.setLineDash([2,2]);sharedCircCtx.strokeStyle='#ef5350';sharedCircCtx.lineWidth=1;
+        sharedCircCtx.beginPath();sharedCircCtx.arc(p.x,p.y,r+2.5,0,Math.PI*2);sharedCircCtx.stroke();sharedCircCtx.restore();
+      }
+    });
+    sharedCircCtx.globalAlpha=1;
+    // Uitfadende lijn in entiteit kleur
+    if(recent.length>=2){
+      for(let i=1;i<recent.length;i++){
+        const p1=circPoint(cx,cy,R,recent[i-1].val,recent[i-1].aro);
+        const p2=circPoint(cx,cy,R,recent[i].val,recent[i].aro);
+        sharedCircCtx.globalAlpha=0.1+(i/recent.length)*0.5;
+        sharedCircCtx.strokeStyle=ent.color;
+        sharedCircCtx.lineWidth=0.5+(i/recent.length)*2.5;
+        sharedCircCtx.beginPath();sharedCircCtx.moveTo(p1.x,p1.y);sharedCircCtx.lineTo(p2.x,p2.y);sharedCircCtx.stroke();
+      }
+    }
+    // Stippen op emotie kleur met entiteit outline
+    recent.forEach((e,i)=>{
+      const p=circPoint(cx,cy,R,e.val,e.aro);
+      const tZone=emotionZone(e.val,e.aro);
+      const r=dotRadius(2.5,e);
+      sharedCircCtx.globalAlpha=0.2+(i/recent.length)*0.6;
+      sharedCircCtx.fillStyle=tZone.color;
+      sharedCircCtx.beginPath();sharedCircCtx.arc(p.x,p.y,r,0,Math.PI*2);sharedCircCtx.fill();
+      sharedCircCtx.strokeStyle=ent.color;sharedCircCtx.lineWidth=0.8;
+      sharedCircCtx.beginPath();sharedCircCtx.arc(p.x,p.y,r,0,Math.PI*2);sharedCircCtx.stroke();
+      if(e.besluiteloos){
+        sharedCircCtx.save();sharedCircCtx.setLineDash([2,2]);sharedCircCtx.strokeStyle='#ef5350';sharedCircCtx.lineWidth=1;
+        sharedCircCtx.beginPath();sharedCircCtx.arc(p.x,p.y,r+2.5,0,Math.PI*2);sharedCircCtx.stroke();sharedCircCtx.restore();
+      }
+    });
+    sharedCircCtx.globalAlpha=1;
+
+    // Laatste collapse = grote gekleurde cirkel
+    const last=mem[mem.length-1];
+    const lp=circPoint(cx,cy,R,last.val,last.aro),px=lp.x,py=lp.y;
+    const lastZone=emotionZone(last.val,last.aro);
+    const lastR=dotRadius(8,last);
+    sharedCircCtx.fillStyle=lastZone.color;
+    sharedCircCtx.beginPath();sharedCircCtx.arc(px,py,lastR,0,Math.PI*2);sharedCircCtx.fill();
+    sharedCircCtx.strokeStyle=ent.color;sharedCircCtx.lineWidth=2;
+    sharedCircCtx.beginPath();sharedCircCtx.arc(px,py,lastR,0,Math.PI*2);sharedCircCtx.stroke();
+    sharedCircCtx.fillStyle='#ffffff';sharedCircCtx.globalAlpha=0.9;
+    sharedCircCtx.font='500 8px Space Grotesk,sans-serif';sharedCircCtx.textAlign='center';
+    sharedCircCtx.fillText(ent.name,px,py-lastR-4);
+    sharedCircCtx.globalAlpha=1;
+
+    // Lijn naar gedeelde realiteit
+    if(all.length>=2){
+      const gc=clusterCenter(all);
+      const gp2=circPoint(cx,cy,R,gc.val,gc.aro),gx2=gp2.x,gy2=gp2.y;
+      sharedCircCtx.strokeStyle=ent.color;sharedCircCtx.lineWidth=0.5;sharedCircCtx.globalAlpha=0.2;
+      sharedCircCtx.beginPath();sharedCircCtx.moveTo(px,py);sharedCircCtx.lineTo(gx2,gy2);sharedCircCtx.stroke();
+      sharedCircCtx.globalAlpha=1;
+    }
+  });
+}
+
+// ==================== INDIVIDUEEL CIRCUMPLEX ====================
+function drawCircumplex(collapsePoint,wPoint,hPoint){
+  if(!circCanvas) return;
+  const CW=getCanvasWidth(circCanvas); if(CW<=0) return;
+  const CH=CW; // vierkant: hoogte=breedte
+  circCtx.clearRect(0,0,CW,CH);
+  circCtx.fillStyle='#090d14';circCtx.fillRect(0,0,CW,CH);
+  const cx=CW/2,cy=CH/2,R=Math.min(cx,cy)-22;
+  const ent=getEntity(activeEntityId);
+  const mem=ent?ent.memory:[];
+  const sa=computeSAOf(mem);
+
+  // Acht zones
+  const zones8=[
+    {name:'vredig',color:'#80cbc4',startDeg:0},{name:'ontspannen',color:'#64ffda',startDeg:45},
+    {name:'uitgeput',color:'#9575cd',startDeg:90},{name:'verdrietig',color:'#b39ddb',startDeg:135},
+    {name:'boos/angstig',color:'#ff7043',startDeg:180},{name:'gespannen',color:'#ffb74d',startDeg:225},
+    {name:'enthousiast',color:'#ffd54f',startDeg:270},{name:'tevreden',color:'#a5d6a7',startDeg:315},
+  ];
+  zones8.forEach(z=>{
+    const sr=z.startDeg*Math.PI/180,er=sr+Math.PI/4;
+    circCtx.fillStyle=z.color+'18';circCtx.beginPath();circCtx.moveTo(cx,cy);
+    circCtx.arc(cx,cy,R,sr,er);circCtx.closePath();circCtx.fill();
+    const mr=sr+Math.PI/8;
+    circCtx.fillStyle=z.color+'88';circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';
+    circCtx.fillText(z.name,cx+Math.cos(mr)*R*.65,cy+Math.sin(mr)*R*.65);
+  });
+
+  circCtx.strokeStyle='#1a2030';circCtx.lineWidth=1;
+  circCtx.beginPath();circCtx.moveTo(cx-R,cy);circCtx.lineTo(cx+R,cy);circCtx.stroke();
+  circCtx.beginPath();circCtx.moveTo(cx,cy-R);circCtx.lineTo(cx,cy+R);circCtx.stroke();
+  circCtx.beginPath();circCtx.arc(cx,cy,R,0,Math.PI*2);circCtx.stroke();
+
+  // Herinneringen
+  mem.forEach(e=>{
+    const p=circPoint(cx,cy,R,e.val,e.aro);
+    const zone=emotionZone(e.val,e.aro);
+    const rc=ent.runCount||mem.length;
+    const age=rc-e.run,maxAge=Math.max(1,rc-1);
+    const dotAlpha=0.15+0.3*(1-age/maxAge);
+    const r=dotRadius(4,e);
+    circCtx.globalAlpha=dotAlpha;circCtx.fillStyle=zone.color;
+    circCtx.beginPath();circCtx.arc(p.x,p.y,r,0,Math.PI*2);circCtx.fill();
+    circCtx.globalAlpha=dotAlpha*0.4;circCtx.fillStyle='#ffffff';
+    circCtx.beginPath();circCtx.arc(p.x,p.y,1.2,0,Math.PI*2);circCtx.fill();
+    if(e.besluiteloos){
+      circCtx.save();circCtx.globalAlpha=Math.min(1,dotAlpha*2);circCtx.setLineDash([2,2]);
+      circCtx.strokeStyle='#ef5350';circCtx.lineWidth=1;
+      circCtx.beginPath();circCtx.arc(p.x,p.y,r+2.5,0,Math.PI*2);circCtx.stroke();circCtx.restore();
+    }
+  });
+  circCtx.globalAlpha=1;
+
+  // Clusters
+  clusterMemoryOf(mem).forEach((cl,ci)=>{
+    const center=clusterCenter(cl),sigma=clusterSigma(cl);
+    const cp=circPoint(cx,cy,R,center.val,center.aro),px=cp.x,py=cp.y;
+    const color=CCOLORS[ci%CCOLORS.length];
+    circCtx.strokeStyle=color;circCtx.lineWidth=1;circCtx.globalAlpha=0.22;
+    circCtx.setLineDash([3,4]);
+    circCtx.beginPath();circCtx.arc(px,py,sigma*R,0,Math.PI*2);circCtx.stroke();
+    circCtx.setLineDash([]);
+    circCtx.globalAlpha=0.65;circCtx.fillStyle=color;
+    circCtx.beginPath();circCtx.arc(px,py,7,0,Math.PI*2);circCtx.fill();
+    circCtx.globalAlpha=1;
+    circCtx.fillStyle='#000';circCtx.font='bold 7px Space Mono,monospace';
+    circCtx.textAlign='center';circCtx.textBaseline='middle';
+    circCtx.fillText('C'+(ci+1),px,py);
+    circCtx.textBaseline='alphabetic';
+  });
+
+  // SA feedback vector
+  if(mem.length>=3){
+    const fvx=cx+sa.feedbackVec.val*R,fvy=cy-sa.feedbackVec.aro*R;
+    circCtx.save();circCtx.globalAlpha=0.35+sa.gamma*.4;
+    circCtx.strokeStyle='#ffffff';circCtx.lineWidth=1.5;circCtx.setLineDash([4,4]);
+    circCtx.beginPath();circCtx.moveTo(cx,cy);circCtx.lineTo(fvx,fvy);circCtx.stroke();
+    circCtx.setLineDash([]);
+    circCtx.fillStyle='#ffffff';circCtx.beginPath();circCtx.arc(fvx,fvy,4,0,Math.PI*2);circCtx.fill();
+    circCtx.globalAlpha=0.45;circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';
+    circCtx.fillText('γ='+sa.gamma.toFixed(2),fvx,fvy-9);circCtx.restore();
+  }
+
+  if(wPoint){ const wp=circPoint(cx,cy,R,wPoint.val,wPoint.aro),px=wp.x,py=wp.y; circCtx.save();circCtx.globalAlpha=0.7;circCtx.strokeStyle='#4fc3f7';circCtx.lineWidth=1.5;circCtx.beginPath();circCtx.arc(px,py,6,0,Math.PI*2);circCtx.stroke();circCtx.fillStyle='#4fc3f7';circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';circCtx.fillText('W',px,py-9);circCtx.restore(); }
+  if(hPoint&&mem.length>0){ const hp=circPoint(cx,cy,R,hPoint.val,hPoint.aro),px=hp.x,py=hp.y; circCtx.save();circCtx.globalAlpha=0.7;circCtx.strokeStyle='#b39ddb';circCtx.lineWidth=1.5;circCtx.beginPath();circCtx.arc(px,py,6,0,Math.PI*2);circCtx.stroke();circCtx.fillStyle='#b39ddb';circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';circCtx.fillText('H',px,py-9);circCtx.restore(); }
+  if(collapsePoint){ const cpp=circPoint(cx,cy,R,collapsePoint.val,collapsePoint.aro),px=cpp.x,py=cpp.y; const zone=emotionZone(collapsePoint.val,collapsePoint.aro); const g=circCtx.createRadialGradient(px,py,0,px,py,18); g.addColorStop(0,zone.color+'55');g.addColorStop(1,'transparent'); circCtx.fillStyle=g;circCtx.beginPath();circCtx.arc(px,py,18,0,Math.PI*2);circCtx.fill(); circCtx.globalAlpha=0.88;circCtx.fillStyle=zone.color;circCtx.beginPath();circCtx.arc(px,py,7,0,Math.PI*2);circCtx.fill();
+    const activeEnt=getEntity(activeEntityId);if(activeEnt){circCtx.strokeStyle=activeEnt.color;circCtx.lineWidth=2;circCtx.beginPath();circCtx.arc(px,py,7,0,Math.PI*2);circCtx.stroke();} circCtx.globalAlpha=0.7;circCtx.font='500 8px Space Grotesk,sans-serif';circCtx.textAlign='center';circCtx.fillText(zone.name,px,py+17);circCtx.globalAlpha=1; }
+}
+
+// ==================== ROUTE GRAFIEK ====================
+function drawRouteGraph(mem){
+  const gc=document.getElementById('graph'); if(!gc) return;
+  const W=gc.offsetWidth; if(W<=0) return;
+  const H=65; gc.width=W*devicePixelRatio;gc.height=H*devicePixelRatio;
+  const gx=gc.getContext('2d');gx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  gx.fillStyle='#090d14';gx.fillRect(0,0,W,H);
+  gx.strokeStyle='#1a2030';gx.lineWidth=1;gx.beginPath();gx.moveTo(0,H/2);gx.lineTo(W,H/2);gx.stroke();
+  const n=(mem||[]).length; if(n===0){ gx.fillStyle='#4a5568';gx.font='8px Space Mono,monospace';gx.textAlign='center';gx.fillText('Geen data',W/2,H/2+4);return; }
+  const bW=Math.max(2,(W-20)/n);
+  let aC=0,bC=0,cC=0,xC=0;
+  (mem||[]).forEach((e,i)=>{
+    const x=10+i*(W-20)/Math.max(n-1,1);
+    const isA=e.route==='A',isC=e.route==='C';
+    if(isA)aC++;else if(isC)cC++;else{bC++;if(e.besluiteloos)xC++;}
+    gx.globalAlpha=0.62;
+    if(isA){gx.fillStyle='#ff7043';gx.fillRect(x-bW/2,H/2-22,bW,20);}
+    else if(isC){gx.fillStyle='#64ffda';gx.fillRect(x-bW/2,H/2-22,bW,20);}
+    else{
+      const maxIter=Math.max(1,...(mem||[]).filter(m=>m.route==='B').map(m=>m.iters||1));
+      const iterH=Math.max(4,Math.min(26,20*Math.log((e.iters||1)+1)/Math.log(maxIter+1)));
+      gx.fillStyle=e.besluiteloos?'#ef5350':'#ffd54f';gx.fillRect(x-bW/2,H/2+2,bW,iterH);
+      if(bW>=10&&(e.iters||1)>10){
+        gx.save();gx.globalAlpha=.7;gx.fillStyle='#fff';
+        gx.font='5px Space Mono,monospace';gx.textAlign='center';
+        const lbl=(e.iters||1)>=1000?Math.round((e.iters)/1000)+'k':String(e.iters||1);
+        gx.fillText(lbl,x,H/2+2+iterH+6);
+        gx.restore();
+      }
+    }
+    gx.globalAlpha=1;
+  });
+  // Routewisselingen
+  for(let i=1;i<n;i++){
+    if((mem||[])[i].route!==(mem||[])[i-1].route){
+      const x=10+i*(W-20)/Math.max(n-1,1);
+      gx.save();gx.globalAlpha=0.4;gx.strokeStyle='#ffffff';gx.lineWidth=1;gx.setLineDash([2,3]);
+      gx.beginPath();gx.moveTo(x,0);gx.lineTo(x,H);gx.stroke();gx.setLineDash([]);gx.restore();
+    }
+  }
+  gx.fillStyle='#4a5568';gx.font='7px Space Mono,monospace';gx.textAlign='left';
+  gx.fillText('A/C',2,H/2-10);gx.fillText('B',2,H/2+16);
+  const rr=document.getElementById('route-ratio');
+  if(rr) rr.textContent='A:'+aC+' B:'+bC+' C:'+cC+(xC>0?' | besluiteloos: '+xC:'');
+}
+
+// ==================== DRAW LOOP ====================
+function drawSuperposWrapper(W,t,sy){ drawSuperpos(W,t,sy); }
+
+function drawRouteA(W,H,t){
+  const sy=80;const cy=360;const coX=W/2;
+  drawSuperposWrapper(W,t,sy);
+  tx(16,sy+108,'LAAG 2 - ROUTE A PRIMITIEF INSTINCT: DIRECTE COLLAPSE','#1a2030');
+  const zone=emotionZone(currentAW.val,currentAW.aro);
+  ctx.save();ctx.globalAlpha=0.5+0.5*Math.sin(t*4);ctx.strokeStyle=zone.color;ctx.lineWidth=2;ctx.setLineDash([4,4]);
+  ctx.beginPath();ctx.moveTo(coX,sy+104);ctx.lineTo(coX,cy-22);ctx.stroke();ctx.restore();
+  tx(16,310,'LAAG 3 - BEWUSTZIJN B (PRIMITIEF - DIRECT)','#1a2030');
+  circ2(coX,cy,18,zone.color,'A',zone.name,.7+.3*Math.sin(t*3));
+  if(!runDone) onCollapse(currentAW.val,currentAW.aro);
+}
+
+function drawRouteC(W,H,t){
+  const sy=80;const cy=360;const coX=W/2;
+  drawSuperposWrapper(W,t,sy);
+  tx(16,sy+108,'LAAG 2 - ROUTE C GELEERD INSTINCT: KANDIDATEN','#1a2030');
+  const interf=interfere(currentAW,currentAH,currentDelta,currentAS,currentBeta,currentAS2,currentBeta2);
+  const n=candidates.length;
+  if(n===0){if(!runDone){const cp=collapseFromCandidates();onCollapse(cp.val,cp.aro);}return;}
+  const sp=Math.min(W*.68,400);const sx=W/2-sp/2;
+  let win=0;let maxP=candidates[0].mag**2;
+  candidates.forEach((c,i)=>{ const p=c.mag**2;if(p>maxP){maxP=p;win=i;} });
+  candidates.forEach((c,i)=>{
+    const x=n>1?sx+(i/(n-1))*sp:W/2;const isW=i===win;
+    const bH=c.mag**2*60;
+    ctx.save();ctx.globalAlpha=isW?.5:.13;ctx.fillStyle=c.color;ctx.fillRect(x-7,cy-80-bH,14,bH);ctx.restore();
+    const zone=emotionZone(c.val,c.aro);
+    if(isW){ctx.save();ctx.globalAlpha=.55;ctx.strokeStyle=zone.color;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,cy-80,14,0,Math.PI*2);ctx.stroke();ctx.restore();}
+    circ2(x,cy-80,isW?11:8,c.color,c.label,'|Ψ|²='+(c.mag**2).toFixed(2),isW?.8:.3);
+  });
+  tx(16,310,'LAAG 3 - BEWUSTZIJN B (GELEERD INSTINCT - |Ψ|²)','#1a2030');
+  const wx=n>1?sx+(win/(n-1))*sp:W/2;
+  ar2(wx,cy-68,coX,cy-22,'#ff7043',.75);
+  const cp=collapseFromCandidates();
+  const zone=emotionZone(cp.val,cp.aro);
+  circ2(coX,cy,17,'#64ffda','C',zone.name,.68+.32*Math.sin(t*2.5));
+  if(!runDone) onCollapse(cp.val,cp.aro);
+}
+
+function drawRouteB(W,H,t){
+  const sy=80;const iy=270;const coY=390;const coX=W/2;
+  drawSuperposWrapper(W,t,sy);
+  tx(16,sy+108,'LAAG 2 - ROUTE B DELIBERATIEF: INTERFERENTIE-CONVERGENTIE','#1a2030');
+  const ent=getEntity(activeEntityId);
+  const mem=ent?ent.memory:[];
+  const memStr=Math.min(0.62,mem.length*0.035);
+  // Open-systeem relaxatie: herhaalde ruis-interactie (omgeving) + projectieve normalisatie.
+  // Bewust NIET-unitair: decoherentie is het deliberatiemechanisme zelf.
+  const iterInterval=Math.max(1,Math.round(20/(1+iterHist.length*0.05)));
+  if(iterStab<0&&frame-lastIterF>=iterInterval){
+    const MINR=0.03;
+    const noiseV=(Math.random()-.5)*Math.max(MINR,(1-Math.abs(currentAW.val))*0.35);
+    const noiseA=(Math.random()-.5)*Math.max(MINR,(1-Math.abs(currentAW.aro))*0.35);
+    const noisyW={val:currentAW.val+noiseV,aro:currentAW.aro+noiseA};
+    const drift=0.02;
+    const noisyH={val:currentAH.val+(Math.random()-.5)*drift,aro:currentAH.aro+(Math.random()-.5)*drift};
+    const noisyS={val:currentAS.val+(Math.random()-.5)*drift,aro:currentAS.aro+(Math.random()-.5)*drift};
+    const noisyS2={val:currentAS2.val+(Math.random()-.5)*drift,aro:currentAS2.aro+(Math.random()-.5)*drift};
+    const interf=interfere(noisyW,noisyH,currentDelta,noisyS,currentBeta,noisyS2,currentBeta2);
+    iterHist.push({val:clamp(interf.val,-0.99,0.99),aro:clamp(interf.aro,-0.99,0.99),mag:interf.mag,intensity:interf.intensity});
+    lastIterF=frame;
+    if(iterStab<0&&iterHist.length>=MAX_ITERS){
+      lastRunBesluiteloos=true;
+      iterStab=iterHist.length-1; // afbreken: collapse volgt via het normale stabiel-pad
+    } else if(iterHist.length>=4){
+      const nn=iterHist.length;
+      const sa=computeSAOf(mem);
+      const stabM=Math.max(0.005,0.15*(1-sa.coherence)*tauD(ent?.karakter));
+      let ok=true;
+      for(let k=nn-3;k<nn;k++){if(euclidean(iterHist[k],iterHist[k-1])>stabM){ok=false;break;}}
+      if(ok) iterStab=iterHist.length-1;
+    }
+  }
+  const trig=iterStab>=0;
+  const maxSh=13;const shF=Math.max(0,iterHist.length-maxSh);
+  const sh=iterHist.slice(shF);const nn=sh.length;
+  if(nn>0){
+    const nsp=Math.min(50,(W-100)/Math.max(nn,1));
+    const xs=sh.map((_,i)=>50+i*nsp);
+    for(let i=0;i<nn;i++){
+      const x=xs[i];const gi=shF+i;const isSt=trig&&gi>=iterStab-2;
+      const coh=i>0?clamp(1-euclidean(sh[i],sh[i-1])*3,0,1):1;
+      const cr2=Math.round(220*(1-coh));const cg2=Math.round(160*coh+40);
+      const cc2='rgba('+cr2+','+cg2+',80,0.9)';
+      const zone=emotionZone(sh[i].val,sh[i].aro);
+      if(i<nn-1){
+        const x2=xs[i+1];
+        ctx.save();ctx.globalAlpha=.12+coh*.3;ctx.strokeStyle=cc2;ctx.lineWidth=1+coh*1.8;
+        ctx.beginPath();ctx.moveTo(x+9,iy);ctx.lineTo(x2-9,iy);ctx.stroke();ctx.restore();
+        ctx.save();ctx.globalAlpha=.26;ctx.fillStyle=cc2;ctx.font='7px Space Mono,monospace';ctx.textAlign='center';
+        ctx.fillText((coh*100).toFixed(0)+'%',(x+x2)/2,iy-17);ctx.restore();
+      }
+      const bH=(sh[i].mag||0.5)*36;
+      ctx.save();ctx.globalAlpha=isSt?.3:.1;ctx.fillStyle=isSt?zone.color:cc2;ctx.fillRect(x-4,iy-9-bH,8,bH);ctx.restore();
+      circ2(x,iy,isSt?10:7,isSt?zone.color:cc2,'C'+(gi+1),isSt?'★':(coh*100).toFixed(0)+'%',i===nn-1?0.5+0.5*Math.sin(t*7):.62);
+    }
+    if(trig){
+      const lL=clamp(iterStab-shF,0,nn-1);const fL=Math.max(0,lL-2);
+      const nspT=Math.min(50,(W-100)/Math.max(nn,1));
+      for(let k=fL;k<=lL;k++){
+        const kx=50+k*nspT;
+        ctx.save();ctx.globalAlpha=.13+.09*Math.sin(t*3);ctx.strokeStyle='#ff7043';ctx.lineWidth=2;
+        ctx.beginPath();ctx.arc(kx,iy,14,0,Math.PI*2);ctx.stroke();ctx.restore();
+      }
+      const kx0=50+fL*nspT,kx2=50+lL*nspT;
+      ar2(50+lL*nspT,iy+11,coX,coY-22,'#ff7043',.72);
+    }
+  }
+  ctx.save();ctx.globalAlpha=.28;ctx.fillStyle='#4a5568';ctx.font='8px Space Mono,monospace';ctx.textAlign='left';
+  const iterSpeed=Math.max(1,Math.round(20/(1+iterHist.length*0.05)));
+  ctx.fillText(trig?iterHist.length+' iteraties - stabiel':iterHist.length+' iteraties Δt='+iterSpeed+'fr...',16,iy+42);ctx.restore();
+  tx(16,330,'LAAG 3 - BEWUSTZIJN B (DELIBERATIEF)','#1a2030');
+  if(trig){
+    const cv=collapseFromIters();
+    const zone=emotionZone(cv.val,cv.aro);
+    circ2(coX,coY,17,'#ffd54f','B',zone.name,.6+.4*Math.sin(t*2.5));
+    if(!runDone) onCollapse(cv.val,cv.aro);
+  }
+}
+
+function drawWacht(W,H){
+  const ent=getEntity(activeEntityId);
+  const mem=ent?ent.memory:[];
+  const route=determineRouteFor(currentAW,mem);
+  const routeNamesW={'A':'Primitief instinct','B':'Deliberatief','C':'Geleerd instinct'};
+  ctx.save();
+  ctx.globalAlpha=.35;ctx.fillStyle='#e8f0ff';ctx.font='500 12px Space Grotesk,sans-serif';ctx.textAlign='center';
+  ctx.fillText((ent?.name||'Entiteit')+' gereed',W/2,H/2-26);
+  ctx.globalAlpha=.2;ctx.fillStyle='#4a5568';ctx.font='8px Space Mono,monospace';
+  ctx.fillText(mem.length+' herinneringen | δ='+computeDeltaOf(mem).toFixed(2)+' βg='+betasFor(activeEntityId,mem).bg.toFixed(2),W/2,H/2-4);
+  ctx.fillText('Volgende route: '+route+' - '+(routeNamesW[route]||route),W/2,H/2+14);
+  ctx.globalAlpha=.12;ctx.fillText('Klik Nieuwe waarneming om te starten',W/2,H/2+40);
+  ctx.restore();
+}
+
+function draw(){
+  if(!canvas) return;
+  const W=getCanvasWidth(canvas);const H=420;if(W<=0) return;
+  ctx.clearRect(0,0,W,H);
+  ctx.save();ctx.strokeStyle='#090d14';ctx.lineWidth=1;
+  for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  ctx.restore();
+  if(!runActive){drawWacht(W,H);return;}
+  const t=frame/80;
+  if(currentRoute==='A') drawRouteA(W,H,t);
+  else if(currentRoute==='C') drawRouteC(W,H,t);
+  else drawRouteB(W,H,t);
+}
+
+function animLoop(){
+  if(!playing){
+    return; // stop volledig - geen continue redraw
+  }
+  frame++;
+  if(currentTab==='individual'){
+    draw(); // tekent en triggert collapse via drawRoute functies
+  } else if(playing) {
+    // Op andere tabs: voer route-logica uit zonder tekenen (alleen als playing)
+    if(!runDone){
+      if(currentRoute==='A'){
+        onCollapse(currentAW.val,currentAW.aro);
+      } else if(currentRoute==='C'){
+        const cp=collapseFromCandidates();
+        onCollapse(cp.val,cp.aro);
+      } else {
+        // Route B: itereer zonder tekenen
+        const mem=getEntity(runningEntityId)?.memory||[];
+        const sa=computeSAOf(mem);
+        const iterInterval=Math.max(1,Math.round(20/(1+iterHist.length*0.05)));
+        if(iterStab<0&&frame-lastIterF>=iterInterval){
+          const MINR=0.03;
+          const nW={val:clamp(currentAW.val+(Math.random()-0.5)*Math.max(MINR,(1-Math.abs(currentAW.val))*0.35),-0.99,0.99),
+                    aro:clamp(currentAW.aro+(Math.random()-0.5)*Math.max(MINR,(1-Math.abs(currentAW.aro))*0.35),-0.99,0.99)};
+          const itr=interfere(nW,currentAH,currentDelta,currentAS,currentBeta,currentAS2,currentBeta2);
+          iterHist.push({val:clamp(itr.val,-0.99,0.99),aro:clamp(itr.aro,-0.99,0.99),mag:itr.mag,intensity:itr.intensity});
+          lastIterF=frame;
+          if(iterStab<0&&iterHist.length>=MAX_ITERS){
+            lastRunBesluiteloos=true;
+            const cv=collapseFromIters();
+            onCollapse(cv.val,cv.aro);
+          } else if(iterHist.length>=4){
+            const nn=iterHist.length;
+            const stabM=Math.max(0.005,0.15*(1-sa.coherence)*tauD(getEntity(runningEntityId)?.karakter));
+            let ok=true;
+            for(let k=nn-3;k<nn;k++){if(euclidean(iterHist[k],iterHist[k-1])>stabM){ok=false;break;}}
+            if(ok){
+              const cv=collapseFromIters();
+              onCollapse(cv.val,cv.aro);
+            }
+          }
+        }
+      }
+    }
+  }
+  animId=requestAnimationFrame(animLoop);
+}
+
+// ==================== TAB SWITCHING ====================
+function switchTab(tab,el){
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if(el) el.classList.add('active');
+  // Wacht twee frames zodat DOM layout volledig is
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    resize();
+    if(tab==='individual'){
+      const ent=getEntity(activeEntityId);
+      if(ent){ updateMemUI(ent.memory,activeEntityId); updateIndividualUI(); drawRouteGraph(ent.memory); }
+      draw(); drawCircumplex(lastCollapse,lastW,lastH);
+    }
+    if(tab==='shared'){ drawSharedCircumplex(); }
+    if(tab==='compare'){ updateCompareTable(); }
+  }));
+}
+
+// ==================== EXPORT/IMPORT ====================
+function autoExport(){
+  const data={
+    versie:'v5',bandbreedte:globalBW,geexporteerd:new Date().toISOString(),
+    entities:entities.map(e=>({id:e.id,name:e.name,color:e.color,memory:e.memory,runCount:e.runCount,
+      karakter:e.karakter||null,profielen:e.profielen||[],groupHist:e.groupHist||[]}))
+  };
+  document.getElementById('export-area').value=JSON.stringify(data,null,2);
+  showStatus(allMemory().length+' totaal','#80cbc4');
+}
+
+function downloadExport(){
+  try{
+    const data=document.getElementById('export-area').value||'';
+    if(!data){ showStatus('niets te exporteren','#ef5350'); return; }
+    const blob=new Blob([data],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    const d=new Date(),p=n=>String(n).padStart(2,'0');
+    a.download='bewustzijn-sessie-'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes())+'.json';
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);
+    showStatus('bestand gedownload','#64ffda');
+  }catch(e){ showStatus('download mislukt: '+e.message,'#ef5350'); }
+}
+
+function showStatus(msg,color){
+  const el=document.getElementById('storage-status');
+  if(!el) return;
+  el.textContent='● '+msg;el.style.color=color;
+  setTimeout(()=>{ el.textContent='● '+allMemory().length+' collapsen'; el.style.color='#4a5568'; },2500);
+}
+
+document.getElementById('btn-export').addEventListener('click',()=>{
+  autoExport();
+  downloadExport();
+  try{ navigator.clipboard.writeText(document.getElementById('export-area').value).then(()=>{}).catch(()=>{}); }catch(e){}
+});
+document.getElementById('btn-export-shared')?.addEventListener('click',()=>{
+  autoExport();
+  downloadExport();
+});
+document.getElementById('btn-copy').addEventListener('click',()=>{
+  const data=document.getElementById('export-area').value;if(!data)return;
+  try{ navigator.clipboard.writeText(data).then(()=>showStatus('gekopieerd','#64ffda')).catch(()=>{}); }catch(e){}
+});
+function importFromText(raw){
+  try{
+    if(!raw||!raw.trim())return;
+    const d=JSON.parse(raw);
+    if(d.entities){
+      entities=d.entities.map(e=>({id:e.id,name:e.name,color:e.color||ENT_COLORS[(e.id-1)%ENT_COLORS.length],memory:e.memory||[],runCount:e.runCount||e.memory?.length||0,karakter:e.karakter||defaultKarakter(),profielen:e.profielen||[],groupHist:e.groupHist||[]}));
+    } else if(d.mem){
+      // backwards compat: single entity export
+      entities=[{id:1,name:'E1',color:ENT_COLORS[0],memory:d.mem,runCount:d.rc||d.mem.length,karakter:defaultKarakter(),profielen:[],groupHist:[]}];
+    }
+    if(d.bandbreedte){ globalBW=d.bandbreedte;
+      const sl=document.getElementById('sl-bw-shared'),lb=document.getElementById('lb-bw-shared');
+      if(sl)sl.value=globalBW; if(lb)lb.textContent=globalBW; }
+    groupTracks=[];nextGroupId=1;_groupCache=null;_groupCacheRun=-1;
+    activeEntityId=entities[0]?.id||1;
+    showStatus(allMemory().length+' collapsen geladen','#80cbc4');
+    updateAllUI();draw();drawCircumplex();drawSharedCircumplex();
+  }catch(e){ alert('Import fout: '+e.message); }
+}
+document.getElementById('btn-import').addEventListener('click',()=>{
+  importFromText(document.getElementById('export-area').value);
+});
+document.getElementById('file-import')?.addEventListener('change',ev=>{
+  const f=ev.target.files?.[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{ document.getElementById('export-area').value=String(r.result); importFromText(String(r.result)); };
+  r.readAsText(f);
+  ev.target.value='';
+});
+
+// ==================== INIT ====================
+function initApp(){
+  resize();
+  // Alleen het zichtbare canvas (gedeelde tab) hoeft breedte te hebben.
+  // De canvassen op verborgen tabs hebben offsetWidth 0 tot hun tab opent -
+  // daarop wachten blokkeerde de hele init (opstartbug: entiteit 1 onzichtbaar).
+  const allReady=sharedCircCanvas.offsetWidth>0;
+  if(!allReady){ setTimeout(initApp,50); return; }
+  currentTab='shared';
+  activeEntityId=1;
+  updateEntityButtons();
+  updateAnimButtons();
+  updateSharedStats();
+  drawSharedCircumplex();
+  drawRouteGraph([]);
+  // Teken lege circumplex voor E1 zodat de cirkel zichtbaar is
+  drawCircumplex(null,null,null);
+  draw();
+}
+// Meerdere triggers voor maximale compatibiliteit
+setTimeout(initApp,50);
+window.addEventListener('load',()=>setTimeout(initApp,100));
+</script>
+
+<!-- Karakter configuratie modal -->
+<div id="char-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#000a;z-index:100;align-items:center;justify-content:center">
+  <div style="background:#0d1117;border:1px solid #1a2030;border-radius:6px;padding:20px;max-width:300px;width:90%">
+    <div style="font-size:10px;color:var(--dim);letter-spacing:.1em;margin-bottom:14px">NIEUW KARAKTER</div>
+    <div class="sr">
+      <span class="sn">Karaktersterkte P&#x2080; (mild &#8594; extreem)</span>
+      <input type="range" id="char-p0" min="50" max="99" value="70" oninput="document.getElementById('char-p0-val').textContent=charP0Label(this.value/100);updateCharPers()">
+      <span class="sv2" id="char-p0-val" style="min-width:96px">0.70 uitgesproken</span>
+    </div>
+    <div class="sr">
+      <span class="sn">Grondstemming &#x03B8;&#x2080; (emotiezone)</span>
+      <input type="range" id="char-theta" min="0" max="628" value="314" oninput="document.getElementById('char-theta-val').textContent=charThetaLabel(this.value/100);updateCharPers()">
+      <span class="sv2" id="char-theta-val" style="min-width:96px">boos/angstig</span>
+    </div>
+    <div class="sr">
+      <span class="sn">Beslisstijl &#x03BE;&#x2080; (laag = piekeraar, hoog = vlot)</span>
+      <input type="range" id="char-xi" min="10" max="99" value="50" oninput="document.getElementById('char-xi-val').textContent=charXiLabel(this.value/100);updateCharPers()">
+      <span class="sv2" id="char-xi-val" style="min-width:96px">0.50 afgewogen</span>
+    </div>
+    <div id="char-pers" style="font-size:9px;color:var(--ch);margin-top:10px;font-family:'Space Mono',monospace">Startpersoonlijkheid: uitgesproken boos-angstige afweger</div>
+    <div class="br" style="margin-top:10px">
+      <button class="pri" onclick="confirmAddEntity()">Toevoegen</button>
+      <button onclick="document.getElementById('char-modal').style.display='none'">Annuleer</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
