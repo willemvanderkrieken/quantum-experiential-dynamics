@@ -8,3 +8,5 @@ authors:
 version: "1.0"
 date-released: "2026-07-21"
 license: MIT
+doi: "10.5281/zenodo.21470110"
+repository-code: "https://github.com/willemvanderkrieken/quantum-experiential-dynamics"
