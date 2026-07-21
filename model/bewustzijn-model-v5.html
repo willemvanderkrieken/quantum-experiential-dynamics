@@ -86,11 +86,14 @@
 <div class="tip" id="tip"></div>
 <input type="file" id="file-import" accept=".json,application/json" style="display:none">
 <header>
-  <div class="ey">Conceptueel Model — Speculatief — v5.3 Multi-Entiteit</div>
-  <h1>Bewustzijn als <em>Quantummeetmoment</em> — Multi-Entiteit</h1>
-  <div class="fx">
-    Ψ = (A_w + γ·A_retentie + δ·A_h + β_g·A_groep + β_e·A_extern) / |...| — open kwantumsysteem: superpositie + decoherente relaxatie<br>
-    Route A→B→C→(A bij extremen) | Alle drempels emergent uit dichtheidsmatrix
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <div class="ey" data-i18n="hdr.ey">Conceptual Model — Speculative — v5.4 Multi-Entity</div>
+    <button id="lang-toggle" onclick="toggleLang()" style="background:transparent;border:1px solid #2a3244;color:#8a9ab0;font-size:9px;padding:2px 8px;border-radius:3px;cursor:pointer;font-family:'Space Mono',monospace">NL</button>
+  </div>
+  <h1 data-i18n-html="hdr.h1">Consciousness as <em>Quantum Measurement Moment</em> — Multi-Entity</h1>
+  <div class="fx" data-i18n-html="hdr.fx">
+    Ψ = (A_w + γ·A_retention + δ·A_h + β_g·A_group + β_e·A_extern) / |...| — open quantum system: superposition + decoherent relaxation<br>
+    Route A→B→C→(A at extremes) | All thresholds emergent from the density matrix
   </div>
 </header>
 <main>
@@ -98,18 +101,18 @@
 <!-- TABS -->
 <div>
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('shared',this)">Gedeelde Ruimte</button>
-    <button class="tab" onclick="switchTab('individual',this)">Individuele Entiteit</button>
-    <button class="tab" onclick="switchTab('compare',this)">Vergelijking</button>
+    <button class="tab active" onclick="switchTab('shared',this)" data-i18n="tab.shared">Shared Space</button>
+    <button class="tab" onclick="switchTab('individual',this)" data-i18n="tab.individual">Individual Entity</button>
+    <button class="tab" onclick="switchTab('compare',this)" data-i18n="tab.compare">Comparison</button>
   </div>
 
   <!-- TAB 1: GEDEELDE RUIMTE -->
   <div class="tab-content active" id="tab-shared">
     <!-- Entity selector -->
     <div class="ent-bar">
-      <span class="ent-label">Entiteiten:</span>
+      <span class="ent-label" data-i18n="ent.label">Entities:</span>
       <div id="ent-buttons"></div>
-      <button class="ent-btn ent-add" onclick="addEntity()">+ Entiteit</button>
+      <button class="ent-btn ent-add" onclick="addEntity()" data-i18n="ent.add">+ Entity</button>
       <span style="flex:1"></span>
     </div>
 
@@ -118,75 +121,75 @@
 
     <!-- Gedeelde realiteit stats -->
     <div class="strip" id="shared-strip">
-      <div class="cell"><div class="ck">Entiteiten</div><div class="cv w" id="ss-entities">1</div><div class="cs">actief</div></div>
-      <div class="cell"><div class="ck">Gedeelde S</div><div class="cv" id="ss-entropy" style="color:var(--del)">—</div><div class="cs">von Neumann</div></div>
-      <div class="cell"><div class="ck">Gedeelde P</div><div class="cv" id="ss-purity" style="color:var(--cm)">—</div><div class="cs">purity ρ_gedeeld</div></div>
-      <div class="cell"><div class="ck">Convergentie</div><div class="cv" id="ss-conv" style="color:var(--inst)">—</div><div class="cs">spread entiteiten</div></div>
-      <div class="cell"><div class="ck">Gedeelde zone</div><div class="cv" id="ss-zone" style="color:var(--ret)">—</div><div class="cs">gedeelde realiteit</div></div>
-      <div class="cell"><div class="ck">β gedeeld</div><div class="cv" id="ss-beta" style="color:var(--ch)">—</div><div class="cs">emergent</div></div>
-      <div class="cell"><div class="ck">Groepen</div><div class="cv" id="ss-groups" style="color:var(--inst)">—</div><div class="cs" id="ss-groups-sub">detectie</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.entities">Entities</div><div class="cv w" id="ss-entities">1</div><div class="cs" data-i18n="ss.entities.sub">active</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.S">Shared S</div><div class="cv" id="ss-entropy" style="color:var(--del)">—</div><div class="cs">von Neumann</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.P">Shared P</div><div class="cv" id="ss-purity" style="color:var(--cm)">—</div><div class="cs" data-i18n="ss.P.sub">purity ρ_shared</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.conv">Convergence</div><div class="cv" id="ss-conv" style="color:var(--inst)">—</div><div class="cs" data-i18n="ss.conv.sub">entity spread</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.zone">Shared zone</div><div class="cv" id="ss-zone" style="color:var(--ret)">—</div><div class="cs" data-i18n="ss.zone.sub">shared reality</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.beta">β shared</div><div class="cv" id="ss-beta" style="color:var(--ch)">—</div><div class="cs" data-i18n="ss.beta.sub">emergent</div></div>
+      <div class="cell"><div class="ck" data-i18n="ss.groups">Groups</div><div class="cv" id="ss-groups" style="color:var(--inst)">—</div><div class="cs" id="ss-groups-sub" data-i18n="ss.groups.sub">detection</div></div>
     </div>
 
     <!-- Groepenoverzicht -->
     <div class="blk">
-      <div class="bt">Groepen — samenstelling</div>
-      <div id="groepen-lijst" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"><span style="color:var(--dim)">nog geen groepen</span></div>
+      <div class="bt" data-i18n="grp.title">Groups — composition</div>
+      <div id="groepen-lijst" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"><span style="color:var(--dim)" data-i18n="grp.none">no groups yet</span></div>
     </div>
 
     <!-- Run controls -->
     <div class="blk">
-      <div class="bt">Bediening</div>
-      <button class="pri" id="btn-run-shared">▶ Nieuwe waarneming</button>
+      <div class="bt" data-i18n="ctl.title">Controls</div>
+      <button class="pri" id="btn-run-shared" data-i18n="ctl.run">▶ New perception</button>
       <div class="mode-bar" style="margin-top:8px">
-        <span class="ent-label">Modus:</span>
-        <button class="mode-btn active" data-mode="single" onclick="setMode('single')">Per entiteit</button>
-        <button class="mode-btn" data-mode="all" onclick="setMode('all')">Simultaan</button>
-        <button class="mode-btn" data-mode="auto" onclick="setMode('auto')">Autonoom</button>
+        <span class="ent-label" data-i18n="ctl.mode">Mode:</span>
+        <button class="mode-btn active" data-mode="single" onclick="setMode('single')" data-i18n="ctl.single">Per entity</button>
+        <button class="mode-btn" data-mode="all" onclick="setMode('all')" data-i18n="ctl.all">Simultaneous</button>
+        <button class="mode-btn" data-mode="auto" onclick="setMode('auto')" data-i18n="ctl.auto">Autonomous</button>
       </div>
       <div class="br" style="margin-top:8px">
-        <button id="btn-pause-shared">⏸ Pauzeer</button>
-        <button class="red" id="btn-reset-all">↺ Reset alles</button>
-        <button class="sm" onclick="toggleAnim()" style="border-color:var(--inst);color:var(--inst)">Animatie</button>
-        <button id="btn-export-shared" style="border-color:var(--cm);color:var(--cm)">↑ Exporteer</button>
-        <button onclick="document.getElementById('file-import').click()" style="border-color:var(--cm);color:var(--cm)">📂 Laad bestand</button>
+        <button id="btn-pause-shared" data-i18n="ctl.pause">⏸ Pause</button>
+        <button class="red" id="btn-reset-all" data-i18n="ctl.reset">↺ Reset all</button>
+        <button class="sm" onclick="toggleAnim()" style="border-color:var(--inst);color:var(--inst)" data-i18n="ctl.anim">Animation</button>
+        <button id="btn-export-shared" style="border-color:var(--cm);color:var(--cm)" data-i18n="ctl.export">↑ Export</button>
+        <button onclick="document.getElementById('file-import').click()" style="border-color:var(--cm);color:var(--cm)" data-i18n="ctl.load">📂 Load file</button>
       </div>
       <div class="sr" style="margin-top:8px">
-        <span class="sn">Bandbreedte situatie</span>
+        <span class="sn" data-i18n="ctl.bw">Situation bandwidth</span>
         <input type="range" id="sl-bw-shared" min="10" max="100" value="70">
         <span class="sv2" id="lb-bw-shared">70</span>
       </div>
       <div id="auto-speed-row" style="display:none">
         <div class="sr">
-          <span class="sn">Autonoom snelheid (ms)</span>
+          <span class="sn" data-i18n="ctl.speed">Autonomous speed (ms)</span>
           <input type="range" id="sl-auto-speed" min="200" max="3000" value="1500" step="100">
           <span class="sv2" id="lb-auto-speed">1500</span>
         </div>
       </div>
-      <p style="font-size:8px;color:var(--dim);margin-top:6px;line-height:1.5" id="mode-desc">Per entiteit: klik selecteert actieve entiteit, run doet één waarneming.</p>
+      <p style="font-size:8px;color:var(--dim);margin-top:6px;line-height:1.5" id="mode-desc">Per entity: click selects the active entity, a run performs one perception.</p>
     </div>
   </div>
 
   <!-- TAB 2: INDIVIDUELE ENTITEIT -->
   <div class="tab-content" id="tab-individual">
     <div class="blk" style="margin-bottom:8px">
-      <div class="bt">Bediening</div>
-      <button class="pri" onclick="document.getElementById('btn-run-shared').click()">▶ Nieuwe waarneming</button>
+      <div class="bt" data-i18n="ctl.title">Controls</div>
+      <button class="pri" onclick="document.getElementById('btn-run-shared').click()" data-i18n="ctl.run">▶ New perception</button>
       <div class="mode-bar" style="margin-top:8px">
-        <span class="ent-label">Modus:</span>
-        <button class="mode-btn" data-mode="single" onclick="setMode('single')">Per entiteit</button>
-        <button class="mode-btn" data-mode="all" onclick="setMode('all')">Simultaan</button>
-        <button class="mode-btn" data-mode="auto" onclick="setMode('auto')">Autonoom</button>
+        <span class="ent-label" data-i18n="ctl.mode">Mode:</span>
+        <button class="mode-btn" data-mode="single" onclick="setMode('single')" data-i18n="ctl.single">Per entity</button>
+        <button class="mode-btn" data-mode="all" onclick="setMode('all')" data-i18n="ctl.all">Simultaneous</button>
+        <button class="mode-btn" data-mode="auto" onclick="setMode('auto')" data-i18n="ctl.auto">Autonomous</button>
       </div>
       <div class="br" style="margin-top:8px">
-        <button onclick="document.getElementById('btn-pause-shared').click()">⏸ Pauzeer</button>
-        <button class="red" onclick="document.getElementById('btn-reset-all').click()">↺ Reset alles</button>
-        <button class="sm" onclick="toggleAnim()" style="border-color:var(--inst);color:var(--inst)">Animatie</button>
+        <button onclick="document.getElementById('btn-pause-shared').click()" data-i18n="ctl.pause2">⏸ Pause</button>
+        <button class="red" onclick="document.getElementById('btn-reset-all').click()" data-i18n="ctl.reset">↺ Reset all</button>
+        <button class="sm" onclick="toggleAnim()" style="border-color:var(--inst);color:var(--inst)" data-i18n="ctl.anim">Animation</button>
 
       </div>
     </div>
 
     <div class="ent-bar">
-      <span class="ent-label">Bekijk entiteit:</span>
+      <span class="ent-label" data-i18n="ent.view">View entity:</span>
       <div id="ent-buttons-ind"></div>
       <span style="flex:1"></span>
       <span id="ind-pers" class="ent-label" style="color:var(--ch)"></span>
@@ -194,16 +197,16 @@
 
     <!-- State strip individueel -->
     <div class="strip">
-      <div class="cell"><div class="ck">Route</div><div class="cv inst" id="sv-route">—</div><div class="cs" id="sv-route-sub">wacht</div></div>
-      <div class="cell"><div class="ck">Valentie</div><div class="cv w" id="sv-val">—</div><div class="cs">negatief↔positief</div></div>
-      <div class="cell"><div class="ck">Arousal</div><div class="cv w" id="sv-aro">—</div><div class="cs">laag↔hoog</div></div>
-      <div class="cell"><div class="ck">Emotie zone</div><div class="cv r" id="sv-emo">—</div><div class="cs" id="sv-emo-sub">—</div></div>
-      <div class="cell"><div class="ck">Herinneringen</div><div class="cv" id="sv-mem" style="color:var(--ch)">0</div><div class="cs" id="sv-mem-sub">lege staat</div></div>
-      <div class="cell"><div class="ck">Coherentie</div><div class="cv inst" id="sv-coh">—</div><div class="cs">fidelity</div></div>
-      <div class="cell"><div class="ck">Emotie bias</div><div class="cv" id="sv-bias" style="color:var(--del)">—</div><div class="cs" id="sv-bias-sub">γ richting</div></div>
-      <div class="cell"><div class="ck">Diepte</div><div class="cv" id="sv-depth" style="color:var(--ch)">—</div><div class="cs" id="sv-depth-sub">1-S</div></div>
-      <div class="cell"><div class="ck">δ eigen</div><div class="cv" id="sv-delta" style="color:var(--cm)">—</div><div class="cs">herinneringsampl.</div></div>
-      <div class="cell"><div class="ck">β gedeeld</div><div class="cv" id="sv-beta" style="color:var(--ch)">—</div><div class="cs">gedeelde ampl.</div></div>
+      <div class="cell"><div class="ck">Route</div><div class="cv inst" id="sv-route">—</div><div class="cs" id="sv-route-sub" data-i18n="sv.wait">waiting</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.val">Valence</div><div class="cv w" id="sv-val">—</div><div class="cs" data-i18n="sv.val.sub">negative↔positive</div></div>
+      <div class="cell"><div class="ck">Arousal</div><div class="cv w" id="sv-aro">—</div><div class="cs" data-i18n="sv.aro.sub">low↔high</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.emo">Emotion zone</div><div class="cv r" id="sv-emo">—</div><div class="cs" id="sv-emo-sub">—</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.mem">Memories</div><div class="cv" id="sv-mem" style="color:var(--ch)">0</div><div class="cs" id="sv-mem-sub" data-i18n="sv.mem.sub">empty state</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.coh">Coherence</div><div class="cv inst" id="sv-coh">—</div><div class="cs">fidelity</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.bias">Emotion bias</div><div class="cv" id="sv-bias" style="color:var(--del)">—</div><div class="cs" id="sv-bias-sub" data-i18n="sv.bias.sub">γ direction</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.depth">Depth</div><div class="cv" id="sv-depth" style="color:var(--ch)">—</div><div class="cs" id="sv-depth-sub">1-S</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.delta">δ own</div><div class="cv" id="sv-delta" style="color:var(--cm)">—</div><div class="cs" data-i18n="sv.delta.sub">memory ampl.</div></div>
+      <div class="cell"><div class="ck" data-i18n="sv.beta">β shared</div><div class="cv" id="sv-beta" style="color:var(--ch)">—</div><div class="cs" data-i18n="sv.beta.sub">shared ampl.</div></div>
     </div>
 
     <!-- Superpositie canvas -->
@@ -211,46 +214,46 @@
 
     <!-- Route grafiek -->
     <div class="blk">
-      <div class="bt"><span>Route A/B/C over tijd</span><span id="route-ratio" style="font-weight:normal;color:var(--dim)">—</span></div>
+      <div class="bt"><span data-i18n="rt.title">Route A/B/C over time</span><span id="route-ratio" style="font-weight:normal;color:var(--dim)">—</span></div>
       <canvas id="graph" height="65" style="width:100%;max-width:100%;display:block;"></canvas>
       <div style="display:flex;gap:12px;margin-top:4px">
-        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--ret)">■ A Primitief</span>
-        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--del)">■ B Deliberatief</span>
-        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--inst)">■ C Geleerd</span>
-        <span style="font-family:'Space Mono',monospace;font-size:8px;color:#ef5350">■ B besluiteloos (afgebroken na 50k)</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--ret)" data-i18n="rt.A">■ A Primitive</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--del)" data-i18n="rt.B">■ B Deliberative</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--inst)" data-i18n="rt.C">■ C Learned</span>
+        <span style="font-family:'Space Mono',monospace;font-size:8px;color:#ef5350" data-i18n="rt.X">■ B indecisive (truncated at 50k)</span>
       </div>
     </div>
 
     <!-- Geheugen -->
     <div class="mb">
       <div class="mh">
-        <span>Herinneringsstructuur — <span id="mc">0</span> collapsen</span>
+        <span><span data-i18n="mem.title">Memory structure</span> — <span id="mc">0</span> <span data-i18n="mem.collapses">collapses</span></span>
         <span id="mroute-hint" style="color:var(--cm);font-family:'Space Mono',monospace;font-size:7px">→ Route A</span>
       </div>
       <div id="cluster-rows"></div>
-      <div class="ms" id="mstats">Geen herinneringen</div>
+      <div class="ms" id="mstats" data-i18n="mem.none">No memories</div>
     </div>
 
     <!-- Export -->
     <div class="blk">
-      <div class="bt"><span>Geheugen opslaan/laden</span><span id="storage-status" style="font-family:'Space Mono',monospace;font-size:7px;color:var(--dim)">● geen opslag</span></div>
-      <p style="font-size:8px;color:var(--dim);margin-bottom:7px;line-height:1.5">Exporteer na elke sessie. Importeer bij nieuwe sessie.</p>
+      <div class="bt"><span data-i18n="exp.title">Save/load memory</span><span id="storage-status" style="font-family:'Space Mono',monospace;font-size:7px;color:var(--dim)" data-i18n="exp.nostore">● no storage</span></div>
+      <p style="font-size:8px;color:var(--dim);margin-bottom:7px;line-height:1.5" data-i18n="exp.hint">Export after every session. Import when starting a new session.</p>
       <div class="br">
-        <button id="btn-export">↑ Exporteer</button>
-        <button class="sm" id="btn-profiel" onclick="genereerProfiel(true)" style="border-color:var(--ch);color:var(--ch)">Profiel</button>
-        <button id="btn-import">↓ Importeer</button>
-        <button onclick="document.getElementById('file-import').click()" style="border-color:var(--cm);color:var(--cm)">📂 Laad bestand</button>
-        <button id="btn-copy" style="border-color:var(--cm);color:var(--cm)">⎘ Kopieer</button>
+        <button id="btn-export" data-i18n="ctl.export">↑ Export</button>
+        <button class="sm" id="btn-profiel" onclick="genereerProfiel(true)" style="border-color:var(--ch);color:var(--ch)" data-i18n="exp.profile">Profile</button>
+        <button id="btn-import" data-i18n="exp.import">↓ Import</button>
+        <button onclick="document.getElementById('file-import').click()" style="border-color:var(--cm);color:var(--cm)" data-i18n="ctl.load">📂 Load file</button>
+        <button id="btn-copy" data-i18n="exp.copy" style="border-color:var(--cm);color:var(--cm)">⎘ Copy</button>
       </div>
-      <textarea class="export-area" id="export-area" placeholder="Exporteer of plak data..." rows="4"></textarea>
+      <textarea class="export-area" id="export-area" placeholder="Export or paste data..." rows="4"></textarea>
     </div>
   </div>
 
   <!-- Karakterprofielen sectie -->
   <div id="profiel-sectie" style="display:none;background:#090d14;border:1px solid #1a2030;border-radius:4px;padding:8px;margin:8px 0 0 0">
     <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:4px;border-bottom:1px solid #1a2030;margin-bottom:6px">
-      <span style="font-size:8px;letter-spacing:.08em;color:var(--dim)">KARAKTERPROFIELEN</span>
-      <span style="font-size:9px;color:var(--dim);cursor:pointer" onclick="document.getElementById('profiel-sectie').style.display='none'">sluiten x</span>
+      <span style="font-size:8px;letter-spacing:.08em;color:var(--dim)" data-i18n="prof.title">CHARACTER PROFILES</span>
+      <span style="font-size:9px;color:var(--dim);cursor:pointer" onclick="document.getElementById('profiel-sectie').style.display='none'" data-i18n="prof.close">close x</span>
     </div>
     <div id="profiel-lijst" style="max-height:400px;overflow-y:auto"></div>
   </div>
@@ -258,13 +261,13 @@
 
     <!-- Route sequentie per entiteit -->
     <div class="blk">
-      <div class="bt">Route sequentie per entiteit</div>
+      <div class="bt" data-i18n="seq.title">Route sequence per entity</div>
       <div id="route-sequences" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"></div>
     </div>
 
     <!-- Groep historie per entiteit -->
     <div class="blk">
-      <div class="bt">Groep historie per entiteit — groepsnummer per eigen run, - = ongegroepeerd</div>
+      <div class="bt" data-i18n="ghist.title">Group history per entity — group number per own run, - = ungrouped</div>
       <div id="group-sequences" style="font-family:'Space Mono',monospace;font-size:8px;line-height:2"></div>
     </div>
   </div>
@@ -272,13 +275,13 @@
   <!-- TAB 3: VERGELIJKING -->
   <div class="tab-content" id="tab-compare">
     <div class="blk">
-      <div class="bt">Vergelijkingstabel — alle entiteiten</div>
+      <div class="bt" data-i18n="cmp.title">Comparison table — all entities</div>
       <div style="overflow-x:auto">
         <table class="ent-table" id="compare-table">
           <thead><tr>
-            <th>Entiteit</th><th>Runs</th><th>Route dist.</th>
-            <th>Entropie S</th><th>Purity P</th><th>Coherentie F</th>
-            <th>δ</th><th>β</th><th>Dom. zone</th><th>Clusters</th>
+            <th data-i18n="cmp.ent">Entity</th><th>Runs</th><th data-i18n="cmp.route">Route dist.</th>
+            <th data-i18n="cmp.S">Entropy S</th><th>Purity P</th><th data-i18n="cmp.F">Coherence F</th>
+            <th>δ</th><th>β</th><th data-i18n="cmp.zone">Dom. zone</th><th>Clusters</th>
           </tr></thead>
           <tbody id="compare-tbody"></tbody>
         </table>
@@ -286,42 +289,103 @@
     </div>
 
 
-<!-- PAPER NOTITIE -->
-<div class="paper">
-  <span style="color:var(--cm);letter-spacing:.12em">PAPER NOTITIE v5.4</span><br>
-  <span style="color:var(--dim)">Quantum-gespireerd Formeel Raamwerk voor Experientiële Toestandsevolutie</span><br><br>
-  <span style="color:var(--cw)">Formele definitie:</span> Psi = (A_w + delta*A_h + beta*A_s) / |...|<br><br>
-  <span style="color:var(--ch)">Originele bijdragen:</span><br>
-  (1) Toestandsruimte 2D: inwendig product. Projectieve normalisatie (niet Born-regel).<br>
-  (2) Automatische routekeuze via clustergeometrie van geheugen — geen externe parameters.<br>
-  (3) gamma = P*F: Husserl retentie als QM-grootheid. Hoog gamma = sterke experientiële identiteit.<br>
-  (4) Route A-&gt;B-&gt;C-&gt;A emergent. Drempels: T(rho_w,rho_mem) &gt; 1.5*(1-P) en S(rho) &lt; 1.5*(1-P).<br>
-  (5) Bloch-bol geometrie 2x2. Coherentie = quantum fidelity | Diepte = 1-S(von Neumann).<br>
-  (6) tau_d = xi0/(1-P0+eps): beslisprecisie emergeert uit rho0. Hoog = deliberatief, laag = impulsief.<br>
-  (7) Gedeelde realiteit: convergentie meetbaar via von Neumann entropie.<br>
-  (8) Groepsdecoherentie bij N&gt;8. Optimum 3-6. beta_groep &gt; beta_extern.<br>
-  (9) Groep != gedeelde realiteit: orthogonale begrippen met eigen QM-grootheden.<br>
-  (10) QM-valide parameters: T als drempel, gamma max P*(1-S*0.3), beta max P/sqrt(N).<br>
-  (11) Groep = superadditieve purity: P(groep) &gt; gemiddelde P(individu). beta_lokaal &gt; beta_globaal.<br>
-  (12) Projectieve normalisatie bewust anders dan Born-regel: collapse is meest-waarschijnlijk niet probabilistisch.<br>
-  (13) 2D emotieruimte als collapse-uitkomst: Russell circumplex als QM-collapse ipv klassieke selectie.<br>
-  (14) Adaptieve Gaussische clustering als geheugenstructuur zonder externe parameters.<br>
-  (15) delta = P(rho_mem): coherent geheugen oefent maximaal zijn eigen purity uit op superpositie.<br>
-  (16) Groepsdecoherentie bij N&gt;8: beta-invloeden neutraliseren, gedeelde S-&gt;1. Optimum 3-6.<br>
-  (17) Groepsaffiniteit via agglomeratieve clustering op trace-afstandsmatrix.<br>
-  (18) beta_groep &gt; beta_extern: groepsleden wegen zwaarder. Sociale identiteit als QM-subsysteem.<br>
-  (19) tau_d herinterpretatie: beslisprecisie ipv geduld. Hoog tau_d = ruimtolerant. Laag = precies/lang.<br>
-  (20) Karakter rho0 vervalt met dynamische lambda = (sigma_w/xi0)*0.05 + S*(1-P)*0.3.<br><br>
-  <span style="color:#ff704360">TODO: bandbreedte emergent vanuit aandacht/verwachting entiteit</span><br><br>
-  <span style="color:var(--dim)">Indienen: </span><span style="color:var(--ch)">Topics in Cognitive Science · Journal of Mathematical Psychology · Frontiers in Psychology</span><br>
-  <span style="color:var(--dim)">Bespreken: </span><span style="color:var(--ch)">Busemeyer &amp; Bruza · Atmanspacher · Friston · Price &amp; Wharton</span>
+<!-- MODEL NOTES -->
+<div class="paper" data-i18n-html="paper.block">
+  <span style="color:var(--cm);letter-spacing:.12em">MODEL NOTES v5.4</span><br>
+  <span style="color:var(--dim)">Quantum Experiential Dynamics — an open quantum systems architecture for experiential state evolution</span><br><br>
+  <span style="color:var(--cw)">State update:</span> Psi = (A_w + gamma*A_retention + delta*A_h + beta_g*A_group + beta_e*A_extern) / |...| (projective normalisation, stated postulate variant)<br><br>
+  <span style="color:var(--ch)">Key mechanisms (all thresholds emergent, no scale constants):</span><br>
+  (1) Qubit density matrices on Russell's circumplex, Bloch-equator convention: opposite emotions orthogonal, ambivalence = von Neumann entropy.<br>
+  (2) Route choice from one measure: trace distance T between perception and memory (Helstrom reading). Recognition if T &lt; own self-fluctuation; surprise if T &gt; own p90; deliberation between; indecision = truncation at 50k iterations.<br>
+  (3) Emotional intensity = interference visibility: ambivalence is destructive interference. Collapse = direction x intensity.<br>
+  (4) gamma = P*F (retention, Husserl); delta = Bloch length of memory rho; character rho0 decays with dynamic lambda.<br>
+  (5) Group affinity = trace distance between dispositional rhos, threshold = 1.5x mean self-fluctuation; beta_g &le; P/sqrt(group), beta_e &le; P/sqrt(N), so in-group dominance is emergent.<br>
+  (6) Route B = open-system relaxation (not unitary); tau_d = xi0/(1-P0+0.1) sets decision precision (dose effect over 3 orders of magnitude).<br><br>
+  <span style="color:var(--dim)">Preprint: </span><span style="color:var(--ch)">osf.io/preprints/psyarxiv/9wdx4_v1</span><span style="color:var(--dim)"> · Code/data: </span><span style="color:var(--ch)">doi.org/10.5281/zenodo.21470110</span><br>
+  <span style="color:var(--dim)">Open question: </span><span style="color:var(--ch)">deliberation stopping rule (plateau vs bell in log-time; see preprint sect. 10)</span>
 </div>
 
 
 </main>
-<footer>Conceptueel speculatief model v5.3 — Ψ=(A_w+δ·A_h+β·A_s)/|...| — Aharonov TSVF · Russell Circumplex · Friston Free Energy — niet empirisch bewezen</footer>
+<footer data-i18n="footer">Conceptual speculative model v5.4 — Ψ=(A_w+γ·A_r+δ·A_h+β_g·A_g+β_e·A_e)/|...| — Russell circumplex · open quantum systems · Husserl retention — not empirically proven</footer>
 
 <script>
+// ==================== TAAL / LANGUAGE ====================
+// EN is de standaard (publiek/experts); NL via de schakelaar. Interne sleutels
+// (zonenamen, periode-labels, export-veldnamen) blijven NL voor datacompatibiliteit.
+let LANG='en';
+try{ const sv=localStorage.getItem('qed-lang'); if(sv==='nl'||sv==='en') LANG=sv; }catch(e){}
+function L(nl,en){ return LANG==='nl'?nl:en; }
+const ZONE_EN={'vredig':'peaceful','ontspannen':'relaxed','uitgeput':'exhausted','verdrietig':'sad','boos/angstig':'angry/afraid','gespannen':'tense','enthousiast':'enthusiastic','tevreden':'content','neutraal':'neutral','onbekend':'unknown'};
+function zl(name){ return LANG==='nl'?name:(ZONE_EN[name]||name); }
+const I18N={
+ 'hdr.ey':{nl:'Conceptueel Model — Speculatief — v5.4 Multi-Entiteit'},
+ 'hdr.h1':{nl:'Bewustzijn als <em>Quantummeetmoment</em> — Multi-Entiteit'},
+ 'hdr.fx':{nl:'Ψ = (A_w + γ·A_retentie + δ·A_h + β_g·A_groep + β_e·A_extern) / |...| — open kwantumsysteem: superpositie + decoherente relaxatie<br>Route A→B→C→(A bij extremen) | Alle drempels emergent uit dichtheidsmatrix'},
+ 'tab.shared':{nl:'Gedeelde Ruimte'},'tab.individual':{nl:'Individuele Entiteit'},'tab.compare':{nl:'Vergelijking'},
+ 'ent.label':{nl:'Entiteiten:'},'ent.add':{nl:'+ Entiteit'},'ent.view':{nl:'Bekijk entiteit:'},
+ 'ss.entities':{nl:'Entiteiten'},'ss.entities.sub':{nl:'actief'},'ss.S':{nl:'Gedeelde S'},'ss.P':{nl:'Gedeelde P'},'ss.P.sub':{nl:'purity ρ_gedeeld'},
+ 'ss.conv':{nl:'Convergentie'},'ss.conv.sub':{nl:'spread entiteiten'},'ss.zone':{nl:'Gedeelde zone'},'ss.zone.sub':{nl:'gedeelde realiteit'},
+ 'ss.beta':{nl:'β gedeeld'},'ss.beta.sub':{nl:'emergent'},'ss.groups':{nl:'Groepen'},'ss.groups.sub':{nl:'detectie'},
+ 'grp.title':{nl:'Groepen — samenstelling'},'grp.none':{nl:'nog geen groepen'},
+ 'ctl.title':{nl:'Bediening'},'ctl.run':{nl:'▶ Nieuwe waarneming'},'ctl.mode':{nl:'Modus:'},
+ 'ctl.single':{nl:'Per entiteit'},'ctl.all':{nl:'Simultaan'},'ctl.auto':{nl:'Autonoom'},
+ 'ctl.pause':{nl:'⏸ Pauzeer'},'ctl.pause2':{nl:'⏸ Pauzeer'},'ctl.reset':{nl:'↺ Reset alles'},'ctl.anim':{nl:'Animatie'},
+ 'ctl.export':{nl:'↑ Exporteer'},'ctl.load':{nl:'📂 Laad bestand'},'ctl.bw':{nl:'Bandbreedte situatie'},'ctl.speed':{nl:'Autonoom snelheid (ms)'},
+ 'sv.wait':{nl:'wacht'},'sv.val':{nl:'Valentie'},'sv.val.sub':{nl:'negatief↔positief'},'sv.aro.sub':{nl:'laag↔hoog'},
+ 'sv.emo':{nl:'Emotie zone'},'sv.mem':{nl:'Herinneringen'},'sv.mem.sub':{nl:'lege staat'},'sv.coh':{nl:'Coherentie'},
+ 'sv.bias':{nl:'Emotie bias'},'sv.bias.sub':{nl:'γ richting'},'sv.depth':{nl:'Diepte'},'sv.delta':{nl:'δ eigen'},'sv.delta.sub':{nl:'herinneringsampl.'},
+ 'sv.beta':{nl:'β gedeeld'},'sv.beta.sub':{nl:'gedeelde ampl.'},
+ 'rt.title':{nl:'Route A/B/C over tijd'},'rt.A':{nl:'■ A Primitief'},'rt.B':{nl:'■ B Deliberatief'},'rt.C':{nl:'■ C Geleerd'},'rt.X':{nl:'■ B besluiteloos (afgebroken na 50k)'},
+ 'mem.title':{nl:'Herinneringsstructuur'},'mem.collapses':{nl:'collapsen'},'mem.none':{nl:'Geen herinneringen'},
+ 'exp.title':{nl:'Geheugen opslaan/laden'},'exp.nostore':{nl:'● geen opslag'},'exp.hint':{nl:'Exporteer na elke sessie. Importeer bij nieuwe sessie.'},
+ 'exp.profile':{nl:'Profiel'},'exp.import':{nl:'↓ Importeer'},'exp.copy':{nl:'⎘ Kopieer'},
+ 'prof.title':{nl:'KARAKTERPROFIELEN'},'prof.close':{nl:'sluiten x'},
+ 'seq.title':{nl:'Route sequentie per entiteit'},'ghist.title':{nl:'Groep historie per entiteit — groepsnummer per eigen run, - = ongegroepeerd'},
+ 'cmp.title':{nl:'Vergelijkingstabel — alle entiteiten'},'cmp.ent':{nl:'Entiteit'},'cmp.route':{nl:'Route dist.'},'cmp.S':{nl:'Entropie S'},'cmp.F':{nl:'Coherentie F'},'cmp.zone':{nl:'Dom. zone'},
+ 'chm.title':{nl:'NIEUW KARAKTER'},'chm.p0':{nl:'Karaktersterkte P₀ (mild → extreem)'},'chm.theta':{nl:'Grondstemming θ₀ (emotiezone)'},'chm.xi':{nl:'Beslisstijl ξ₀ (laag = piekeraar, hoog = vlot)'},'chm.add':{nl:'Toevoegen'},'chm.cancel':{nl:'Annuleer'},
+ 'footer':{nl:'Conceptueel speculatief model v5.4 — Ψ=(A_w+γ·A_r+δ·A_h+β_g·A_g+β_e·A_e)/|...| — Russell circumplex · open kwantumsystemen · Husserl retentie — niet empirisch bewezen'},
+ 'paper.block':{nl:'<span style="color:var(--cm);letter-spacing:.12em">MODELNOTITIES v5.4</span><br><span style="color:var(--dim)">Quantum Experiential Dynamics — een open-kwantumsysteem-architectuur voor experiëntiële toestandsevolutie</span><br><br><span style="color:var(--cw)">Toestandsupdate:</span> Psi = (A_w + gamma*A_retentie + delta*A_h + beta_g*A_groep + beta_e*A_extern) / |...| (projectieve normalisatie, expliciete postulaatvariant)<br><br><span style="color:var(--ch)">Kernmechanismen (alle drempels emergent, geen schaalconstantes):</span><br>(1) Qubit-dichtheidsmatrices op Russells circumplex, Bloch-equatorconventie: tegenovergestelde emoties orthogonaal, ambivalentie = von Neumann-entropie.<br>(2) Routekeuze uit één maat: trace-afstand T tussen waarneming en geheugen (Helstrom-lezing). Herkenning als T &lt; eigen zelffluctuatie; verrassing als T &gt; eigen p90; deliberatie ertussen; besluiteloosheid = afbreken op 50k iteraties.<br>(3) Emotionele intensiteit = interferentie-zichtbaarheid: ambivalentie is destructieve interferentie. Collapse = richting x intensiteit.<br>(4) gamma = P*F (retentie, Husserl); delta = Bloch-lengte van geheugen-rho; karakter rho0 vervalt met dynamische lambda.<br>(5) Groepsaffiniteit = trace-afstand tussen dispositionele rho\'s, drempel = 1.5x gemiddelde zelffluctuatie; beta_g &le; P/sqrt(groep), beta_e &le; P/sqrt(N), dus in-group-dominantie is emergent.<br>(6) Route B = open-systeem-relaxatie (niet unitair); tau_d = xi0/(1-P0+0.1) bepaalt beslisprecisie (dosiseffect over 3 ordes van grootte).<br><br><span style="color:var(--dim)">Preprint: </span><span style="color:var(--ch)">osf.io/preprints/psyarxiv/9wdx4_v1</span><span style="color:var(--dim)"> · Code/data: </span><span style="color:var(--ch)">doi.org/10.5281/zenodo.21470110</span><br><span style="color:var(--dim)">Open vraag: </span><span style="color:var(--ch)">stopregel deliberatie (plateau vs klok in log-tijd; zie preprint par. 10)</span>'}
+};
+const I18N_EN={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{I18N_EN[el.dataset.i18n]=el.textContent;});
+document.querySelectorAll('[data-i18n-html]').forEach(el=>{I18N_EN['html:'+el.dataset.i18nHtml]=el.innerHTML;});
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    if(!(k in I18N_EN)) I18N_EN[k]=el.textContent; // luie vangst: elementen na de script-tag (modal)
+    el.textContent=LANG==='nl'?(I18N[k]?.nl??el.textContent):(I18N_EN[k]??el.textContent);
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k=el.dataset.i18nHtml;
+    if(!(('html:'+k) in I18N_EN)) I18N_EN['html:'+k]=el.innerHTML;
+    el.innerHTML=LANG==='nl'?(I18N[k]?.nl??el.innerHTML):(I18N_EN['html:'+k]??el.innerHTML);
+  });
+  const ea=document.getElementById('export-area'); if(ea) ea.placeholder=L('Exporteer of plak data...','Export or paste data...');
+  const lt=document.getElementById('lang-toggle'); if(lt) lt.textContent=LANG==='nl'?'EN':'NL';
+}
+function refreshLangUI(){
+  applyLang();
+  // Dynamische teksten die uit state komen opnieuw zetten
+  if(typeof runMode!=='undefined'&&typeof setMode==='function') setMode(runMode);
+  if(typeof updateCharPers==='function'&&document.getElementById('char-p0')){
+    updateCharPers();
+    document.getElementById('char-p0-val').textContent=charP0Label(+document.getElementById('char-p0').value/100);
+    document.getElementById('char-theta-val').textContent=charThetaLabel(+document.getElementById('char-theta').value/100);
+    document.getElementById('char-xi-val').textContent=charXiLabel(+document.getElementById('char-xi').value/100);
+  }
+  if(typeof updatePauseBtnText==='function') updatePauseBtnText();
+  if(typeof updateAllUI==='function') updateAllUI();
+  if(typeof draw==='function') try{draw();}catch(e){}
+  if(typeof drawCircumplex==='function') try{drawCircumplex();}catch(e){}
+  if(typeof drawSharedCircumplex==='function') try{drawSharedCircumplex();}catch(e){}
+  if(typeof toonProfielen==='function') toonProfielen();
+}
+function toggleLang(){
+  LANG=LANG==='nl'?'en':'nl';
+  try{ localStorage.setItem('qed-lang',LANG); }catch(e){}
+  refreshLangUI();
+}
 // ==================== ENTITEIT KLEUREN ====================
 const ENT_COLORS=['#4fc3f7','#ffd54f','#ff7043','#64ffda','#b39ddb','#a5d6a7','#ff8a65','#80cbc4'];
 
@@ -334,40 +398,40 @@ function levensloopVan(ent){
   const zoneCount=m=>{const z={};m.forEach(e=>{const n=emotionZone(e.val,e.aro).name;z[n]=(z[n]||0)+1;});return Object.entries(z).sort((a,b)=>b[1]-a[1])[0][0];};
   const dom=zoneCount(mem);
   if(k){
-    zin.push(ent.name+' begon als '+persoonlijkheidsNaam(k)+'.');
+    zin.push(L(ent.name+' begon als '+persoonlijkheidsNaam(k)+'.',ent.name+' started out as '+persoonlijkheidsNaam(k)+'.'));
     const m0=Math.sqrt(Math.max(0,2*Math.min(Math.max(k.p0||0.5,0.5),0.99)-1));
     if(m0>=0.15){
       const doelZone=emotionZone(Math.cos(k.theta0),Math.sin(k.theta0)).name;
-      zin.push(dom===doelZone?('Trouw aan die aard: dominante zone is '+dom+'.'):('Van die aard afgeweken: dominante zone werd '+dom+' in plaats van '+doelZone+'.'));
+      zin.push(dom===doelZone?L('Trouw aan die aard: dominante zone is '+zl(dom)+'.','True to that nature: the dominant zone is '+zl(dom)+'.'):L('Van die aard afgeweken: dominante zone werd '+zl(dom)+' in plaats van '+zl(doelZone)+'.','Drifted from that nature: the dominant zone became '+zl(dom)+' instead of '+zl(doelZone)+'.'));
     } else {
-      zin.push('Zonder eigen richting werd de dominante zone '+dom+', gevormd door omgeving en toeval.');
+      zin.push(L('Zonder eigen richting werd de dominante zone '+zl(dom)+', gevormd door omgeving en toeval.','Without a direction of its own, the dominant zone became '+zl(dom)+', shaped by environment and chance.'));
     }
   }
   const derde=Math.max(2,Math.floor(mem.length/3));
   const dVroeg=zoneCount(mem.slice(0,derde)),dLaat=zoneCount(mem.slice(-derde));
-  zin.push(dVroeg!==dLaat?('Het profiel verschoof van '+dVroeg+' (vroeg) naar '+dLaat+' (laat).'):('Het profiel bleef stabiel rond '+dVroeg+'.'));
+  zin.push(dVroeg!==dLaat?L('Het profiel verschoof van '+zl(dVroeg)+' (vroeg) naar '+zl(dLaat)+' (laat).','The profile shifted from '+zl(dVroeg)+' (early) to '+zl(dLaat)+' (late).'):L('Het profiel bleef stabiel rond '+zl(dVroeg)+'.','The profile stayed stable around '+zl(dVroeg)+'.'));
   const gh=ent.groupHist||[];
   if(gh.length){
     const gids=[...new Set(gh.filter(h=>h.gid>0).map(h=>h.gid))];
     const inG=gh.filter(h=>h.gid>0).length;
-    if(!gids.length){ zin.push('Nooit lid van een groep geweest: een einzelganger.'); }
+    if(!gids.length){ zin.push(L('Nooit lid van een groep geweest: een einzelganger.','Never belonged to any group: a loner.')); }
     else{
-      zin.push('Was '+Math.round(100*inG/gh.length)+'% van de tijd gegroepeerd ('+gids.map(g=>'G'+g).join(', ')+').');
+      zin.push(L('Was '+Math.round(100*inG/gh.length)+'% van de tijd gegroepeerd ('+gids.map(g=>'G'+g).join(', ')+').','Was grouped '+Math.round(100*inG/gh.length)+'% of the time ('+gids.map(g=>'G'+g).join(', ')+').'));
       const cur=gh[gh.length-1].gid;
       const curGroep=cur>0?getCachedGroups().find(g=>g.gid===cur):null;
-      zin.push(cur>0?('Zit nu in G'+cur+(curGroep&&groepsNaam(curGroep)?(', '+groepsNaam(curGroep)):'')+'.'):'Staat nu buiten elke groep.');
+      zin.push(cur>0?L('Zit nu in G'+cur+(curGroep&&groepsNaam(curGroep)?(', '+groepsNaam(curGroep)):'')+'.','Is now in G'+cur+(curGroep&&groepsNaam(curGroep)?(', '+groepsNaam(curGroep)):'')+'.'):L('Staat nu buiten elke groep.','Now stands outside every group.'));
     }
   }
   const b=mem.filter(e=>e.route==='B');
   if(b.length>=2){
     const gi=b.reduce((s,e)=>s+(e.iters||1),0)/b.length;
-    if(gi>2000) zin.push('Delibereert zwaar, gemiddeld '+Math.round(gi)+' iteraties: een piekeraar in de praktijk.');
-    else if(gi<30) zin.push('Beslist vlot, gemiddeld '+Math.round(gi)+' iteraties.');
+    if(gi>2000) zin.push(L('Delibereert zwaar, gemiddeld '+Math.round(gi)+' iteraties: een piekeraar in de praktijk.','Deliberates heavily, on average '+Math.round(gi)+' iterations: a ruminator in practice.'));
+    else if(gi<30) zin.push(L('Beslist vlot, gemiddeld '+Math.round(gi)+' iteraties.','Decides quickly, on average '+Math.round(gi)+' iterations.'));
   }
   const besl=mem.filter(e=>e.besluiteloos).length;
-  if(besl>0) zin.push(besl+' keer besluiteloos gebleven: deliberatie afgebroken op de 50k-grens.');
+  if(besl>0) zin.push(L(besl+' keer besluiteloos gebleven: deliberatie afgebroken op de 50k-grens.',besl+' time(s) left undecided: deliberation truncated at the 50k limit.'));
   const kw=charWeight(ent);
-  zin.push('Het beginkarakter werkt nog voor '+(kw*100).toFixed(0)+'% door.');
+  zin.push(L('Het beginkarakter werkt nog voor '+(kw*100).toFixed(0)+'% door.','The initial character still carries '+(kw*100).toFixed(0)+'% weight.'));
   return zin.join(' ');
 }
 
@@ -388,15 +452,15 @@ function generateKarakterProfiel(ent){
     const av=avgM(m),Sv=Sm(m),Pv=Pm(m),Fv=Fm(m);
     const aC=m.filter(e=>e.route==='A').length,bC=m.filter(e=>e.route==='B').length,cC=m.filter(e=>e.route==='C').length;
     const dz=domZone(m),bIter=bAvg(m),kw=Math.exp(-0.05*rs);
-    const vDir=av.val>0.3?'positief':av.val<-0.3?'negatief':'neutraal';
-    const aDir=av.aro>0.3?'hoog':av.aro<-0.3?'laag':'matig';
-    const domR=cC/m.length>0.5?'patroonherkenning (C)':bC/m.length>0.4?'deliberatie (B)':'verkenning (A)';
-    const coh=Pv>0.65?'sterk coherent':Pv>0.55?'matig coherent':'diffuus';
-    const bes=bIter>200?'moeizame convergentie':bIter>80?'deliberatief':bIter>0?'vlot':'-';
-    const kInf=kw>0.5?` Beginkarakter ${(kw*100).toFixed(0)}% actief.`:'';
+    const vDir=av.val>0.3?L('positief','positive'):av.val<-0.3?L('negatief','negative'):L('neutraal','neutral');
+    const aDir=av.aro>0.3?L('hoog','high'):av.aro<-0.3?L('laag','low'):L('matig','moderate');
+    const domR=cC/m.length>0.5?L('patroonherkenning (C)','pattern recognition (C)'):bC/m.length>0.4?L('deliberatie (B)','deliberation (B)'):L('verkenning (A)','exploration (A)');
+    const coh=Pv>0.65?L('sterk coherent','strongly coherent'):Pv>0.55?L('matig coherent','moderately coherent'):L('diffuus','diffuse');
+    const bes=bIter>200?L('moeizame convergentie','laborious convergence'):bIter>80?L('deliberatief','deliberative'):bIter>0?L('vlot','quick'):'-';
+    const kInf=kw>0.5?L(` Beginkarakter ${(kw*100).toFixed(0)}% actief.`,` Initial character ${(kw*100).toFixed(0)}% active.`):'';
     const t3=avgM(m.slice(-3));
-    const trend=t3.aro>0.5?'stijgende spanning':t3.aro<-0.5?'toenemende rust':t3.val>0.5?'positief eindigend':t3.val<-0.5?'negatief eindigend':'stabiel';
-    return{label,runStart:rs,runEnd:re,text:`${label} (run ${rs}-${re}): Centrum ${vDir}/${aDir} in ${dz}. ${domR}. ${coh}. ${bes}.${kInf} ${trend}. [S=${Sv.toFixed(2)} P=${Pv.toFixed(2)} F=${Fv.toFixed(2)}]`};
+    const trend=t3.aro>0.5?L('stijgende spanning','rising tension'):t3.aro<-0.5?L('toenemende rust','growing calm'):t3.val>0.5?L('positief eindigend','ending positive'):t3.val<-0.5?L('negatief eindigend','ending negative'):L('stabiel','stable');
+    return{label,runStart:rs,runEnd:re,text:`${label} (run ${rs}-${re}): ${L('Centrum','Centre')} ${vDir}/${aDir} ${L('in','in')} ${zl(dz)}. ${domR}. ${coh}. ${bes}.${kInf} ${trend}. [S=${Sv.toFixed(2)} P=${Pv.toFixed(2)} F=${Fv.toFixed(2)}]`};
   }
   const allS=Sm(mem),allP=Pm(mem),allF=Fm(mem),gamma=allP*allF;
   const lateC=mem.slice(-10).filter(e=>e.route==='C').length/Math.min(10,n);
@@ -407,7 +471,7 @@ function generateKarakterProfiel(ent){
     runId:n,timestamp:new Date().toISOString(),entityName:ent.name,
     levensloop:levensloopVan(ent),
     periods:[descPeriod(p1,'GEBOORTE',1,i1),p2.length>=2?descPeriod(p2,'MIDDEN',i1+1,i2):null,p3.length>=2?descPeriod(p3,'LAAT',i2+1,n):null].filter(Boolean),
-    global:`Globaal (${n} runs): gamma=${gamma.toFixed(2)} ${gamma>0.4?'sterk':gamma>0.25?'matig':'zwak'}. val-osc=${valOsc.toFixed(2)} aro-osc=${aroOsc.toFixed(2)}. ${lateC>0.6?'Patroon gevestigd':lateC>0.4?'In consolidatie':'Nog open'}. [S=${allS.toFixed(2)} P=${allP.toFixed(2)} F=${allF.toFixed(2)}]`,
+    global:`${L('Globaal','Global')} (${n} runs): gamma=${gamma.toFixed(2)} ${gamma>0.4?L('sterk','strong'):gamma>0.25?L('matig','moderate'):L('zwak','weak')}. val-osc=${valOsc.toFixed(2)} aro-osc=${aroOsc.toFixed(2)}. ${lateC>0.6?L('Patroon gevestigd','Pattern established'):lateC>0.4?L('In consolidatie','Consolidating'):L('Nog open','Still open')}. [S=${allS.toFixed(2)} P=${allP.toFixed(2)} F=${allF.toFixed(2)}]`,
     params:{S:allS,P:allP,F:allF,gamma,valOsc,aroOsc,lateC,n}
   };
 }
@@ -423,14 +487,16 @@ function toonProfielen(){
     card.style.cssText='background:#0a0e18;border:1px solid #1a2030;border-radius:3px;padding:8px;margin:4px 0;font-size:9px;font-family:Space Mono,monospace';
     const hdr=document.createElement('div');
     hdr.style.cssText='display:flex;justify-content:space-between;margin-bottom:6px';
-    hdr.innerHTML=`<span style="color:${ent.color};font-weight:700">${p.entityName} na run ${p.runId}</span><span style="color:#4a5568">${new Date(p.timestamp).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'})}</span>`;
+    hdr.innerHTML=`<span style="color:${ent.color};font-weight:700">${p.entityName} ${L('na run','after run')} ${p.runId}</span><span style="color:#4a5568">${new Date(p.timestamp).toLocaleTimeString(L('nl-NL','en-GB'),{hour:'2-digit',minute:'2-digit'})}</span>`;
     card.appendChild(hdr);
     p.periods.forEach(period=>{
       if(!period)return;
       const col=period.label==='GEBOORTE'?'#ff7043':period.label==='MIDDEN'?'#ffd54f':'#64ffda';
+      // period.label blijft intern NL (datacompatibiliteit); alleen weergave vertaalt
+      const lblMap={'GEBOORTE':L('GEBOORTE','BIRTH'),'MIDDEN':L('MIDDEN','MIDDLE'),'LAAT':L('LAAT','LATE')};
       const pdiv=document.createElement('div');
       pdiv.style.cssText=`margin:3px 0;padding:4px 6px;background:#06080f;border-radius:2px;border-left:2px solid ${col}`;
-      pdiv.innerHTML=`<span style="color:${col};font-weight:700">${period.label}</span> <span style="color:#8a9ab0">${period.text.split(': ').slice(1).join(': ')}</span>`;
+      pdiv.innerHTML=`<span style="color:${col};font-weight:700">${lblMap[period.label]||period.label}</span> <span style="color:#8a9ab0">${period.text.split(': ').slice(1).join(': ')}</span>`;
       card.appendChild(pdiv);
     });
     if(p.levensloop){
@@ -712,23 +778,24 @@ function defaultKarakter(){ return {p0:0.7,theta0:Math.PI,xi0:0.5,rho0:makeRho0(
 
 // Menselijke labels voor karaktereigenschappen, consistent met de emotiezone-namen
 // p0 = purity van rho0; fysisch bereik [0.5, 1): 0.5 is maximaal gemengd (geen richting).
-function charP0Label(p){ return p.toFixed(2)+' '+(p<0.52?'vrijwel richtingloos':p<0.6?'mild':p<0.75?'uitgesproken':p<0.9?'sterk':'extreem'); }
-function charThetaLabel(th){ return emotionZone(Math.cos(th),Math.sin(th)).name; }
-function charXiLabel(x){ return x.toFixed(2)+' '+(x<0.35?'piekeraar':x<0.65?'afgewogen':'vlot'); }
+function charP0Label(p){ return p.toFixed(2)+' '+(p<0.52?L('vrijwel richtingloos','nearly directionless'):p<0.6?L('mild','mild'):p<0.75?L('uitgesproken','pronounced'):p<0.9?L('sterk','strong'):L('extreem','extreme')); }
+function charThetaLabel(th){ return zl(emotionZone(Math.cos(th),Math.sin(th)).name); }
+function charXiLabel(x){ return x.toFixed(2)+' '+(x<0.35?L('piekeraar','ruminator'):x<0.65?L('afgewogen','balanced'):L('vlot','quick')); }
 
 // Eenduidige persoonlijkheidsbenaming uit de drie startcriteria.
 // Dit is de STARTpersoonlijkheid (rho0): via charWeight (kw) vervalt hij en neemt
 // de geleefde geschiedenis het over.
 const ZONE_ADJ={'tevreden':'tevreden','enthousiast':'enthousiaste','gespannen':'gespannen','boos/angstig':'boos-angstige','verdrietig':'verdrietige','uitgeput':'uitgeputte','ontspannen':'ontspannen','vredig':'vredige','neutraal':'neutrale'};
+const ZONE_ADJ_EN={'tevreden':'content','enthousiast':'enthusiastic','gespannen':'tense','boos/angstig':'angry-anxious','verdrietig':'sad','uitgeput':'exhausted','ontspannen':'relaxed','vredig':'peaceful','neutraal':'neutral'};
 function persoonlijkheidsNaam(k){
-  if(!k) return 'onbepaald';
+  if(!k) return L('onbepaald','undetermined');
   const xi=k.xi0!=null?k.xi0:0.5;
-  const stijl=xi<0.35?'piekeraar':xi<0.65?'afweger':'vlotte beslisser';
+  const stijl=xi<0.35?L('piekeraar','ruminator'):xi<0.65?L('afweger','weigher'):L('vlotte beslisser','quick decider');
   const m=Math.sqrt(Math.max(0,2*Math.min(Math.max(k.p0||0.5,0.5),0.99)-1));
-  if(m<0.15) return 'open, onbepaald karakter ('+stijl+')';
+  if(m<0.15) return L('open, onbepaald karakter ('+stijl+')','open, undetermined character ('+stijl+')');
   const zn=emotionZone(Math.cos(k.theta0),Math.sin(k.theta0)).name;
-  const sterkte=k.p0<0.6?'mild':k.p0<0.75?'uitgesproken':k.p0<0.9?'sterk':'extreem';
-  return sterkte+' '+(ZONE_ADJ[zn]||zn)+' '+stijl;
+  const sterkte=k.p0<0.6?L('mild','mildly'):k.p0<0.75?L('uitgesproken','pronouncedly'):k.p0<0.9?L('sterk','strongly'):L('extreem','extremely');
+  return sterkte+' '+(LANG==='nl'?(ZONE_ADJ[zn]||zn):(ZONE_ADJ_EN[zn]||zl(zn)))+' '+stijl;
 }
 
 function updateCharPers(){
@@ -736,17 +803,18 @@ function updateCharPers(){
   const p0=+document.getElementById('char-p0').value/100;
   const th=+document.getElementById('char-theta').value/100;
   const xi=+document.getElementById('char-xi').value/100;
-  el.textContent='Startpersoonlijkheid: '+persoonlijkheidsNaam({p0,theta0:th,xi0:xi});
+  el.textContent=L('Startpersoonlijkheid: ','Starting personality: ')+persoonlijkheidsNaam({p0,theta0:th,xi0:xi});
 }
 
 // Groepsnaam op basis van de subrealiteit (gepoold geheugen) van de leden
 const GROEP_NAMEN={'tevreden':'de tevredenen','enthousiast':'de enthousiastelingen','gespannen':'de gespannenen','boos/angstig':'de verhitten','verdrietig':'de treurenden','uitgeput':'de uitgeblusten','ontspannen':'de ontspannenen','vredig':'de vredigen','neutraal':'de zwevenden'};
+const GROEP_NAMEN_EN={'tevreden':'the content','enthousiast':'the enthusiasts','gespannen':'the tense','boos/angstig':'the heated','verdrietig':'the mourners','uitgeput':'the burnt-out','ontspannen':'the relaxed','vredig':'the peaceful','neutraal':'the drifters'};
 function groepsNaam(g){
   const pool=g.members.flatMap(m=>m.memory);
   if(pool.length<2) return '';
   const c=clusterCenter(pool);
   const zn=emotionZone(c.val,c.aro).name;
-  return GROEP_NAMEN[zn]||('de '+zn+'-groep');
+  return LANG==='nl'?(GROEP_NAMEN[zn]||('de '+zn+'-groep')):(GROEP_NAMEN_EN[zn]||('the '+zl(zn)+' group'));
 }
 
 function charWeight(ent){
@@ -957,6 +1025,24 @@ let currentRunT=0;         // trace-afstand van de waarneming bij routekeuze, ga
 let lastAutoSaveCount=-1;  // voorkomt dubbele auto-opslag bij pauzeren zonder nieuwe runs
 let currentRoute='A',runActive=false,runDone=false;
 let currentAW={val:0,aro:0},currentAH={val:0,aro:0},currentAS={val:0,aro:0},currentAS2={val:0,aro:0};
+let currentRawW={val:0,aro:0},currentFB={val:0,aro:0}; // route A: rauwe waarneming + kleuring apart bewaard
+
+// Route A collapse-punt via interferentie-zichtbaarheid (bijdrage 21 uitgebreid naar route A):
+// richting = genormaliseerd(rawW+fb), intensiteit I_A = |rawW+fb|/(|rawW|+|fb|) in [0,1]
+// (driehoeksongelijkheid), magnitude = I_A * |rawW|. Daarmee |collapse| <= |rawW| <= 1:
+// de wereld legt de amplitude op, conflict met de eigen kleuring dempt (destructieve interferentie).
+// Grensgeval fb=0: I_A=1, collapse = rawW (oude gedrag zonder karakter/geheugen).
+function collapseRouteA(){
+  const sx=currentRawW.val+currentFB.val, sy=currentRawW.aro+currentFB.aro;
+  const mSum=Math.hypot(sx,sy);
+  const mRaw=Math.hypot(currentRawW.val,currentRawW.aro);
+  const mFb=Math.hypot(currentFB.val,currentFB.aro);
+  const denom=mRaw+mFb;
+  if(denom<1e-9||mSum<1e-9) return {val:currentRawW.val,aro:currentRawW.aro};
+  const I=Math.min(1,mSum/denom);
+  const mag=I*mRaw;
+  return {val:(sx/mSum)*mag,aro:(sy/mSum)*mag};
+}
 let currentDelta=0,currentBeta=0,currentBeta2=0;
 // Retentie (Husserl, bijdrage 3 waargemaakt): de VORIGE collapse werkt door in de superpositie
 let currentAR={val:0,aro:0},currentGammaR=0;
@@ -1006,6 +1092,7 @@ function doRunForEntity(eid){
   const fbV=sa.feedbackVec.val+kw*charVec.val*g0;
   const fbA=sa.feedbackVec.aro+kw*charVec.aro*g0;
   currentAW={val:clamp(rawW.val+fbV,-0.99,0.99),aro:clamp(rawW.aro+fbA,-0.99,0.99)};
+  currentRawW={...rawW}; currentFB={val:fbV,aro:fbA}; // voor collapseRouteA()
 
   // A_herinnering eigen: geheugencluster gemengd met beginkarakter (kw-gewogen)
   const cl=clusterMemoryOf(mem);
@@ -1031,7 +1118,7 @@ function doRunForEntity(eid){
 
   if(animEnabled){
     playing=true;
-    document.getElementById('btn-pause-shared').textContent='|| Pauzeer';
+    document.getElementById('btn-pause-shared').textContent=L('|| Pauzeer','|| Pause');
     setTimeout(()=>{ if(playing) animLoop(); },32);
   } else {
     finishRunInstant();
@@ -1048,7 +1135,7 @@ async function onCollapse(v,a){
   // Update individual state strip
   document.getElementById('sv-val').textContent=v.toFixed(3);
   document.getElementById('sv-aro').textContent=a.toFixed(3);
-  document.getElementById('sv-emo').textContent=zone.name;
+  document.getElementById('sv-emo').textContent=zl(zone.name);
   document.getElementById('sv-emo').style.color=zone.color;
   document.getElementById('sv-emo-sub').textContent='run #'+ent.runCount;
 
@@ -1069,7 +1156,7 @@ async function onCollapse(v,a){
     if(animId){cancelAnimationFrame(animId);animId=null;}
     animId=null;
     runActive=false;
-    if(!userPaused) document.getElementById('btn-pause-shared').textContent='|| Pauzeer';
+    if(!userPaused) document.getElementById('btn-pause-shared').textContent=L('|| Pauzeer','|| Pause');
     if(currentTab==='individual'){ draw(); drawCircumplex(lastCollapse,lastW,lastH); }
     drawSharedCircumplex(); // update gedeelde tab altijd
     updateSharedStats(); // update stats
@@ -1083,7 +1170,7 @@ async function onCollapse(v,a){
 
 function updateAnimButtons(){
   document.querySelectorAll('[onclick="toggleAnim()"]').forEach(btn=>{
-    btn.textContent=animEnabled?'Animatie aan':'Animatie uit';
+    btn.textContent=animEnabled?L('Animatie aan','Animation on'):L('Animatie uit','Animation off');
     btn.style.opacity=animEnabled?'1':'0.5';
   });
 }
@@ -1101,7 +1188,8 @@ function finishRunInstant(){
   if(animId){cancelAnimationFrame(animId);animId=null;}
   if(runDone) return;
   if(currentRoute==='A'){
-    onCollapse(currentAW.val,currentAW.aro);
+    const ca=collapseRouteA();
+    onCollapse(ca.val,ca.aro);
   } else if(currentRoute==='C'){
     const cp=collapseFromCandidates();
     onCollapse(cp.val,cp.aro);
@@ -1215,9 +1303,9 @@ function setMode(mode){
   runMode=mode;
   document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
   const descs={
-    single:'Per entiteit: selecteer actieve entiteit, run doet een waarneming voor die entiteit.',
-    all:'Simultaan: een run doet waarneming voor alle entiteiten tegelijk.',
-    auto:'Autonoom: entiteiten draaien automatisch round-robin. Stop via pauzeer.'
+    single:L('Per entiteit: selecteer actieve entiteit, run doet een waarneming voor die entiteit.','Per entity: select the active entity, a run performs one perception for that entity.'),
+    all:L('Simultaan: een run doet waarneming voor alle entiteiten tegelijk.','Simultaneous: one run performs a perception for all entities at once.'),
+    auto:L('Autonoom: entiteiten draaien automatisch round-robin. Stop via pauzeer.','Autonomous: entities run automatically round-robin. Stop via pause.')
   };
   const md=document.getElementById('mode-desc'); if(md) md.textContent=descs[mode];
   const asr=document.getElementById('auto-speed-row'); if(asr) asr.style.display=mode==='auto'?'block':'none';
@@ -1225,9 +1313,14 @@ function setMode(mode){
 }
 
 // ==================== RUN HANDLER ====================
+function updatePauseBtnText(){
+  const b=document.getElementById('btn-pause-shared'); if(!b) return;
+  const paused=(typeof runActive!=='undefined'&&runActive)?!playing:userPaused;
+  b.textContent=paused?L('> Hervat','> Resume'):L('|| Pauzeer','|| Pause');
+}
 document.getElementById('btn-run-shared').addEventListener('click',()=>{
   userPaused=false;
-  document.getElementById('btn-pause-shared').textContent='|| Pauzeer';
+  document.getElementById('btn-pause-shared').textContent=L('|| Pauzeer','|| Pause');
   if(runMode==='single'){
     doRunForEntity(activeEntityId);
   } else if(runMode==='all'){
@@ -1262,13 +1355,13 @@ document.getElementById('btn-pause-shared').addEventListener('click',()=>{
   if(!runActive){
     // Geen lopende run: toggle pauze-intentie (blokkeert ook de eerstvolgende autonome run)
     userPaused=!userPaused;
-    btn.textContent=userPaused?'> Hervat':'|| Pauzeer';
+    btn.textContent=userPaused?L('> Hervat','> Resume'):L('|| Pauzeer','|| Pause');
     if(!userPaused&&runMode==='auto') nextAutoRun();
     return;
   }
   playing=!playing;
   userPaused=!playing;
-  btn.textContent=playing?'|| Pauzeer':'> Hervat';
+  btn.textContent=playing?L('|| Pauzeer','|| Pause'):L('> Hervat','> Resume');
   if(playing) animLoop();
   else{ if(animId){cancelAnimationFrame(animId);animId=null;} draw(); }
 });
@@ -1300,24 +1393,24 @@ function updateIndividualUI(){
   const pEl=document.getElementById('ind-pers');
   if(pEl){
     const kw=charWeight(ent);
-    pEl.textContent=ent.karakter?('start: '+persoonlijkheidsNaam(ent.karakter)+' | werkt nog '+(kw*100).toFixed(0)+'% door'):'';
+    pEl.textContent=ent.karakter?L('start: '+persoonlijkheidsNaam(ent.karakter)+' | werkt nog '+(kw*100).toFixed(0)+'% door','start: '+persoonlijkheidsNaam(ent.karakter)+' | still carries '+(kw*100).toFixed(0)+'% weight'):'';
   }
   const sa=computeSAOf(mem);
   const route=determineRouteFor(currentAW,mem);
-  const routeLabels={'A':'A - Primitief','B':'B - Deliberatief','C':'C - Geleerd'};
-  const routeSubs={'A':'oerreactie','B':'interferentie-convergentie','C':'herkenning + coherentie'};
+  const routeLabels={'A':L('A - Primitief','A - Primitive'),'B':L('B - Deliberatief','B - Deliberative'),'C':L('C - Geleerd','C - Learned')};
+  const routeSubs={'A':L('oerreactie','primal reaction'),'B':L('interferentie-convergentie','interference convergence'),'C':L('herkenning + coherentie','recognition + coherence')};
   const routeClasses={'A':'cv r','B':'cv del','C':'cv inst'};
   document.getElementById('sv-route').textContent=routeLabels[currentRoute]||'-';
   document.getElementById('sv-route').className=routeClasses[currentRoute]||'cv';
-  document.getElementById('sv-route-sub').textContent=routeSubs[currentRoute]||'wacht';
+  document.getElementById('sv-route-sub').textContent=routeSubs[currentRoute]||L('wacht','waiting');
   document.getElementById('sv-mem').textContent=mem.length;
-  document.getElementById('sv-mem-sub').textContent=mem.length===0?'lege staat':mem.length<5?'vroeg':mem.length<20?'groeiend':'ervaren';
+  document.getElementById('sv-mem-sub').textContent=mem.length===0?L('lege staat','empty state'):mem.length<5?L('vroeg','early'):mem.length<20?L('groeiend','growing'):L('ervaren','experienced');
   if(mem.length>=3){
     document.getElementById('sv-coh').textContent=(sa.coherence*100).toFixed(0)+'%';
     document.getElementById('sv-depth').textContent=(sa.depth*100).toFixed(0)+'%';
     document.getElementById('sv-depth-sub').textContent='S='+sa.entropy.toFixed(2)+' P='+sa.purityVal.toFixed(2);
     const bz=emotionZone(sa.biaVal,sa.biaAro);
-    document.getElementById('sv-bias').textContent=bz.name.split('/')[0];
+    document.getElementById('sv-bias').textContent=zl(bz.name).split('/')[0];
     document.getElementById('sv-bias').style.color=bz.color;
     document.getElementById('sv-bias-sub').textContent='γ='+sa.gamma.toFixed(2);
     document.getElementById('sv-delta').textContent=computeDeltaOf(mem).toFixed(2);
@@ -1351,7 +1444,7 @@ function updateSharedStats(){
     const groups=getCachedGroups();
     const multi=groups.filter(g=>g.members.length>1);
     grEl.textContent=multi.length;
-    grSub.textContent=multi.length?multi.map(g=>'G'+g.gid+': '+g.members.map(m=>m.name).join('+')).join(' | '):'geen groepen';
+    grSub.textContent=multi.length?multi.map(g=>'G'+g.gid+': '+g.members.map(m=>m.name).join('+')).join(' | '):L('geen groepen','no groups');
 
     // Groepenoverzicht blok
     const gl=document.getElementById('groepen-lijst');
@@ -1369,11 +1462,11 @@ function updateSharedStats(){
         const gnaam=groepsNaam(g);
         html+='<div><span style="color:'+col+';font-weight:700">G'+g.gid+(gnaam?' &ldquo;'+gnaam+'&rdquo;':'')+'</span> '
           +g.members.map(m=>'<span style="color:'+m.color+'">'+m.name+'</span>').join(' + ')
-          +' <span style="color:var(--dim)">| '+g.members.length+' leden | spread '+spread.toFixed(2)
-          +(pz?' | subrealiteit: '+pz.name:'')+'</span></div>';
+          +' <span style="color:var(--dim)">| '+g.members.length+' '+L('leden','members')+' | spread '+spread.toFixed(2)
+          +(pz?' | '+L('subrealiteit: ','subreality: ')+zl(pz.name):'')+'</span></div>';
       });
-      if(singles.length) html+='<div style="color:var(--dim)">ongegroepeerd: '+singles.map(s=>s.members[0].name).join(', ')+'</div>';
-      gl.innerHTML=html||'<span style="color:var(--dim)">nog geen groepen (min. 2 entiteiten met runs)</span>';
+      if(singles.length) html+='<div style="color:var(--dim)">'+L('ongegroepeerd: ','ungrouped: ')+singles.map(s=>s.members[0].name).join(', ')+'</div>';
+      gl.innerHTML=html||'<span style="color:var(--dim)">'+L('nog geen groepen (min. 2 entiteiten met runs)','no groups yet (min. 2 entities with runs)')+'</span>';
     }
   }
 
@@ -1399,7 +1492,7 @@ function updateSharedStats(){
   if(all.length>0){
     const c=clusterCenter(all);
     const z=emotionZone(c.val,c.aro);
-    document.getElementById('ss-zone').textContent=z.name;
+    document.getElementById('ss-zone').textContent=zl(z.name);
     document.getElementById('ss-zone').style.color=z.color;
   }
 
@@ -1411,7 +1504,7 @@ function updateCompareTable(){
   const tbody=document.getElementById('compare-tbody'); if(!tbody) return;
   tbody.innerHTML='';
   entities.forEach(ent=>{
-    const mem=ent.memory; if(mem.length===0){ const tr=document.createElement('tr'); tr.innerHTML='<td style="color:'+ent.color+'">'+ent.name+'</td><td colspan="9" style="color:var(--dim)">geen data</td>'; tbody.appendChild(tr); return; }
+    const mem=ent.memory; if(mem.length===0){ const tr=document.createElement('tr'); tr.innerHTML='<td style="color:'+ent.color+'">'+ent.name+'</td><td colspan="9" style="color:var(--dim)">'+L('geen data','no data')+'</td>'; tbody.appendChild(tr); return; }
     const sa=computeSAOf(mem);
     const cl=clusterMemoryOf(mem);
     const zones={}; mem.forEach(e=>{ const z=emotionZone(e.val,e.aro).name; zones[z]=(zones[z]||0)+1; });
@@ -1428,7 +1521,7 @@ function updateCompareTable(){
       <td>${sa.coherence.toFixed(3)}</td>
       <td>${computeDeltaOf(mem).toFixed(2)}</td>
       <td>${(b=>b.bg.toFixed(2)+'/'+b.be.toFixed(2))(betasFor(ent.id,mem))}</td>
-      <td style="color:${emotionZone(0,0).color}">${domZone}</td>
+      <td style="color:${emotionZone(0,0).color}">${zl(domZone)}</td>
       <td>${cl.length}</td>`;
     tbody.appendChild(tr);
   });
@@ -1466,7 +1559,7 @@ function updateCompareTable(){
       div.innerHTML='<span style="color:'+ent.color+';margin-right:8px">'+ent.name+'</span>'+spans;
       gseqDiv.appendChild(div);
     });
-    if(!gseqDiv.innerHTML) gseqDiv.innerHTML='<span style="color:var(--dim)">Nog geen groepshistorie</span>';
+    if(!gseqDiv.innerHTML) gseqDiv.innerHTML='<span style="color:var(--dim)">'+L('Nog geen groepshistorie','No group history yet')+'</span>';
   }
 }
 
@@ -1486,12 +1579,12 @@ function updateMemUI(mem,entityId){
     const center=clusterCenter(cl); const sigma=clusterSigma(cl);
     const zone=emotionZone(center.val,center.aro);
     const cMag=Math.sqrt(center.val**2+center.aro**2);
-    const intensity=cMag<0.3?'licht':cMag<0.6?'matig':'intens';
+    const intensity=cMag<0.3?L('licht','light'):cMag<0.6?L('matig','moderate'):L('intens','intense');
     const row=document.createElement('div'); row.className='cr';
     const badge=document.createElement('div'); badge.className='cb';
     badge.style.color=color;
     badge.style.fontSize=Math.max(8,Math.min(12,7+cl.length*0.6))+'px';
-    badge.textContent='C'+(ci+1)+' ('+cl.length+'x)\n'+zone.name+'\n'+intensity;
+    badge.textContent='C'+(ci+1)+' ('+cl.length+'x)\n'+zl(zone.name)+'\n'+intensity;
     row.appendChild(badge);
     const dotsWrap=document.createElement('div'); dotsWrap.className='cd';
     const rc=getEntity(entityId)?.runCount||n;
@@ -1508,7 +1601,7 @@ function updateMemUI(mem,entityId){
       else { d.style.outline='1.5px solid '+routeColor; d.style.outlineOffset='-1px'; }
       function showTip(e){
         const t=document.getElementById('tip');
-        t.innerHTML='Run #'+entry.run+'<br>v:'+entry.val.toFixed(3)+' a:'+entry.aro.toFixed(3)+'<br>Zone: '+emotionZone(entry.val,entry.aro).name+'<br>Route: '+entry.route+(entry.route==='B'?'<br>Iters: '+(entry.iters||1):'')+(entry.besluiteloos?'<br><span style="color:#ef5350">BESLUITELOOS (afgebroken na 50k)</span>':'');
+        t.innerHTML='Run #'+entry.run+'<br>v:'+entry.val.toFixed(3)+' a:'+entry.aro.toFixed(3)+'<br>Zone: '+zl(emotionZone(entry.val,entry.aro).name)+'<br>Route: '+entry.route+(entry.route==='B'?'<br>Iters: '+(entry.iters||1):'')+(entry.besluiteloos?'<br><span style="color:#ef5350">'+L('BESLUITELOOS (afgebroken na 50k)','INDECISIVE (truncated at 50k)')+'</span>':'');
         t.style.display='block';
         const cx=e.clientX||(e.touches?.[0]?.clientX||0);
         const cy2=e.clientY||(e.touches?.[0]?.clientY||0);
@@ -1526,7 +1619,7 @@ function updateMemUI(mem,entityId){
     row.appendChild(meta); container.appendChild(row);
   });
   if(n===0) container.innerHTML='';
-  document.getElementById('mstats').textContent=clusters.length+' clusters | '+n+' collapsen | route: '+route;
+  document.getElementById('mstats').textContent=clusters.length+' clusters | '+n+' '+L('collapsen','collapses')+' | route: '+route;
 }
 
 // ==================== CANVAS ====================
@@ -1677,9 +1770,9 @@ function drawSuperpos(W,t,sy){
   wv(sy+84,intAmp,4,t*2.2+0.6,'#80cbc4',.5,2.2);
 
   tx(16,14,'LAAG 1 - SUPERPOSITIE Ψ=(A_w+δ·A_h+β·A_s)/|...|','#1a2030');
-  tx(16,sy-11,'A_waarneming  |A|='+magW.toFixed(3),'#4fc3f7',8);
-  tx(16,sy+17,'δ·A_herinnering_eigen  δ='+currentDelta.toFixed(2),(currentDelta>0.05?'#b39ddb':'#4a5568'),8);
-  tx(16,sy+45,'β·A_gedeeld  βg='+currentBeta.toFixed(2)+' βe='+currentBeta2.toFixed(2),((currentBeta+currentBeta2)>0.02?'#ffd54f':'#4a5568'),8);
+  tx(16,sy-11,L('A_waarneming','A_perception')+'  |A|='+magW.toFixed(3),'#4fc3f7',8);
+  tx(16,sy+17,L('δ·A_herinnering_eigen','δ·A_memory_own')+'  δ='+currentDelta.toFixed(2),(currentDelta>0.05?'#b39ddb':'#4a5568'),8);
+  tx(16,sy+45,L('β·A_gedeeld','β·A_shared')+'  βg='+currentBeta.toFixed(2)+' βe='+currentBeta2.toFixed(2),((currentBeta+currentBeta2)>0.02?'#ffd54f':'#4a5568'),8);
   tx(16,sy+73,'Ψ_resultante  |Ψ|='+interf.mag.toFixed(3),'#80cbc4',8);
 
   ctx.save();ctx.strokeStyle='#1a2030';ctx.lineWidth=1;ctx.setLineDash([5,7]);
@@ -1710,7 +1803,7 @@ function drawSharedCircumplex(){
     sharedCircCtx.arc(cx,cy,R,sr,er);sharedCircCtx.closePath();sharedCircCtx.fill();
     const mr=sr+Math.PI/8;
     sharedCircCtx.fillStyle=z.color+'88';sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';
-    sharedCircCtx.fillText(z.name,cx+Math.cos(mr)*R*.7,cy+Math.sin(mr)*R*.7);
+    sharedCircCtx.fillText(zl(z.name),cx+Math.cos(mr)*R*.7,cy+Math.sin(mr)*R*.7);
   });
 
   // Assen
@@ -1721,7 +1814,7 @@ function drawSharedCircumplex(){
 
   // As labels
   sharedCircCtx.fillStyle='#4a5568';sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';
-  sharedCircCtx.fillText('+ valentie',cx+R,cy-5);sharedCircCtx.fillText('- valentie',cx-R,cy-5);
+  sharedCircCtx.fillText(L('+ valentie','+ valence'),cx+R,cy-5);sharedCircCtx.fillText(L('- valentie','- valence'),cx-R,cy-5);
   sharedCircCtx.fillText('+ arousal',cx,cy-R-6);sharedCircCtx.fillText('- arousal',cx,cy+R+12);
 
   // Groepen als licht gekleurde achtergrondvlakken, geclipt op de circumplex
@@ -1780,7 +1873,7 @@ function drawSharedCircumplex(){
     sharedCircCtx.setLineDash([]);
     sharedCircCtx.globalAlpha=0.5;sharedCircCtx.fillStyle='#ffffff';
     sharedCircCtx.font='7px Space Mono,monospace';sharedCircCtx.textAlign='center';
-    sharedCircCtx.fillText('realiteit',px,py+22);sharedCircCtx.globalAlpha=1;
+    sharedCircCtx.fillText(L('realiteit','reality'),px,py+22);sharedCircCtx.globalAlpha=1;
   }
 
   // Alle entiteiten - trail van recente collapsen + actuele positie
@@ -1883,7 +1976,7 @@ function drawCircumplex(collapsePoint,wPoint,hPoint){
     circCtx.arc(cx,cy,R,sr,er);circCtx.closePath();circCtx.fill();
     const mr=sr+Math.PI/8;
     circCtx.fillStyle=z.color+'88';circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';
-    circCtx.fillText(z.name,cx+Math.cos(mr)*R*.65,cy+Math.sin(mr)*R*.65);
+    circCtx.fillText(zl(z.name),cx+Math.cos(mr)*R*.65,cy+Math.sin(mr)*R*.65);
   });
 
   circCtx.strokeStyle='#1a2030';circCtx.lineWidth=1;
@@ -1944,7 +2037,7 @@ function drawCircumplex(collapsePoint,wPoint,hPoint){
   if(wPoint){ const wp=circPoint(cx,cy,R,wPoint.val,wPoint.aro),px=wp.x,py=wp.y; circCtx.save();circCtx.globalAlpha=0.7;circCtx.strokeStyle='#4fc3f7';circCtx.lineWidth=1.5;circCtx.beginPath();circCtx.arc(px,py,6,0,Math.PI*2);circCtx.stroke();circCtx.fillStyle='#4fc3f7';circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';circCtx.fillText('W',px,py-9);circCtx.restore(); }
   if(hPoint&&mem.length>0){ const hp=circPoint(cx,cy,R,hPoint.val,hPoint.aro),px=hp.x,py=hp.y; circCtx.save();circCtx.globalAlpha=0.7;circCtx.strokeStyle='#b39ddb';circCtx.lineWidth=1.5;circCtx.beginPath();circCtx.arc(px,py,6,0,Math.PI*2);circCtx.stroke();circCtx.fillStyle='#b39ddb';circCtx.font='7px Space Mono,monospace';circCtx.textAlign='center';circCtx.fillText('H',px,py-9);circCtx.restore(); }
   if(collapsePoint){ const cpp=circPoint(cx,cy,R,collapsePoint.val,collapsePoint.aro),px=cpp.x,py=cpp.y; const zone=emotionZone(collapsePoint.val,collapsePoint.aro); const g=circCtx.createRadialGradient(px,py,0,px,py,18); g.addColorStop(0,zone.color+'55');g.addColorStop(1,'transparent'); circCtx.fillStyle=g;circCtx.beginPath();circCtx.arc(px,py,18,0,Math.PI*2);circCtx.fill(); circCtx.globalAlpha=0.88;circCtx.fillStyle=zone.color;circCtx.beginPath();circCtx.arc(px,py,7,0,Math.PI*2);circCtx.fill();
-    const activeEnt=getEntity(activeEntityId);if(activeEnt){circCtx.strokeStyle=activeEnt.color;circCtx.lineWidth=2;circCtx.beginPath();circCtx.arc(px,py,7,0,Math.PI*2);circCtx.stroke();} circCtx.globalAlpha=0.7;circCtx.font='500 8px Space Grotesk,sans-serif';circCtx.textAlign='center';circCtx.fillText(zone.name,px,py+17);circCtx.globalAlpha=1; }
+    const activeEnt=getEntity(activeEntityId);if(activeEnt){circCtx.strokeStyle=activeEnt.color;circCtx.lineWidth=2;circCtx.beginPath();circCtx.arc(px,py,7,0,Math.PI*2);circCtx.stroke();} circCtx.globalAlpha=0.7;circCtx.font='500 8px Space Grotesk,sans-serif';circCtx.textAlign='center';circCtx.fillText(zl(zone.name),px,py+17);circCtx.globalAlpha=1; }
 }
 
 // ==================== ROUTE GRAFIEK ====================
@@ -1955,7 +2048,7 @@ function drawRouteGraph(mem){
   const gx=gc.getContext('2d');gx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
   gx.fillStyle='#090d14';gx.fillRect(0,0,W,H);
   gx.strokeStyle='#1a2030';gx.lineWidth=1;gx.beginPath();gx.moveTo(0,H/2);gx.lineTo(W,H/2);gx.stroke();
-  const n=(mem||[]).length; if(n===0){ gx.fillStyle='#4a5568';gx.font='8px Space Mono,monospace';gx.textAlign='center';gx.fillText('Geen data',W/2,H/2+4);return; }
+  const n=(mem||[]).length; if(n===0){ gx.fillStyle='#4a5568';gx.font='8px Space Mono,monospace';gx.textAlign='center';gx.fillText(L('Geen data','No data'),W/2,H/2+4);return; }
   const bW=Math.max(2,(W-20)/n);
   let aC=0,bC=0,cC=0,xC=0;
   (mem||[]).forEach((e,i)=>{
@@ -1990,7 +2083,7 @@ function drawRouteGraph(mem){
   gx.fillStyle='#4a5568';gx.font='7px Space Mono,monospace';gx.textAlign='left';
   gx.fillText('A/C',2,H/2-10);gx.fillText('B',2,H/2+16);
   const rr=document.getElementById('route-ratio');
-  if(rr) rr.textContent='A:'+aC+' B:'+bC+' C:'+cC+(xC>0?' | besluiteloos: '+xC:'');
+  if(rr) rr.textContent='A:'+aC+' B:'+bC+' C:'+cC+(xC>0?' | '+L('besluiteloos','indecisive')+': '+xC:'');
 }
 
 // ==================== DRAW LOOP ====================
@@ -2005,7 +2098,7 @@ function drawRouteA(W,H,t){
   ctx.beginPath();ctx.moveTo(coX,sy+104);ctx.lineTo(coX,cy-22);ctx.stroke();ctx.restore();
   tx(16,310,'LAAG 3 - BEWUSTZIJN B (PRIMITIEF - DIRECT)','#1a2030');
   circ2(coX,cy,18,zone.color,'A',zone.name,.7+.3*Math.sin(t*3));
-  if(!runDone) onCollapse(currentAW.val,currentAW.aro);
+  if(!runDone){ const ca=collapseRouteA(); onCollapse(ca.val,ca.aro); }
 }
 
 function drawRouteC(W,H,t){
@@ -2106,7 +2199,7 @@ function drawRouteB(W,H,t){
   }
   ctx.save();ctx.globalAlpha=.28;ctx.fillStyle='#4a5568';ctx.font='8px Space Mono,monospace';ctx.textAlign='left';
   const iterSpeed=Math.max(1,Math.round(20/(1+iterHist.length*0.05)));
-  ctx.fillText(trig?iterHist.length+' iteraties - stabiel':iterHist.length+' iteraties Δt='+iterSpeed+'fr...',16,iy+42);ctx.restore();
+  ctx.fillText(trig?iterHist.length+L(' iteraties - stabiel',' iterations - stable'):iterHist.length+L(' iteraties',' iterations')+' Δt='+iterSpeed+'fr...',16,iy+42);ctx.restore();
   tx(16,330,'LAAG 3 - BEWUSTZIJN B (DELIBERATIEF)','#1a2030');
   if(trig){
     const cv=collapseFromIters();
@@ -2120,14 +2213,14 @@ function drawWacht(W,H){
   const ent=getEntity(activeEntityId);
   const mem=ent?ent.memory:[];
   const route=determineRouteFor(currentAW,mem);
-  const routeNamesW={'A':'Primitief instinct','B':'Deliberatief','C':'Geleerd instinct'};
+  const routeNamesW={'A':L('Primitief instinct','Primitive instinct'),'B':L('Deliberatief','Deliberative'),'C':L('Geleerd instinct','Learned instinct')};
   ctx.save();
   ctx.globalAlpha=.35;ctx.fillStyle='#e8f0ff';ctx.font='500 12px Space Grotesk,sans-serif';ctx.textAlign='center';
-  ctx.fillText((ent?.name||'Entiteit')+' gereed',W/2,H/2-26);
+  ctx.fillText((ent?.name||L('Entiteit','Entity'))+L(' gereed',' ready'),W/2,H/2-26);
   ctx.globalAlpha=.2;ctx.fillStyle='#4a5568';ctx.font='8px Space Mono,monospace';
-  ctx.fillText(mem.length+' herinneringen | δ='+computeDeltaOf(mem).toFixed(2)+' βg='+betasFor(activeEntityId,mem).bg.toFixed(2),W/2,H/2-4);
-  ctx.fillText('Volgende route: '+route+' - '+(routeNamesW[route]||route),W/2,H/2+14);
-  ctx.globalAlpha=.12;ctx.fillText('Klik Nieuwe waarneming om te starten',W/2,H/2+40);
+  ctx.fillText(mem.length+L(' herinneringen',' memories')+' | δ='+computeDeltaOf(mem).toFixed(2)+' βg='+betasFor(activeEntityId,mem).bg.toFixed(2),W/2,H/2-4);
+  ctx.fillText(L('Volgende route: ','Next route: ')+route+' - '+(routeNamesW[route]||route),W/2,H/2+14);
+  ctx.globalAlpha=.12;ctx.fillText(L('Klik Nieuwe waarneming om te starten','Click New perception to start'),W/2,H/2+40);
   ctx.restore();
 }
 
@@ -2157,7 +2250,8 @@ function animLoop(){
     // Op andere tabs: voer route-logica uit zonder tekenen (alleen als playing)
     if(!runDone){
       if(currentRoute==='A'){
-        onCollapse(currentAW.val,currentAW.aro);
+        const ca=collapseRouteA();
+        onCollapse(ca.val,ca.aro);
       } else if(currentRoute==='C'){
         const cp=collapseFromCandidates();
         onCollapse(cp.val,cp.aro);
@@ -2228,7 +2322,7 @@ function autoExport(){
 function downloadExport(){
   try{
     const data=document.getElementById('export-area').value||'';
-    if(!data){ showStatus('niets te exporteren','#ef5350'); return; }
+    if(!data){ showStatus(L('niets te exporteren','nothing to export'),'#ef5350'); return; }
     const blob=new Blob([data],{type:'application/json'});
     const a=document.createElement('a');
     a.href=URL.createObjectURL(blob);
@@ -2236,8 +2330,8 @@ function downloadExport(){
     a.download='bewustzijn-sessie-'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes())+'.json';
     document.body.appendChild(a);a.click();
     setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);
-    showStatus('bestand gedownload','#64ffda');
-  }catch(e){ showStatus('download mislukt: '+e.message,'#ef5350'); }
+    showStatus(L('bestand gedownload','file downloaded'),'#64ffda');
+  }catch(e){ showStatus(L('download mislukt: ','download failed: ')+e.message,'#ef5350'); }
 }
 
 function showStatus(msg,color){
@@ -2258,7 +2352,7 @@ document.getElementById('btn-export-shared')?.addEventListener('click',()=>{
 });
 document.getElementById('btn-copy').addEventListener('click',()=>{
   const data=document.getElementById('export-area').value;if(!data)return;
-  try{ navigator.clipboard.writeText(data).then(()=>showStatus('gekopieerd','#64ffda')).catch(()=>{}); }catch(e){}
+  try{ navigator.clipboard.writeText(data).then(()=>showStatus(L('gekopieerd','copied'),'#64ffda')).catch(()=>{}); }catch(e){}
 });
 function importFromText(raw){
   try{
@@ -2275,9 +2369,9 @@ function importFromText(raw){
       if(sl)sl.value=globalBW; if(lb)lb.textContent=globalBW; }
     groupTracks=[];nextGroupId=1;_groupCache=null;_groupCacheRun=-1;
     activeEntityId=entities[0]?.id||1;
-    showStatus(allMemory().length+' collapsen geladen','#80cbc4');
+    showStatus(allMemory().length+L(' collapsen geladen',' collapses loaded'),'#80cbc4');
     updateAllUI();draw();drawCircumplex();drawSharedCircumplex();
-  }catch(e){ alert('Import fout: '+e.message); }
+  }catch(e){ alert(L('Import fout: ','Import error: ')+e.message); }
 }
 document.getElementById('btn-import').addEventListener('click',()=>{
   importFromText(document.getElementById('export-area').value);
@@ -2308,6 +2402,7 @@ function initApp(){
   // Teken lege circumplex voor E1 zodat de cirkel zichtbaar is
   drawCircumplex(null,null,null);
   draw();
+  refreshLangUI(); // taal toepassen (ook opgeslagen NL-voorkeur) + modal-labels lokaliseren
 }
 // Meerdere triggers voor maximale compatibiliteit
 setTimeout(initApp,50);
@@ -2317,26 +2412,26 @@ window.addEventListener('load',()=>setTimeout(initApp,100));
 <!-- Karakter configuratie modal -->
 <div id="char-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#000a;z-index:100;align-items:center;justify-content:center">
   <div style="background:#0d1117;border:1px solid #1a2030;border-radius:6px;padding:20px;max-width:300px;width:90%">
-    <div style="font-size:10px;color:var(--dim);letter-spacing:.1em;margin-bottom:14px">NIEUW KARAKTER</div>
+    <div style="font-size:10px;color:var(--dim);letter-spacing:.1em;margin-bottom:14px" data-i18n="chm.title">NEW CHARACTER</div>
     <div class="sr">
-      <span class="sn">Karaktersterkte P&#x2080; (mild &#8594; extreem)</span>
+      <span class="sn" data-i18n="chm.p0">Character strength P&#x2080; (mild &#8594; extreme)</span>
       <input type="range" id="char-p0" min="50" max="99" value="70" oninput="document.getElementById('char-p0-val').textContent=charP0Label(this.value/100);updateCharPers()">
       <span class="sv2" id="char-p0-val" style="min-width:96px">0.70 uitgesproken</span>
     </div>
     <div class="sr">
-      <span class="sn">Grondstemming &#x03B8;&#x2080; (emotiezone)</span>
+      <span class="sn" data-i18n="chm.theta">Base mood &#x03B8;&#x2080; (emotion zone)</span>
       <input type="range" id="char-theta" min="0" max="628" value="314" oninput="document.getElementById('char-theta-val').textContent=charThetaLabel(this.value/100);updateCharPers()">
       <span class="sv2" id="char-theta-val" style="min-width:96px">boos/angstig</span>
     </div>
     <div class="sr">
-      <span class="sn">Beslisstijl &#x03BE;&#x2080; (laag = piekeraar, hoog = vlot)</span>
+      <span class="sn" data-i18n="chm.xi">Decision style &#x03BE;&#x2080; (low = ruminator, high = quick)</span>
       <input type="range" id="char-xi" min="10" max="99" value="50" oninput="document.getElementById('char-xi-val').textContent=charXiLabel(this.value/100);updateCharPers()">
       <span class="sv2" id="char-xi-val" style="min-width:96px">0.50 afgewogen</span>
     </div>
-    <div id="char-pers" style="font-size:9px;color:var(--ch);margin-top:10px;font-family:'Space Mono',monospace">Startpersoonlijkheid: uitgesproken boos-angstige afweger</div>
+    <div id="char-pers" style="font-size:9px;color:var(--ch);margin-top:10px;font-family:'Space Mono',monospace"></div>
     <div class="br" style="margin-top:10px">
-      <button class="pri" onclick="confirmAddEntity()">Toevoegen</button>
-      <button onclick="document.getElementById('char-modal').style.display='none'">Annuleer</button>
+      <button class="pri" onclick="confirmAddEntity()" data-i18n="chm.add">Add</button>
+      <button onclick="document.getElementById('char-modal').style.display='none'" data-i18n="chm.cancel">Cancel</button>
     </div>
   </div>
 </div>
