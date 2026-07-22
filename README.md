@@ -53,7 +53,7 @@ history (no scale constants in route choice or group formation). Core mechanisms
 - **Decision-time shape (consistency check):** the model's deliberation times are lognormal-like
   heavy-tailed, as are 307,270 human decision times from 315 participants in 8 open datasets
   (Confidence Database). Note: this shape is predicted by most sequential-sampling models and is
-  a necessary condition, not discriminating evidence. See `docs/kritische-review-2026-07-21.md`.
+  a necessary condition, not discriminating evidence.
 - **Emotional inertia (qualitative structural support):** with the retention term, the model
   produces human-order inertia and, parameter-free, a positive inertia-variability coupling
   (model mean r = +0.55, replication range 0.37-0.71; humans +0.30, dataset range 0.00-0.54,
