@@ -7,6 +7,25 @@ character, deliberation, and emergent shared realities.
 **Status:** research preprint in preparation (July 2026). Parts of the documentation are in Dutch;
 an English translation is in progress.
 
+## This release — v1.3 (v6.1)
+
+Version 1.3 (model v6.1) extends the v5 core described below with:
+
+- **Route B as an open quantum system** — a qutrit trajectory over perception / conflict / limbo, with an
+  emergent decision time (no iteration cap) and indecision (limbo) as a located, non-empty outcome.
+- **Recognition via fidelity to memory clusters** on a stable soft-clustering layer, instead of trace distance
+  to the mean density matrix (this removes the pure-vs-mixed floor that made recognition unreachable).
+- **Emotional granularity** as a per-agent character trait (discrimination resolution), empirically grounded in
+  ESM data and reproducing the Barrett granularity–inertia relationship.
+- **Discrimination evidence:** a classical (macrorealist) twin reproduces the decision-time and outcome
+  signatures but is bound to Leggett–Garg K3 ≤ 1; only the coherent model reaches K3 > 1, rising with conflict.
+- **Falsification tests** of the Leggett–Garg claim (qutrit limbo-leak, dimensionless/scale-invariant robustness,
+  collapse-postulate independence) — all passed.
+
+See `docs/v6.1-clustering.md`, `docs/discriminatie-tweeling-bevindingen.md`, `docs/lgi-falsificatie-bevindingen.md`,
+`docs/routekeuze-diagnose.md`, `docs/routeB-bias-verkenning.md`. The architecture summary below describes the v5
+core that v6.1 builds on and refines.
+
 ## What this is
 
 A fully implemented, mathematically verified quantum-formalism model of emotional state dynamics
@@ -52,8 +71,9 @@ See NOTICE-data.md for details.
 
 ## Run the model
 
-Open `model/bewustzijn-model-v5.html` in any modern browser (double-click; no dependencies,
-no build, no network required). Interface currently in Dutch.
+Open `model/bewustzijn-model-v6.1.html` in any modern browser (double-click; no dependencies,
+no build, no network required) — this is the current version (v6.1). The interface is in English
+with a Dutch toggle. The original preprint-reference model is `model/bewustzijn-model-v5.html`.
 
 ## Reproduce the analyses
 
