@@ -7,9 +7,9 @@ character, deliberation, and emergent shared realities.
 **Status:** research preprint in preparation (July 2026). Parts of the documentation are in Dutch;
 an English translation is in progress.
 
-## This release — v1.3 (v6.1)
+## This release — v1.4 (v6.1)
 
-Version 1.3 (model v6.1) extends the v5 core described below with:
+Version 1.4 (model v6.1) extends the v5 core described below with:
 
 - **Route B as an open quantum system** — a qutrit trajectory over perception / conflict / limbo, with an
   emergent decision time (no iteration cap) and indecision (limbo) as a located, non-empty outcome.
@@ -21,9 +21,15 @@ Version 1.3 (model v6.1) extends the v5 core described below with:
   signatures but is bound to Leggett–Garg K3 ≤ 1; only the coherent model reaches K3 > 1, rising with conflict.
 - **Falsification tests** of the Leggett–Garg claim (qutrit limbo-leak, dimensionless/scale-invariant robustness,
   collapse-postulate independence) — all passed.
+- **Change-count / Temporal-Bell form** the same Leggett-Garg prediction expressed as the flip-probability
+  observable N13 > N12 + N23 that the change-judgment paradigm measures in people; the violation is a
+  conflict-dependent curve, not a single point.
+- **Curve-shape comparison** the (1 - cos) coupling is cleanly separable from a conflict-independent
+  (constant) coupling at modest sample size, and from a linear coupling in the low-conflict onset; the
+  prediction is the shape of the K3(conflict) curve, not the bare violation.
 
 See `docs/v6.1-clustering.md`, `docs/discriminatie-tweeling-bevindingen.md`, `docs/lgi-falsificatie-bevindingen.md`,
-`docs/routekeuze-diagnose.md`, `docs/routeB-bias-verkenning.md`. The architecture summary below describes the v5
+`docs/routekeuze-diagnose.md`, `docs/routeB-bias-verkenning.md`, `docs/lgi-changecount-bevindingen.md`, `docs/lgi-curvevorm-bevindingen.md`. The architecture summary below describes the v5
 core that v6.1 builds on and refines.
 
 ## What this is
@@ -86,4 +92,4 @@ Code and model: MIT (see LICENSE). Texts and documentation: CC BY 4.0.
 
 ## Citation
 
-See CITATION.cff. A preprint will follow; until then please cite the Zenodo DOI of this archive.
+See CITATION.cff. The current concept draft is `paper/paper-v2-concept-en.md` (v2.1, July 2026), circulated for feedback and not for citation; `paper/paper-v1-en.md` is retained for history. A preprint will follow; until then please cite the Zenodo DOI of this archive.

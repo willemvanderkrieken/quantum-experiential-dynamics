@@ -5,8 +5,8 @@ authors:
   - family-names: "van der Krieken"
     given-names: "Willem"
     affiliation: "Flying Kiwi BV / Just Willem BV, Boekel, The Netherlands"
-version: "1.3"
-date-released: "2026-07-22"
+version: "1.4"
+date-released: "2026-07-23"
 license: MIT
 doi: "10.5281/zenodo.21470110"
 repository-code: "https://github.com/willemvanderkrieken/quantum-experiential-dynamics"
